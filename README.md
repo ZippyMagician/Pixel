@@ -1,3 +1,3 @@
-# PixelJS - Small Javascript game API
+## PixelJS - Small Javascript game API
 
-![PixelJS Logo](https://raw.githubhubusercontent.com/ZippyMagician/Pixel/tree/master/assets/pixeljs.png)
+![PixelJS Logo](https://raw.githubusercontent.com/ZippyMagician/Pixel/master/assets/pixeljs.png)
