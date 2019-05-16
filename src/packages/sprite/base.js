@@ -1,3 +1,5 @@
+var Point = require('../shape/point');
+
 class SpriteBase {
   constructor() {
     this.point = new Point();
