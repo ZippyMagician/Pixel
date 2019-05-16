@@ -1,0 +1,7 @@
+{
+    "name": "pixeljs",
+    "version": "1.1.0",
+    "description": "A canvas api for making games",
+    "main": "src/index.js",
+    "author": "Joshua Barnett"
+}
