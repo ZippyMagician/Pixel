@@ -6,5 +6,6 @@ module.exports = {
   Circle: require('./packages/shape/circle'),
   Text: require('./packages/text'),
   Sound: require('./packages/sound'),
-  Point: require('./packages/shape/point')
+  Point: require('./packages/shape/point'),
+  Container: require('./packages/core/container')
 }
