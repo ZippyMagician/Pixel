@@ -3,3 +3,6 @@
 class Sound {
   constructor() {}
 }
+
+
+module.exports = Sound;
