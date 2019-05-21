@@ -1,6 +1,6 @@
 {
     "name": "pixeljs",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "description": "A canvas api for making games or simple canvas drawing",
     "main": "src/index.js",
     "author": "Joshua Barnett"
