@@ -1,7 +1,9 @@
 var FillStyle = require('./fillstyle');
+var ImageGraphics = require('./image');
 
-class Graphics {
+class Graphics extends ImageGraphics {
   constructor(canvas) {
+    super(canvas);
     this.ctx = canvas;
     this.dsc = this.ctx.shadowColor;
     this._fillStyle = new FillStyle();
