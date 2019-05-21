@@ -3,6 +3,7 @@ var Point = require('../shape/point');
 class SpriteBase {
   constructor() {
     this.point = new Point();
+    this.anchor = new Point();
   }
 
   get x() {
@@ -19,6 +20,11 @@ class SpriteBase {
 
   set y(v) {
     return this.point.y = v;
+  }
+  
+  setAnchor(x, y) {
+    this.anchor.x = x;
+    this.anchor.y = y;
   }
 
   clone() {
