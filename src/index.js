@@ -1,4 +1,4 @@
-module.exports = {
+global.Pixel = {
   Game: require('./packages/core'),
   Sprite: require('./packages/sprite'),
   Texture: require('./packages/texture'),
@@ -8,5 +8,5 @@ module.exports = {
   Sound: require('./packages/sound'),
   Point: require('./packages/shape/point'),
   Container: require('./packages/core/container'),
-  Graphics: require('./packages/graphics');
-}
+  Graphics: require('./packages/graphics')
+};
