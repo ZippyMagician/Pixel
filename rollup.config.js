@@ -7,7 +7,10 @@ module.exports = [
     output: {
       file: 'dist/Pixel.js',
       format: 'cjs'
-    }
+    },
+    plugins: [resolve({
+      mainFields: ['main']
+    })]
   },
   {
     input: 'src/index.js',
