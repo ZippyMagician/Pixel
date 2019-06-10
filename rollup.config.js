@@ -1,5 +1,5 @@
-var minifier = require('rollup-plugin-babel-minify');
-var resolver = require('rollup-plugin-node-resolve');
+import minifier from 'rollup-plugin-babel-minify';
+import resolver from 'rollup-plugin-node-resolve';
 
 let ENTRY = 'src/index.js';
 let EXIT = [ 'dist/Pixel.js', 'dist/Pixel.min.js' ];
