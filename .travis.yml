@@ -1,0 +1,14 @@
+language: node.js
+node_js:
+  - "9"
+  - "10"
+
+install:
+  - npm install
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - npm run build
