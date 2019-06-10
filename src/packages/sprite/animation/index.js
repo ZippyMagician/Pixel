@@ -1,4 +1,5 @@
 import SpriteBase from '../base';
+import AnimationCore from './base';
 
 export class AnimatedSprite extends SpriteBase {
   constructor(config, sheet, speed = 1) {
