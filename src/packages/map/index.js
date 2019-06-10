@@ -1,4 +1,4 @@
-export class Map extends SpriteBase {
+export default class Map extends SpriteBase {
   constructor(sheet, data) {
     super();
     this.sheet = sheet;
