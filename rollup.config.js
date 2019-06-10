@@ -1,25 +1,26 @@
-var minify = require('rollup-plugin-babel-minify');
-var resolve = require('rollup-plugin-node-resolve');
+var minifier = require('rollup-plugin-babel-minify');
+var resolver = require('rollup-plugin-node-resolve');
+
+let ENTRY = 'src/index.js';
+let EXIT = [ 'dist/Pixel.js', 'dist/Pixel.min.js' ];
+let resolve = resolver({ mainFields: [ 'main' ] });
+let minify = minifier({ comments: false });
 
 module.exports = [
   {
-    input: 'src/index.js',
+    input: ENTRY,
     output: {
-      file: 'dist/Pixel.js',
+      file: EXIT[0],
       format: 'cjs'
     },
-    plugins: [resolve({
-      mainFields: ['main']
-    })]
+    plugins: [resolve]
   },
   {
-    input: 'src/index.js',
+    input: ENTRY,
     output: {
-      file: 'dist/Pixel.min.js',
+      file: EXIT[1],
       format: 'cjs'
     },
-    plugins: [minify(), resolve({
-      mainFields: ['main']
-    })]
+    plugins: [minify, resolve]
   }
 ];
