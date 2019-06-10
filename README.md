@@ -20,6 +20,7 @@ git clone https://github.com/ZippyMagician/Pixel
 ```
 and then run
 ```
+npm install
 npm run build
 ```
 to generate a file that conntains all of Pixel's functions
