@@ -1,3 +1,6 @@
+import SpriteBase from '../sprite/base';
+import { Sprite } from '../sprite';
+
 export default class Map extends SpriteBase {
   constructor(sheet, data) {
     super();
