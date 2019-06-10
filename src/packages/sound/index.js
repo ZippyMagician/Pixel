@@ -1,8 +1,5 @@
 // TODO, sound engine
 
-class Sound {
+export default class Sound {
   constructor() {}
 }
-
-
-module.exports = Sound;

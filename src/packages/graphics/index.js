@@ -1,7 +1,7 @@
-var FillStyle = require('./fillstyle');
-var ImageGraphics = require('./image');
+import FillStyle from './fillstyle';
+import ImageGraphics from './image';
 
-class Graphics extends ImageGraphics {
+export default class Graphics extends ImageGraphics {
   constructor(canvas) {
     super(canvas);
     this.ctx = canvas;
@@ -81,5 +81,3 @@ class Graphics extends ImageGraphics {
     this.ctx.globalCompositeOperation = 'source-over';
   }
 }
-
-module.exports = Graphics;

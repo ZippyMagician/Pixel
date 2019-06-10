@@ -1,4 +1,4 @@
-class FillStyle {
+export default class FillStyle {
   constructor() {
     this.reset();
   }
@@ -22,5 +22,3 @@ class FillStyle {
     return this.color;
   }
 }
-
-module.exports = FillStyle;

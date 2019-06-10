@@ -1,4 +1,4 @@
-class ImageGraphics {
+export default class ImageGraphics {
   constructor(canvas) {
     this.ctx = canvas;
     this.cctx;
@@ -61,5 +61,3 @@ class ImageGraphics {
     }
   }
 }
-
-module.exports = ImageGraphics

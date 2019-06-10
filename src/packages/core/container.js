@@ -1,6 +1,6 @@
-var Point = require('../shape/point');
+import { Point } from '../shape';
 
-class Container {
+export default class Container {
   constructor() {
     this.contents = [];
     this.container = true;
@@ -51,5 +51,3 @@ class Container {
     }
   }
 }
-
-module.exports = Container;
