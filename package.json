@@ -6,7 +6,7 @@
     "author": "Joshua Barnett",
     "scripts": {
         "build": "rollup -c",
-        "build:dev": "sudo rollup -c"
+        "build:dev": "chmod a+x rollup -c"
     },
     "devDependencies": {
         "rollup": "^1.10.1",
