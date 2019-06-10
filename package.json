@@ -5,7 +5,8 @@
     "main": "src/index.js",
     "author": "Joshua Barnett",
     "scripts": {
-        "build": "rollup -c"
+        "build": "rollup -c",
+        "build:dev": "sudo rollup -c"
     },
     "devDependencies": {
         "rollup": "^1.10.1",
