@@ -1,4 +1,4 @@
-class Texture {
+export default class Texture {
   constructor(src) {
     var self = this;
     this.image = new Image();
@@ -9,5 +9,3 @@ class Texture {
     this.image.src = src;
   }
 }
-
-module.exports = Texture;
