@@ -10,17 +10,13 @@ To run PixelJS on your website, add
 <script src="https://cdn.jsdelivr.net/gh/ZippyMagician/Pixel/bundles/1.1.0/Pixel.min.js"></script>
 <!-- Where "1.1.0" can be subsituted for any version of PixelJS -->
 ```
-to your website. Use
-```html
-<script src="https://cdn.jsdelivr.net/gh/ZippyMagician/Pixel/dist/Pixel.min.js"></script>
-```
-for the latest version. To install yourself, clone the repo using
+to your website. To install yourself, clone the repo using
 ```sh
 git clone https://github.com/ZippyMagician/Pixel
 ```
 and then run
-```
+```sh
 npm install
 npm run build
 ```
-to generate a file that conntains all of Pixel's functions
+to generate a file that contains all of Pixel's functions
