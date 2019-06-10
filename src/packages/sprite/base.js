@@ -1,6 +1,6 @@
 import { Point } from '../shape';
 
-export class SpriteBase {
+export default class SpriteBase {
   constructor(noscale = false) {
     this.point = new Point();
     this.anchor = new Point();
