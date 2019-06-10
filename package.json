@@ -3,5 +3,11 @@
     "version": "1.4.3",
     "description": "A canvas api for making games or simple canvas drawing",
     "main": "src/index.js",
-    "author": "Joshua Barnett"
+    "author": "Joshua Barnett",
+    "scripts": {
+        "build": "rollup -c"
+    },
+    "dependencies": {
+        "rollup": "^1.10.1"
+    }
 }
