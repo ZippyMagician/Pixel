@@ -9,6 +9,7 @@
     },
     "devDependencies": {
         "rollup": "^1.10.1",
-        "rollup-plugin-uglify": "^6.0.2"
+        "rollup-plugin-uglify": "^6.0.2",
+        "rollup-plugin-node-resolve": "^5.0.1"
     }
 }
