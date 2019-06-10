@@ -18,7 +18,7 @@ module.exports = [
       file: 'dist/Pixel.min.js',
       format: 'cjs'
     },
-    plugins: [uglify(), resolve({
+    plugins: [minify(), resolve({
       mainFields: ['main']
     })]
   }
