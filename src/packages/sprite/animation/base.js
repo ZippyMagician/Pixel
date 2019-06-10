@@ -1,4 +1,4 @@
-export class AnimationCore {
+export default class AnimationCore {
   constructor(parent) {
     this.parent = parent;
     this.frame = 0;
