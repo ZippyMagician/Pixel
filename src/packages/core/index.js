@@ -1,3 +1,5 @@
+import Container from './container';
+
 export class Stage {
   constructor(options) {
     var self = this;
@@ -198,3 +200,5 @@ export class Stage {
     }
   }
 }
+
+export Container;
