@@ -7,7 +7,7 @@ import Sound from './packages/sound';
 import Graphics from './packages/graphics';
 import Map from './packages/map';
 import SpriteBase from './packages/sprite/base';
-import AnimationCore from './packages/sprite/animation/core';
+import AnimationCore from './packages/sprite/animation/base';
 
 window.Pixel = {
   App: Stage,
