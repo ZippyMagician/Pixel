@@ -5,11 +5,15 @@
     "main": "src/index.js",
     "author": "Joshua Barnett",
     "scripts": {
-        "build": "rollup -c"
+        "build": "rollup -c",
+        "docs": "jsdoc -c jsdoc.conf.json -R README.md",
+        "docs:test": "node build/test-docs.js"
     },
     "devDependencies": {
         "rollup": "^1.10.1",
         "rollup-plugin-babel-minify": "^8.0.0",
-        "rollup-plugin-node-resolve": "^5.0.1"
+        "rollup-plugin-node-resolve": "^5.0.1",
+        "jsdoc": "^3.5.5",
+        "docdash": "^1.1.1"
     }
 }

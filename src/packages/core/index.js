@@ -1,6 +1,6 @@
 import Container from './container';
 
-/*
+/**
   * The stage controls all things that run in Pixel
   *
   * @class
@@ -8,7 +8,7 @@ import Container from './container';
 
 class Stage {
 
-  /*
+  /**
     * Takes an options object, contains the width and height
     *
     * @constructor
@@ -25,7 +25,7 @@ class Stage {
     canvas.width = options.width;
     var ctx = canvas.getContext("2d");
 
-    /*
+    /**
       * The canvas element
       * 
       * @member {HTMLCanvasElement}
@@ -33,7 +33,7 @@ class Stage {
 
     this.view = ctx.canvas;
 
-    /*
+    /**
       * The primitive drawing function
       * 
       * @member {CanvasRenderingContext2d}
@@ -41,16 +41,16 @@ class Stage {
 
     this.draw = ctx;
 
-    /*
+    /**
       * Records whether or not the canvas renders every tick
       * 
       * @private
       * @member {boolean}
     */
 
-    this.tick = false;
+    this.tick = options.ticker === undefined|null ? true : options.ticker;
 
-    /*
+    /**
       * Current cursor displayed
       * 
       * @private
@@ -58,7 +58,7 @@ class Stage {
 
     this.cursor = canvas.style.cursor;
 
-    /*
+    /**
       * The background color
       * 
       * @private
@@ -67,7 +67,7 @@ class Stage {
 
     this._backColor = "#FFFFFF";
 
-    /*
+    /**
       * Stores all element management
       * 
       * @type {object}
@@ -76,7 +76,7 @@ class Stage {
 
     this.elements = { sprites: [] };
 
-    /*
+    /**
       * Stores all preloaded textures
       * 
       * @type {object}
@@ -84,7 +84,7 @@ class Stage {
 
     this.resources = {};
 
-    /*
+    /**
       * The current stage object
       * 
       * @type {object}
@@ -97,7 +97,7 @@ class Stage {
 
     this.stage = { add: {}, clear: {}, regions: {}, keyboard: {}, mouse: {} };
 
-    /*
+    /**
       * The physics storage object
       * 
       * @type {object}
@@ -108,7 +108,7 @@ class Stage {
 
     this.physics = { collider: {}, collisions: [], colliding: {} }
 
-    /*
+    /**
       * Adds new collider
       * 
       * @memberof physics.collider
@@ -123,7 +123,7 @@ class Stage {
       self.physics.colliding[name] = false;
     }
 
-    /*
+    /**
       * Gets the current mouse position
       * 
       * @private
@@ -144,7 +144,7 @@ class Stage {
       };
     };
 
-    /*
+    /**
       * Changes the background color
       * 
       * @memberof stage
@@ -156,7 +156,7 @@ class Stage {
       self._backColor = color;
     };
 
-    /*
+    /**
       * Checks if the mouse is inside any described click region
       * 
       * @private
@@ -185,7 +185,7 @@ class Stage {
       return c;
     };
 
-    /*
+    /**
       * Private onclick function manager
       * 
       * @memberof view
@@ -198,7 +198,7 @@ class Stage {
       if (self.onclick) return self.onclick(e);
     };
 
-    /*
+    /**
       * Private onmousemove function manager
       * 
       * @private
@@ -210,7 +210,7 @@ class Stage {
       if (self.onmousemove) return self.onmousemove(e);
     };
 
-    /*
+    /**
       * Private onmousedown function manager
       * 
       * @private
@@ -221,7 +221,7 @@ class Stage {
       if (self.onmousedown) return self.onmousedown(e);
     };
 
-    /*
+    /**
       * Private onkeydown function manager
       * 
       * @private
@@ -238,7 +238,7 @@ class Stage {
       if (self.onkeydown) return self.onkeydown(e);
     };
 
-    /*
+    /**
       * Private onkeyup function manager
       * 
       * @private
@@ -255,7 +255,7 @@ class Stage {
       if (self.onkeyup) return self.onkeyup(e);
     };
 
-    /*
+    /**
       * Adds and preloads new Texture element to the resources
       * 
       * @memberof elements
@@ -280,7 +280,7 @@ class Stage {
       });
     };
 
-    /*
+    /**
       * Auto renders sprite
       * 
       * @memberof stage
@@ -292,7 +292,7 @@ class Stage {
       return sprite.render(ctx);
     };
 
-    /*
+    /**
       * Clears the screen
       * 
       * @private
@@ -304,7 +304,7 @@ class Stage {
       ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     };
 
-    /*
+    /**
       * Event handler
       * 
       * @memberof stage
@@ -321,7 +321,7 @@ class Stage {
       }
     };
 
-    /*
+    /**
       * Define keyboard event triggers
       * 
       * @memberof stage.keyboard
@@ -335,7 +335,7 @@ class Stage {
       else document["on" + name] = call;
     };
 
-    /*
+    /**
       * Adds clickable region to the stage
       * 
       * @memberof stage
@@ -357,7 +357,7 @@ class Stage {
       this._animFrame(this);
   }
 
-  /*
+  /**
     * Adds child to stage
     * 
     * @param {Pixel.Sprite|Pixel.SpriteSheet|Pixel.AnimatedSprite|Pixel.Map|Pixel.Rectangle|Pixel.Circle|Pixel.Text} [sprite] - Sprite to be added
@@ -367,7 +367,7 @@ class Stage {
     this.elements.sprites.push(sprite);
   }
 
-  /*
+  /**
     * Removes all children from stage
   */
 
@@ -375,7 +375,7 @@ class Stage {
     this.elements.sprites = [];
   }
 
-  /*
+  /**
     * Renders the entire stage
     * 
     * @static
@@ -394,7 +394,7 @@ class Stage {
     }
   }
 
-  /*
+  /**
     * Checks through all collisions
     * 
     * @private
@@ -427,7 +427,7 @@ class Stage {
     }
   }
 
-  /*
+  /**
     * Animation frame loop
     * 
     * @static
@@ -442,7 +442,7 @@ class Stage {
     requestAnimationFrame(self._animFrame.bind(false, self));
   }
 
-  /*
+  /**
     * Ticker manager
     * 
     * @static

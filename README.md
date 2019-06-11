@@ -19,4 +19,30 @@ and then run
 npm install
 npm run build
 ```
-to generate a file that contains all of Pixel's functions
+to generate a file that contains all of Pixel's functions. Use
+```sh
+npm run docs
+```
+to create the documentation for Pixel.
+
+## Example
+Here is an example file you can use in Pixel
+```js
+var app = new Pixel.App({ // Create new Pixel Stage
+  height: 400,
+  width: 400
+});
+document.body.appendChild(app.view); // Add stage to document body
+
+var rect = new Pixel.Rectangle(100, 100); // Create new rectangle with width and height of 100
+
+rect.x = 200;
+rect.y = 200;
+rect.setAnchor(0.5, 0.5); // Center rectangle, move to center of screen
+
+app.addChild(rect); // Add rectangle to screen
+
+app.tick = function () {
+  rect.deg += 5; // Every tick, rotate 5 degrees
+}
+```

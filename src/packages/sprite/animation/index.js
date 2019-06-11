@@ -1,7 +1,7 @@
 import SpriteBase from '../base';
 import AnimationCore from './base';
 
-/*
+/**
   * AnimatedSprite Class
   *
   * @class
@@ -11,7 +11,7 @@ import AnimationCore from './base';
 
 export default class AnimatedSprite extends SpriteBase {
 
-  /*
+  /**
     * Create new Animated Sprite Object
     *
     * @constructor
@@ -23,7 +23,7 @@ export default class AnimatedSprite extends SpriteBase {
   constructor(config, sheet, speed = 0.15) {
     super();
 
-    /*
+    /**
       * Animation Core for playing the animations
       *
       * @member {Pixel.EXPORTS.AnimationCore}
@@ -31,7 +31,7 @@ export default class AnimatedSprite extends SpriteBase {
 
     this.animation = new AnimationCore(this);
 
-    /*
+    /**
       * Speed of the animation
       *
       * @member {number}
@@ -39,7 +39,7 @@ export default class AnimatedSprite extends SpriteBase {
 
     this.speed = speed;
 
-    /*
+    /**
       * SpriteSheet's image
       *
       * @member {object|Pixel.SpriteSheet#sheet|Pixel.SpriteSheet#generateSheet}
@@ -49,7 +49,7 @@ export default class AnimatedSprite extends SpriteBase {
 
     if (this.config) {
 
-      /*
+      /**
         * JSON Config file
         *
         * @member {object}
@@ -66,7 +66,7 @@ export default class AnimatedSprite extends SpriteBase {
     }
   }
 
-  /*
+  /**
     * Slices each frame off of the SpriteSheet, used if JSON file exists
     *
     * @private
@@ -90,7 +90,7 @@ export default class AnimatedSprite extends SpriteBase {
     }
   }
 
-  /*
+  /**
     * Slices each frame off of the SpriteSheet, used if no JSON file
     *
     * @private
@@ -108,7 +108,7 @@ export default class AnimatedSprite extends SpriteBase {
     }
   }
 
-  /*
+  /**
     * Cuts image
     *
     * @private
@@ -136,7 +136,7 @@ export default class AnimatedSprite extends SpriteBase {
     return canvas;
   }
 
-  /*
+  /**
     * Renders current animation frame of sprite
     *
     * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to

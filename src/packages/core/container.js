@@ -1,6 +1,6 @@
 import { Point } from '../shape';
 
-/*
+/**
   * Container class
   *
   * @class
@@ -8,7 +8,7 @@ import { Point } from '../shape';
 
 export default class Container {
 
-  /*
+  /**
     * Creates a container element
     *
     * @constructor
@@ -16,7 +16,7 @@ export default class Container {
 
   constructor() {
 
-    /*
+    /**
       * Contains all sprites
       *
       * @member {Pixel.Sprite[]}
@@ -24,7 +24,7 @@ export default class Container {
 
     this.contents = [];
 
-    /*
+    /**
       * I forgot what this is for but am to worried to get rid of it
       *
       * @member {boolean}
@@ -32,7 +32,7 @@ export default class Container {
 
     this.container = true;
 
-    /*
+    /**
       * Position of this container
       *
       * @member {Pixel.Point}
@@ -41,7 +41,7 @@ export default class Container {
     this.point = new Point();
   }
 
-  /*
+  /**
     * Adds child to container
     *
     * @param {Pixel.Sprite} [sprite] - Sprite to add
@@ -51,7 +51,7 @@ export default class Container {
     this.contents.push(sprite);
   }
 
-  /*
+  /**
     * Moves all children into a Pixel.Stage element
     *
     * @param {Pixel.Stage} [base] - Stage contents are moved to
@@ -64,7 +64,7 @@ export default class Container {
     }
   }
 
-  /*
+  /**
     * X position
     *
     * @member {number}
@@ -74,7 +74,7 @@ export default class Container {
     return this.point.x;
   }
 
-  /*
+  /**
     * Y position
     *
     * @member {number}
@@ -102,7 +102,7 @@ export default class Container {
     this.point.y = v;
   }
 
-  /*
+  /**
     * Renders all elements in container
     *
     * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to

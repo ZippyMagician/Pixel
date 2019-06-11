@@ -1,4 +1,4 @@
-/*
+/**
   * Color/Transparency element for graphics
   *
   * @class
@@ -7,7 +7,7 @@
 
 export default class FillStyle {
 
-  /*
+  /**
     * Initiates new FillStyle element
     *
     * @constructor
@@ -15,7 +15,7 @@ export default class FillStyle {
 
   constructor() {
 
-    /*
+    /**
       * The color of the fill element
       *
       * @member {number}
@@ -23,7 +23,7 @@ export default class FillStyle {
 
     this.color;
 
-    /*
+    /**
       * Alpha (transparency) of element
       *
       * @member {number}
@@ -34,7 +34,7 @@ export default class FillStyle {
     this.reset();
   }
 
-  /*
+  /**
     * Resets color and alpha
   */
 
@@ -43,7 +43,7 @@ export default class FillStyle {
     this.alpha = 1;
   }
 
-  /*
+  /**
     * Clones this fill iteration into new one
     *
     * @return {Pixel.EXPORTS.FillStyle}
@@ -57,7 +57,7 @@ export default class FillStyle {
     return f;
   }
 
-  /*
+  /**
     * Fills color to new color
     *
     * @param {number} [c] - Color to be set, Hex or RGB

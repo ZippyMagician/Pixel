@@ -1,4 +1,4 @@
-/*
+/**
   * TODO: SOUND ENGINE
   *
   * @class
@@ -7,7 +7,7 @@
 
 export default class Sound {
 
-  /*
+  /**
     * Create new sound element
     *
     * @constructor
