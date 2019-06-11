@@ -2,7 +2,7 @@ import SpriteBase from './base';
 import AnimatedSprite from './animation';
 import SpriteSheet from './sheet';
 
-/*
+/**
   * Sprite class
   *
   * @class
@@ -12,7 +12,7 @@ import SpriteSheet from './sheet';
 
 class Sprite extends SpriteBase {
 
-  /*
+  /**
     * Create new Sprite
     *
     * @constructor
@@ -22,7 +22,7 @@ class Sprite extends SpriteBase {
   constructor(texture) {
     super();
 
-    /*
+    /**
       * Store the texture for later use
       * 
       * @method {Pixel.Texture}
@@ -31,7 +31,7 @@ class Sprite extends SpriteBase {
     this.texture = texture;
   }
 
-  /*
+  /**
     * Renders sprite
     *
     * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
@@ -52,7 +52,7 @@ class Sprite extends SpriteBase {
     }
   }
 
-  /*
+  /**
     * Renders the sprite at an angle
     *
     * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
@@ -75,7 +75,7 @@ class Sprite extends SpriteBase {
     ctx.restore();
   }
 
-  /*
+  /**
     * Check if object is colliding with another object
     *
     * Ported from https://www.w3schools.com/graphics/game_obstacles.asp
@@ -116,7 +116,7 @@ class Sprite extends SpriteBase {
     return {body: crash, left: left, right: right, top: top, bottom: bottom};
   }
 
-  /*
+  /**
     * Clones the sprite
     *
     * @returns {Pixel.Sprite}
