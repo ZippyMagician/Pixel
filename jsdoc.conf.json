@@ -1,7 +1,7 @@
 {
   "tags": {
     "allowUnknownTags": false
-  }
+  },
   "source": {
     "include": "./src",
     "excludePattern": "(node_modules|dist)"
