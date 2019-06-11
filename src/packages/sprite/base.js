@@ -1,6 +1,6 @@
 import { Point } from '../shape';
 
-/*
+/**
   * The base of every Sprite
   *
   * @class
@@ -9,7 +9,7 @@ import { Point } from '../shape';
 
 export default class SpriteBase {
 
-  /*
+  /**
     * Create new Sprite Base
     *
     * @param {boolean} [noscale=false] - Determines whether or not object can be rotated and scaled
@@ -17,7 +17,7 @@ export default class SpriteBase {
 
   constructor(noscale = false) {
 
-    /*
+    /**
       * The position of the sprite
       *
       * @member {Pixel.Point}
@@ -25,7 +25,7 @@ export default class SpriteBase {
 
     this.point = new Point();
 
-    /*
+    /**
       * The anchor position of the sprite
       *
       * @member {Pixel.Point}
@@ -33,7 +33,7 @@ export default class SpriteBase {
 
     this.anchor = new Point();
 
-    /*
+    /**
       * The opacity of the sprite
       *
       * @member {number}
@@ -41,7 +41,7 @@ export default class SpriteBase {
 
     this.opacity = 1.0;
 
-    /*
+    /**
       * The degress of rotation on the sprite
       *
       * @member {number}
@@ -49,7 +49,7 @@ export default class SpriteBase {
 
     this.deg = 0;
 
-    /*
+    /**
       * The scale of the sprite (0 --> 1)
       *
       * @member {number}
@@ -57,7 +57,7 @@ export default class SpriteBase {
 
     this.scale = 1;
 
-    /*
+    /**
       * Whether the sprite is scaled, stored
       * 
       * @private
@@ -66,7 +66,7 @@ export default class SpriteBase {
 
     this.noscale = noscale;
 
-    /*
+    /**
       * Determines if the sprite is flipped over the x axis
       *
       * @member {boolean}
@@ -74,7 +74,7 @@ export default class SpriteBase {
 
     this.flipX = false;
 
-    /*
+    /**
       * Determines if the sprite is flipped over the y axis
       *
       * @member {boolean}
@@ -83,7 +83,7 @@ export default class SpriteBase {
     this.flipY = false;
   }
 
-  /*
+  /**
     * Sets the hitbox size of the sprite
     *
     * @param {number} [w] - Width
@@ -92,7 +92,7 @@ export default class SpriteBase {
 
   setSize(w, h) {
 
-    /*
+    /**
       * Width of the Sprite's hitbox
       *
       * @member {number}
@@ -100,7 +100,7 @@ export default class SpriteBase {
 
     this.width = w;
 
-    /*
+    /**
       * Height of the Sprite's hitbox
       *
       * @member {number}
@@ -109,7 +109,7 @@ export default class SpriteBase {
     this.height = h;
   }
 
-  /*
+  /**
     * X position
     *
     * @member {number}
@@ -123,7 +123,7 @@ export default class SpriteBase {
     return (this.point.x = v);
   }
 
-  /*
+  /**
     * Y position
     *
     * @member {number}
@@ -137,7 +137,7 @@ export default class SpriteBase {
     return (this.point.y = v);
   }
 
-  /*
+  /**
     * Set the position the sprite is anchored to (0-->1)
     *
     * @param {number} [x] - X position, scale of 0 to 1
@@ -149,7 +149,7 @@ export default class SpriteBase {
     this.anchor.y = y;
   }
 
-  /*
+  /**
     * Copy the value of another sprite onto this one
     *
     * @param {Pixel.Sprite} [sprite] - Sprite who's values this will copy
@@ -165,7 +165,7 @@ export default class SpriteBase {
     this.scale = sprite.scale;
   }
 
-  /*
+  /**
     * Spins x * 360 degrees
     *
     * @param {number} [num] - Amount of times sprite rotates 360 degrees
@@ -175,7 +175,7 @@ export default class SpriteBase {
     this.deg = num * 360;
   }
 
-  /*
+  /**
     * Applies settings set on sprite
     *
     * @param {CanvasRenderingContext2d} [ctx] - Context to apply settings to
@@ -186,7 +186,7 @@ export default class SpriteBase {
     ctx.scale(this.scale, this.scale);
   }
 
-  /*
+  /**
     * Resets settings set on sprite
     *
     * @param {CanvasRenderingContext2d} [ctx] - Context to reset settings on
