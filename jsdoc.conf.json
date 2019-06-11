@@ -3,7 +3,7 @@
     "allowUnknownTags": false
   },
   "source": {
-    "include": "./src",
+    "include": "src",
     "excludePattern": "(node_modules|dist)"
   },
   "template": {
@@ -22,7 +22,7 @@
     "encoding"      : "utf8",
     "recurse"       : true,
     "lenient"       : true,
-    "destination"   : "./dist/docs",
+    "destination"   : "./docs",
     "template"      : "./node_modules/docdash"
   }
 }
