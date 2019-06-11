@@ -1,17 +1,66 @@
 import SpriteBase from './base';
 
+/**
+  * Spritesheet class
+  *
+  * @class
+  * @memberof Pixel
+  * @extends Pixel.EXPORTS.SpriteBase
+*/
+
 export default class SpriteSheet extends SpriteBase {
+  
+  /**
+    * Create new Sprite sheet class
+    * 
+    * @constructor
+    * @param {Pixel.Texture} [texture] - The texture used for the sprite sheet
+    * @param {object} [data] - Data passed in order to split spritesheet
+    * @param {number} [data.width] - Width of the spritesheet (in tiles)
+    * @param {number} [data.height] - Height of the spritesheet (in tiles)
+    * @param {number} [data.margin] - Amount of padding around each sprite
+    * @param {number} [data.spacing] - Amount of space between each sprite
+    * @param {object} [data.image] - Stores data for each image being split
+    * @param {number} [data.image.width] - Width of single tile
+    * @param {number} [data.image.height] - Height of single tile
+  */
+  
   constructor(texture, data) {
     super();
-    if (!texture.renderable)
-      throw new Error(
-        "PixelError: Texture passed to Pixel#SpriteSheet constructor MUST be loaded"
-      );
-    else this.texture = texture;
+    
+    /**
+      * Stores the texture for later use
+      * 
+      * @member {Pixel.Texture}
+      * @private
+    */
+    
+    this.texture = texture;
+    
+    /**
+      * Stores every seperate frame of the spritesheet
+      *
+      * @member {HTMLCanvasElement[]}
+    */
 
     this.sheet = [];
+    
+    
+    
     this._parse(data);
   }
+  
+  /**
+    * Crops an image into a smaller version
+    *
+    * @private
+    * @param {number} [x] - X position of crop
+    * @param {number} [y] - Y position of crop
+    * @param {number} [w] - Width of crop
+    * @param {number} [h] - Height of crop
+    * @param {image} [image=false] - If you want to pass a texture other than the main texture, use this
+    * @returns {HTMLCanvasElement}
+  */
 
   _slice(x, y, w, h, image=false) {
     let img = image || this.texture
@@ -29,6 +78,14 @@ export default class SpriteSheet extends SpriteBase {
 
     return canvas;
   }
+  
+  /**
+    * Trim image centered around image
+    *
+    * @private
+    * @deprecated
+    * @param {object} [data] - Data object passed
+  */
 
   trim(data) {
     let w = data.width, h = data.height;
@@ -40,6 +97,13 @@ export default class SpriteSheet extends SpriteBase {
       this.sheet[i] = this._slice(diffW / 2, diffH / 2, w - diffW / 2, h - diffH / 2, image)
     }
   }
+  
+  /**
+    * Parses texture file into seperate files based on data
+    *
+    * @private
+    * @param {object} [data] - Data passed
+  */
 
   _parse(data) {
     let w = this.texture.image.width;
@@ -64,6 +128,12 @@ export default class SpriteSheet extends SpriteBase {
       }
     }
   }
+  
+  /**
+    * Returns the sheet for use in other sprites
+    *
+    * @returns {Pixel.SpriteSheet#sheet}
+  */
 
   generateSheet() {
     return this.sheet;
