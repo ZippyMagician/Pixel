@@ -28,7 +28,7 @@ to create the documentation for Pixel.
 ## Example
 Here is an example file you can use in Pixel
 ```js
-var app = new Pixel.App({ // Create new Pixel Stage
+var app = new Pixel.Stage({ // Create new Pixel Stage
   height: 400,
   width: 400
 });

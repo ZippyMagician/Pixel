@@ -12,7 +12,7 @@ import ImageGraphics from'./packages/graphics/image';
 import FillStyle from './packages/graphics/fillstyle';
 
 window.Pixel = {
-  App: Stage,
+  Stage: Stage,
   Sprite: Sprite,
   AnimatedSprite: AnimatedSprite,
   Texture: Texture,
