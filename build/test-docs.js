@@ -1,7 +1,6 @@
 var fs = require('fs');
 
-fs.readdir('./docs', (err, files) => {
-  files.forEach(file => {
-    console.log(file);
-  });
+fs.readFile('./docs/index.html', (err, data) => {
+  if (!data) return console.log(err);
+  return console.log(data);
 });
