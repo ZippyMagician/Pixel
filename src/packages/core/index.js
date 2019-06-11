@@ -48,7 +48,7 @@ class Stage {
       * @member {boolean}
     */
 
-    this.tick = false;
+    this.tick = options.ticker === undefined|null ? true : options.ticker;
 
     /**
       * Current cursor displayed
