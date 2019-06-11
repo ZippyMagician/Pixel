@@ -23,6 +23,6 @@
     "recurse"       : true,
     "lenient"       : true,
     "destination"   : "./dist/docs",
-    "template"      : "./node_modules/docdash/assets/template/docdash"
+    "template"      : "./node_modules/docdash"
   }
 }
