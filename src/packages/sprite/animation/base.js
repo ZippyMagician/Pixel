@@ -1,4 +1,4 @@
-/*
+/**
   * Animation core class
   *
   * @class
@@ -7,7 +7,7 @@
 
 export default class AnimationCore {
 
-  /*
+  /**
     * Create new Animation Core element
     *
     * @constructor
@@ -16,7 +16,7 @@ export default class AnimationCore {
 
   constructor(parent) {
 
-    /*
+    /**
       * Stores parent of this core
       *
       * @private
@@ -25,7 +25,7 @@ export default class AnimationCore {
 
     this.parent = parent;
 
-    /*
+    /**
       * Current frame this core is on
       *
       * @member {number}
@@ -33,7 +33,7 @@ export default class AnimationCore {
 
     this.frame = 0;
 
-    /*
+    /**
       * Stores spritesheet
       *
       * @member {Pixel.Sprite}
@@ -41,7 +41,7 @@ export default class AnimationCore {
 
     this.cache = [];
 
-    /*
+    /**
       * All tracks created that can be played
       *
       * @member {object}
@@ -49,7 +49,7 @@ export default class AnimationCore {
 
     this.tracks = {};
 
-    /*
+    /**
       * Current track being played
       *
       * @member {boolean|Pixel.Sprite[]}
@@ -57,7 +57,7 @@ export default class AnimationCore {
 
     this.current = false;
 
-    /*
+    /**
       * Current name of the track being played
       *
       * @member {string}
@@ -66,7 +66,7 @@ export default class AnimationCore {
     this.track = "";
   }
 
-  /*
+  /**
     * Stops the current animation and plays 1 item in the cache on continous loop
     *
     * @param {number} [num] - ID of image being played continously
@@ -81,7 +81,7 @@ export default class AnimationCore {
     this.frame = 0;
   }
 
-  /*
+  /**
     * Plays an animation saved in the cache
     *
     * @param {string} [name] - Name of track to be played
@@ -93,7 +93,7 @@ export default class AnimationCore {
     this.track = name;
   }
 
-  /*
+  /**
     * Add track when cached spritesheet is defined through a json file
     *
     * @param {string} [name] - Name of track
@@ -117,7 +117,7 @@ export default class AnimationCore {
     if (storage.length > 0) this.tracks[name] = storage;
   }
 
-  /*
+  /**
     * Create a new track if there is no json file
     *
     * @param {object} [data] - Data for the creation
@@ -139,7 +139,7 @@ export default class AnimationCore {
     this.tracks[name] = storage;
   }
 
-  /*
+  /**
     * Add multiple animation tracks at once (with json file)
     *
     * @param {object[]} [groups] - Data of every group to be added
