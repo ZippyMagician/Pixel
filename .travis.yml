@@ -12,3 +12,4 @@ cache:
 
 script:
   - npm run docs
+  - npm run docs:test
