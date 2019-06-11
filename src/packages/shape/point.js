@@ -1,4 +1,4 @@
-/*
+/**
   * New Point on the stage
   *
   * @class
@@ -7,7 +7,7 @@
 
 export default class Point {
 
-  /*
+  /**
     * Create new point
     *
     * @param {number} [x=0] - X position
@@ -16,7 +16,7 @@ export default class Point {
 
   constructor(x = 0, y = 0) {
 
-    /*
+    /**
       * Current X Coordinate
       *
       * @member {number}
@@ -24,7 +24,7 @@ export default class Point {
 
     this.x = x;
 
-    /*
+    /**
       * Current Y Coordinate
       *
       * @member {number}
@@ -33,7 +33,7 @@ export default class Point {
     this.y = y;
   }
 
-  /*
+  /**
     * Clones the point
     *
     * @return {Pixel.Point}
