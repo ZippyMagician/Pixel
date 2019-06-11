@@ -25,7 +25,8 @@ export default class Circle extends SpriteBase {
       * The radius of the circle
       *
       * @readonly
-      * @member {number}
+      * @name Pixel.Circle#radius
+      * @type {number}
     */
 
     this.radius = r;
@@ -34,7 +35,8 @@ export default class Circle extends SpriteBase {
       * The color of the circle
       *
       * @readonly
-      * @member {string}
+      * @name Pixel.Circle#color
+      * @type {string}
     */
 
     this.color = c;
@@ -43,6 +45,7 @@ export default class Circle extends SpriteBase {
   /**
     * Renders circle
     *
+    * @member Pixel.Circle#render
     * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
   */
 

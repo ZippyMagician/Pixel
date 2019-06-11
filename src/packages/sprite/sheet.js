@@ -31,7 +31,8 @@ export default class SpriteSheet extends SpriteBase {
     /**
       * Stores the texture for later use
       * 
-      * @member {Pixel.Texture}
+      * @name Pixel.SpriteSheet#texture
+      * @type {Pixel.Texture}
       * @private
     */
     
@@ -40,7 +41,8 @@ export default class SpriteSheet extends SpriteBase {
     /**
       * Stores every seperate frame of the spritesheet
       *
-      * @member {HTMLCanvasElement[]}
+      * @name Pixel.SpriteSheet#sheet
+      * @type {HTMLCanvasElement[]}
     */
 
     this.sheet = [];
@@ -53,6 +55,7 @@ export default class SpriteSheet extends SpriteBase {
   /**
     * Crops an image into a smaller version
     *
+    * @method Pixel.SpriteSheet#_slice
     * @private
     * @param {number} [x] - X position of crop
     * @param {number} [y] - Y position of crop
@@ -82,6 +85,7 @@ export default class SpriteSheet extends SpriteBase {
   /**
     * Trim image centered around image
     *
+    * @method Pixel.SpriteSheet#trim
     * @private
     * @deprecated
     * @param {object} [data] - Data object passed
@@ -101,6 +105,7 @@ export default class SpriteSheet extends SpriteBase {
   /**
     * Parses texture file into seperate files based on data
     *
+    * @method Pixel.SpriteSheet#_parse
     * @private
     * @param {object} [data] - Data passed
   */
@@ -117,7 +122,6 @@ export default class SpriteSheet extends SpriteBase {
 
     for (curCol = 1; curCol <= cols; curCol++) {
       for (curRow = 1; curRow <= rows; curRow++) {
-        // TODO: FIX MARGIN + SPACING
         let img = this._slice(
           curRow * (data.width + spacing) - data.width,
           curCol * (data.height + spacing + margin) - data.height,
@@ -132,6 +136,7 @@ export default class SpriteSheet extends SpriteBase {
   /**
     * Returns the sheet for use in other sprites
     *
+    * @method Pixel.SpriteSheet#generateSheet
     * @returns {Pixel.SpriteSheet#sheet}
   */
 

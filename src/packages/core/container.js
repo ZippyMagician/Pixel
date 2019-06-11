@@ -19,7 +19,8 @@ export default class Container {
     /**
       * Contains all sprites
       *
-      * @member {Pixel.Sprite[]}
+      * @name Pixel.Container#contents
+      * @type {Pixel.Sprite[]}
     */
 
     this.contents = [];
@@ -27,7 +28,8 @@ export default class Container {
     /**
       * I forgot what this is for but am to worried to get rid of it
       *
-      * @member {boolean}
+      * @name Pixel.Container#container
+      * @type {boolean}
     */
 
     this.container = true;
@@ -35,7 +37,8 @@ export default class Container {
     /**
       * Position of this container
       *
-      * @member {Pixel.Point}
+      * @name Pixel.Container#point
+      * @type {Pixel.Point}
     */
 
     this.point = new Point();
@@ -44,6 +47,7 @@ export default class Container {
   /**
     * Adds child to container
     *
+    * @method Pixel.Container#addChild
     * @param {Pixel.Sprite} [sprite] - Sprite to add
   */
 
@@ -54,6 +58,7 @@ export default class Container {
   /**
     * Moves all children into a Pixel.Stage element
     *
+    * @method Pixel.Container#cloneChildren
     * @param {Pixel.Stage} [base] - Stage contents are moved to
   */
 
@@ -67,7 +72,8 @@ export default class Container {
   /**
     * X position
     *
-    * @member {number}
+    * @name Pixel.Container#x
+    * @type {number}
   */
 
   get x() {
@@ -77,7 +83,8 @@ export default class Container {
   /**
     * Y position
     *
-    * @member {number}
+    * @name Pixel.Container#y
+    * @type {number}
   */
 
   get y() {
@@ -105,6 +112,7 @@ export default class Container {
   /**
     * Renders all elements in container
     *
+    * @method Pixel.Container#render
     * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
   */
 

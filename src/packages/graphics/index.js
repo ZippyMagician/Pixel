@@ -25,7 +25,8 @@ export default class Graphics extends ImageGraphics {
       * Stores canvas element
       *
       * @private
-      * @member {CanvasRenderingContext2d}
+      * @name Pixel.Graphics#ctx
+      * @type {CanvasRenderingContext2d}
     */
 
     this.ctx = canvas;
@@ -34,7 +35,8 @@ export default class Graphics extends ImageGraphics {
       * Stores original shadow color element value
       *
       * @private
-      * @member {number}
+      * @name Pixel.Graphics#dsc
+      * @type {number}
     */
 
     this.dsc = this.ctx.shadowColor;
@@ -43,7 +45,8 @@ export default class Graphics extends ImageGraphics {
       * The filling style element
       *
       * @private
-      * @member {Pixel.EXPORTS.FillStyle}
+      * @name Pixel.Graphics#_fillStyle
+      * @type {Pixel.EXPORTS.FillStyle}
     */
 
     this._fillStyle = new FillStyle();
@@ -52,6 +55,7 @@ export default class Graphics extends ImageGraphics {
   /**
     * Sets transparency
     *
+    * @method Pixel.Graphics#transparency
     * @param {number} [value] - Value of alpha level
     * @return {Pixel.Graphics}
   */
@@ -65,6 +69,7 @@ export default class Graphics extends ImageGraphics {
   /**
     * Sets shadows
     *
+    * @method Pixel.Graphics#shadow
     * @param {number} [blue] - Blur of shadow
     * @param {string} [color] - Color of shadow
     * @param {number} [offsetx] - X offset of shadow
@@ -84,6 +89,7 @@ export default class Graphics extends ImageGraphics {
   /**
     * Sets fill color
     *
+    * @method Pixel.Graphics#fill
     * @param {string} [c] - Color used, RGB or Hex
     * @return {Pixel.Graphics}
   */
@@ -96,6 +102,8 @@ export default class Graphics extends ImageGraphics {
 
   /**
     * Resets all values and terminates a chain
+    * 
+    * @method Pixel.Graphics#end
   */
 
   end() {
@@ -111,6 +119,7 @@ export default class Graphics extends ImageGraphics {
   /**
     * Draws rectangle
     *
+    * @method Pixel.Graphics#drawRect
     * @param {number} [a] - X position
     * @param {number} [b] - Y position
     * @param {number} [c] - Width
@@ -127,6 +136,7 @@ export default class Graphics extends ImageGraphics {
   /**
     * Draws arc
     *
+    * @method Pixel.Graphics#arc
     * @param {number} [a] - X position
     * @param {number} [b] - Y position
     * @param {number} [c] - Radius
@@ -147,6 +157,8 @@ export default class Graphics extends ImageGraphics {
   /**
     * Draws arc
     *
+    * @deprecated
+    * @method Pixel.Graphics#arcTo
     * @param {number} [a] - X position
     * @param {number} [b] - Y position
     * @param {number} [c] - Radius
@@ -166,6 +178,7 @@ export default class Graphics extends ImageGraphics {
   /**
     * Move to X, Y
     *
+    * @method Pixel.Graphics#move
     * @param {number} [a] - X position
     * @param {number} [b] - Y position
     * @return {Pixel.Graphics}
@@ -180,6 +193,7 @@ export default class Graphics extends ImageGraphics {
   /**
     * Clears rectangular area on screen
     *
+    * @method Pixel.Graphics#clearRect
     * @param {number} [x] - X position
     * @param {number} [y] - Y position
     * @param {number} [w] - Width
@@ -196,6 +210,7 @@ export default class Graphics extends ImageGraphics {
   /**
     * Clears circular area
     *
+    * @method Pixel.Graphics#clearCircle
     * @param {number} [x] - X position
     * @param {number} [y] - Y position
     * @param {number} [radius] - Radius of circle

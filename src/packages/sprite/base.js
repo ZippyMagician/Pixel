@@ -20,7 +20,8 @@ export default class SpriteBase {
     /**
       * The position of the sprite
       *
-      * @member {Pixel.Point}
+      * @name Pixel.EXPORTS.SpriteBase#point
+      * @type {Pixel.Point}
     */
 
     this.point = new Point();
@@ -28,7 +29,8 @@ export default class SpriteBase {
     /**
       * The anchor position of the sprite
       *
-      * @member {Pixel.Point}
+      * @name Pixel.EXPORTS.SpriteBase#anchor
+      * @type {Pixel.Point}
     */
 
     this.anchor = new Point();
@@ -36,7 +38,8 @@ export default class SpriteBase {
     /**
       * The opacity of the sprite
       *
-      * @member {number}
+      * @name Pixel.EXPORTS.SpriteBase#opacity
+      * @type {number}
     */
 
     this.opacity = 1.0;
@@ -44,7 +47,9 @@ export default class SpriteBase {
     /**
       * The degress of rotation on the sprite
       *
-      * @member {number}
+      * @name Pixel.EXPORTS.SpriteBase#deg
+      * @type {number}
+      * @default 0
     */
 
     this.deg = 0;
@@ -52,7 +57,9 @@ export default class SpriteBase {
     /**
       * The scale of the sprite (0 --> 1)
       *
-      * @member {number}
+      * @name Pixel.EXPORTS.SpriteBase#scale
+      * @type {number}
+      * @default 1
     */
 
     this.scale = 1;
@@ -60,8 +67,9 @@ export default class SpriteBase {
     /**
       * Whether the sprite is scaled, stored
       * 
+      * @name Pixel.EXPORTS.SpriteBase#noscale
       * @private
-      * @member {boolean}
+      * @type {boolean}
     */
 
     this.noscale = noscale;
@@ -69,7 +77,9 @@ export default class SpriteBase {
     /**
       * Determines if the sprite is flipped over the x axis
       *
-      * @member {boolean}
+      * @name Pixel.EXPORTS.SpriteBase#flipX
+      * @type {boolean}
+      * @default false
     */
 
     this.flipX = false;
@@ -77,7 +87,9 @@ export default class SpriteBase {
     /**
       * Determines if the sprite is flipped over the y axis
       *
-      * @member {boolean}
+      * @name Pixel.EXPORTS.SpriteBase#flipY
+      * @type {boolean}
+      * @default false
     */
 
     this.flipY = false;
@@ -86,6 +98,7 @@ export default class SpriteBase {
   /**
     * Sets the hitbox size of the sprite
     *
+    * @method Pixel.EXPORTS.SpriteBase#setSize
     * @param {number} [w] - Width
     * @param {number} [h] - Height
   */
@@ -95,7 +108,8 @@ export default class SpriteBase {
     /**
       * Width of the Sprite's hitbox
       *
-      * @member {number}
+      * @name Pixel.EXPORTS.SpriteBase#width
+      * @type {number}
     */
 
     this.width = w;
@@ -103,7 +117,8 @@ export default class SpriteBase {
     /**
       * Height of the Sprite's hitbox
       *
-      * @member {number}
+      * @name Pixel.EXPORTS.SpriteBase#height
+      * @type {number}
     */
 
     this.height = h;
@@ -112,7 +127,8 @@ export default class SpriteBase {
   /**
     * X position
     *
-    * @member {number}
+    * @name Pixel.EXPORTS.SpriteBase#x
+    * @type {number}
   */
 
   get x() {
@@ -126,7 +142,8 @@ export default class SpriteBase {
   /**
     * Y position
     *
-    * @member {number}
+    * @name Pixel.EXPORTS.SpriteBase#y
+    * @type {number}
   */
 
   get y() {
@@ -140,6 +157,7 @@ export default class SpriteBase {
   /**
     * Set the position the sprite is anchored to (0-->1)
     *
+    * @method Pixel.EXPORTS.SpriteBase#setAnchor
     * @param {number} [x] - X position, scale of 0 to 1
     * @param {number} [y] - Y position, scale of 0 to 1
   */
@@ -152,6 +170,7 @@ export default class SpriteBase {
   /**
     * Copy the value of another sprite onto this one
     *
+    * @method Pixel.EXPORTS.SpriteBase#copy
     * @param {Pixel.Sprite} [sprite] - Sprite who's values this will copy
   */
 
@@ -168,6 +187,7 @@ export default class SpriteBase {
   /**
     * Spins x * 360 degrees
     *
+    * @method Pixel.EXPORTS.SpriteBase#spin
     * @param {number} [num] - Amount of times sprite rotates 360 degrees
   */
 
@@ -178,6 +198,7 @@ export default class SpriteBase {
   /**
     * Applies settings set on sprite
     *
+    * @method Pixel.EXPORTS.SpriteBase#settings
     * @param {CanvasRenderingContext2d} [ctx] - Context to apply settings to
   */
 
@@ -189,6 +210,7 @@ export default class SpriteBase {
   /**
     * Resets settings set on sprite
     *
+    * @method Pixel.EXPORTS.SpriteBase#reset
     * @param {CanvasRenderingContext2d} [ctx] - Context to reset settings on
   */
 

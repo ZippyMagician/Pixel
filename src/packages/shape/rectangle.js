@@ -26,7 +26,8 @@ export default class Rectangle extends SpriteBase {
       * Stores width of rectangle
       *
       * @readonly
-      * @member {number}
+      * @name Pixel.Rectangle#width
+      * @type {number}
     */
 
     this.width = w;
@@ -35,7 +36,8 @@ export default class Rectangle extends SpriteBase {
       * Stores height of rectangle
       *
       * @readonly
-      * @member {number}
+      * @name Pixel.Rectangle#height
+      * @type {number}
     */
 
     this.height = h;
@@ -44,7 +46,8 @@ export default class Rectangle extends SpriteBase {
       * Stores color of rectangle
       *
       * @readonly
-      * @member {string}
+      * @name Pixel.Rectangle#color
+      * @type {string}
     */
 
     this.color = c;
@@ -53,6 +56,7 @@ export default class Rectangle extends SpriteBase {
   /**
     * Renders rectangle
     *
+    * @method Pixel.Rectangle#render
     * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
   */
 
@@ -76,6 +80,7 @@ export default class Rectangle extends SpriteBase {
     * Renders the rectangle at an angle, if necessary
     *
     * @private
+    * @method Pixel.Rectangle#rotation_render
     * @param {CanvasRenderingContext2d} [ctx] - Rendering context drawn on
   */
 

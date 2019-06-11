@@ -25,7 +25,8 @@ export default class Text extends SpriteBase {
     /**
       * The text that will be printed
       *
-      * @member {string}
+      * @name Pixel.Text#text
+      * @type {string}
     */
     
     this.text = txt;
@@ -33,7 +34,8 @@ export default class Text extends SpriteBase {
     /**
       * The size of the text
       *
-      * @member {number}
+      * @name Pixel.Text#size
+      * @type {number}
     */
     
     this.size = size;
@@ -41,7 +43,8 @@ export default class Text extends SpriteBase {
     /**
       * The color of the text
       *
-      * @member {string}
+      * @name Pixel.Text#color
+      * @type {string}
     */
     
     this.color = c;
@@ -50,6 +53,7 @@ export default class Text extends SpriteBase {
   /**
     * Renders text
     *
+    * @method Pixel.Text#render
     * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
   */
 

@@ -20,7 +20,8 @@ export default class ImageGraphics {
     /**
       * Storage for a backup rendering context element
       *
-      * @member {CanvasRenderingContext2d}
+      * @name Pixel.Graphics#cctx
+      * @type {CanvasRenderingContext2d}
       * @private
     */
 
@@ -29,7 +30,8 @@ export default class ImageGraphics {
     /**
       * Storage for a backup canvas element
       *
-      * @member {HTMLCanvasElement}
+      * @name Pixel.Graphics#canvas
+      * @type {HTMLCanvasElement}
       * @private
     */
 
@@ -38,7 +40,8 @@ export default class ImageGraphics {
     /**
       * Stores the image modified
       *
-      * @member {HTMLImageElement}
+      * @name Pixel.Graphics#image
+      * @type {HTMLImageElement}
       * @private
     */
 
@@ -47,16 +50,18 @@ export default class ImageGraphics {
     /**
       * Determines whether or not the image is renderable
       *
-      * @member {boolean}
+      * @name Pixel.Graphics#renderable
+      * @type {boolean}
       * @private
     */
 
-    this.renderabe = false;
+    this.renderable = false;
 
     /**
       * Internal width of the canvas
       *
-      * @member {number}
+      * @name Pixel.Graphics#width
+      * @type {number}
       * @private
     */
 
@@ -65,7 +70,8 @@ export default class ImageGraphics {
     /**
       * Internal height of the canvas
       *
-      * @member {number}
+      * @name Pixel.Graphics#height
+      * @type {number}
       * @private
     */
 
@@ -75,6 +81,7 @@ export default class ImageGraphics {
   /**
     * Loads image based on url
     *
+    * @method Pixel.Graphics#loadImage
     * @return {Promise}
     * @param {string} [url] - URL of Image Element
   */
@@ -98,6 +105,7 @@ export default class ImageGraphics {
   /**
     * Crops image based on x, y, width, and height
     *
+    * @method Pixel.Graphics#cropRect
     * @return {Pixel.Sprite}
     * @param {number} [x] - X position of crop
     * @param {number} [y] - Y position of crop

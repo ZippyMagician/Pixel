@@ -28,7 +28,8 @@ class Stage {
     /**
       * The canvas element
       * 
-      * @member {HTMLCanvasElement}
+      * @name Pixel.App#view
+      * @type {HTMLCanvasElement}
     */
 
     this.view = ctx.canvas;
@@ -36,7 +37,8 @@ class Stage {
     /**
       * The primitive drawing function
       * 
-      * @member {CanvasRenderingContext2d}
+      * @name Pixel.App#draw
+      * @type {CanvasRenderingContext2d}
     */
 
     this.draw = ctx;
@@ -45,7 +47,8 @@ class Stage {
       * Records whether or not the canvas renders every tick
       * 
       * @private
-      * @member {boolean}
+      * @name Pixel.App#tick
+      * @type {boolean}
     */
 
     this.tick = options.ticker === undefined|null ? true : options.ticker;
@@ -54,6 +57,7 @@ class Stage {
       * Current cursor displayed
       * 
       * @private
+      * @name Pixel.App#cursor
     */
 
     this.cursor = canvas.style.cursor;
@@ -62,7 +66,8 @@ class Stage {
       * The background color
       * 
       * @private
-      * @member {string}
+      * @name Pixel.App#_backColor
+      * @type {string}
     */
 
     this._backColor = "#FFFFFF";
@@ -71,6 +76,7 @@ class Stage {
       * Stores all element management
       * 
       * @type {object}
+      * @name Pixel.App#elements
       * @property {object[]} [sprites] - All of the sprites that are being drawn
     */
 
@@ -80,6 +86,7 @@ class Stage {
       * Stores all preloaded textures
       * 
       * @type {object}
+      * @name Pixel.App#resources
     */
 
     this.resources = {};
@@ -88,19 +95,18 @@ class Stage {
       * The current stage object
       * 
       * @type {object}
-      * @property {function} [add] - Adds and then renders an object
-      * @property {function} [clear] - Clears the screen
+      * @name Pixel.App#stage
       * @property {object} [regions] - Stores all regions
       * @property {object} [keyboard] - All keyboard related functions
-      * @property {object} [mouse] - All mouse related objects
     */
 
-    this.stage = { add: {}, clear: {}, regions: {}, keyboard: {}, mouse: {} };
+    this.stage = { regions: {}, keyboard: {} };
 
     /**
       * The physics storage object
       * 
       * @type {object}
+      * @name Pixel.App#physics
       * @property {object} [collider] - The collider element, allows to add more collisions
       * @property {object[]} [collisions] - Stores all collision data
       * @property {object} [colliding] - Stores the booleans of every colliding element
@@ -111,8 +117,7 @@ class Stage {
     /**
       * Adds new collider
       * 
-      * @memberof physics.collider
-      * @method add
+      * @method Pixel.App.physics.collider#add
       * @param {string} [name] - The name of the collision
       * @param {Pixel.Sprite[]|Pixel.Map[]|Pixel.AnimatedSprite[]} [sprite1] - The first sprite(s) that will collide with the second
       * @param {Pixel.Sprite|Pixel.Map|Pixel.AnimatedSprite} [sprite2] - The second sprite that collides with the first
@@ -127,8 +132,7 @@ class Stage {
       * Gets the current mouse position
       * 
       * @private
-      * @memberof stage
-      * @method mousePos
+      * @method Pixel.App.stage#mousePos
       * @param {DocumentEvent} [event] - The Document Event element
       * @return {object} Returns the x and y in an object
     */
@@ -147,8 +151,7 @@ class Stage {
     /**
       * Changes the background color
       * 
-      * @memberof stage
-      * @method background
+      * @method Pixel.App.stage#background
       * @param {string} [color] - The color, in hexidecimal or rgb
     */
 
@@ -160,6 +163,7 @@ class Stage {
       * Checks if the mouse is inside any described click region
       * 
       * @private
+      * @name Pixel.App#_checkRegions
       * @param {DocumentEvent} [e] - The Document Event
       * @param {boolean} [int=true] - Whether or not it will change the cursor
       * @return {boolean} True or False
@@ -188,8 +192,7 @@ class Stage {
     /**
       * Private onclick function manager
       * 
-      * @memberof view
-      * @method onclick
+      * @method Pixel.App.view#onclick
       * @private
     */
 
@@ -202,6 +205,7 @@ class Stage {
       * Private onmousemove function manager
       * 
       * @private
+      * @static
     */
 
     document.onmousemove = function(e) {
@@ -214,6 +218,7 @@ class Stage {
       * Private onmousedown function manager
       * 
       * @private
+      * @static
     */
 
     document.onmousedown = function(e) {
@@ -225,6 +230,7 @@ class Stage {
       * Private onkeydown function manager
       * 
       * @private
+      * @static
     */
 
     document.onkeydown = function(e) {
@@ -242,6 +248,7 @@ class Stage {
       * Private onkeyup function manager
       * 
       * @private
+      * @static
     */
 
     document.onkeyup = function(e) {
@@ -258,8 +265,7 @@ class Stage {
     /**
       * Adds and preloads new Texture element to the resources
       * 
-      * @memberof elements
-      * @method add
+      * @method Pixel.App.elements#add
       * @param {string} [name="default"] - Name this element will refer to
       * @param {string} [url=""] - URL That image is loaded from
       * @return {Promise}
@@ -283,8 +289,7 @@ class Stage {
     /**
       * Auto renders sprite
       * 
-      * @memberof stage
-      * @method add
+      * @method Pixel.App.stage#add
       * @param {Pixel.Sprite|Pixel.SpriteSheet|Pixel.AnimatedSprite|Pixel.Map|Pixel.Rectangle|Pixel.Circle|Pixel.Text} [sprite] - Sprite to be rendered
     */
 
@@ -296,8 +301,7 @@ class Stage {
       * Clears the screen
       * 
       * @private
-      * @memberof stage
-      * @method clear
+      * @method Pixel.App.stage#clear
     */
 
     this.stage.clear = function() {
@@ -307,8 +311,7 @@ class Stage {
     /**
       * Event handler
       * 
-      * @memberof stage
-      * @method on
+      * @method Pixel.App.stage#on
       * @param {string} [name] - Name of event
       * @param {function} [call] - Function called whenever event occurs
     */
@@ -324,8 +327,7 @@ class Stage {
     /**
       * Define keyboard event triggers
       * 
-      * @memberof stage.keyboard
-      * @method on
+      * @method Pixel.App.stage.keyboard#on
       * @param {string} [name] - Name of event
       * @param {function} [call] - Function called whenever event occurs
     */
@@ -338,8 +340,7 @@ class Stage {
     /**
       * Adds clickable region to the stage
       * 
-      * @memberof stage
-      * @method addHitRegion
+      * @method Pixel.App.stage#addHitRegion
       * @param {object} [opts] - Options for hit region
       * @param {string} [opts.name] - Name of hit region
       * @param {Pixel.Point} [opts.start] - Start point of hit region
@@ -360,7 +361,8 @@ class Stage {
   /**
     * Adds child to stage
     * 
-    * @param {Pixel.Sprite|Pixel.SpriteSheet|Pixel.AnimatedSprite|Pixel.Map|Pixel.Rectangle|Pixel.Circle|Pixel.Text} [sprite] - Sprite to be added
+    * @method Pixel.App#addChild
+    * @param {Pixel.Sprite} [sprite] - Sprite to be added
   */
 
   addChild(sprite) {
@@ -369,6 +371,8 @@ class Stage {
 
   /**
     * Removes all children from stage
+    * 
+    * @method Pixel.App#removeChildren
   */
 
   removeChildren() {
@@ -378,7 +382,7 @@ class Stage {
   /**
     * Renders the entire stage
     * 
-    * @static
+    * @method Pixel.App#render
     * @param {Pixel.Stage} [self] - Stage to be rendered
   */
 
@@ -398,7 +402,7 @@ class Stage {
     * Checks through all collisions
     * 
     * @private
-    * @static
+    * @method Pixel.App#_checkCollisions
     * @param {Pixel.Stage} [self] - Stage that collisions are checked for
   */
 
@@ -430,7 +434,7 @@ class Stage {
   /**
     * Animation frame loop
     * 
-    * @static
+    * @method Pixel.App#_animFrame
     * @private
     * @param {Pixel.Stage} [self] - Stage anim frame occurs on
   */
@@ -445,7 +449,7 @@ class Stage {
   /**
     * Ticker manager
     * 
-    * @static
+    * @method Pixel.App#_tick
     * @private
     * @param {Pixel.Stage} [self] - Stage anim frame occurs on
   */

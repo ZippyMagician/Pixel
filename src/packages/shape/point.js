@@ -19,7 +19,8 @@ export default class Point {
     /**
       * Current X Coordinate
       *
-      * @member {number}
+      * @name Pixel.Point#x
+      * @type {number}
     */
 
     this.x = x;
@@ -27,7 +28,8 @@ export default class Point {
     /**
       * Current Y Coordinate
       *
-      * @member {number}
+      * @name Pixel.Point#y
+      * @type {number}
     */
 
     this.y = y;
@@ -36,6 +38,7 @@ export default class Point {
   /**
     * Clones the point
     *
+    * @method Pixel.Point#clone
     * @return {Pixel.Point}
   */
 

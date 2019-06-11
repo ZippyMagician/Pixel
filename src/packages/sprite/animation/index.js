@@ -26,7 +26,8 @@ export default class AnimatedSprite extends SpriteBase {
     /**
       * Animation Core for playing the animations
       *
-      * @member {Pixel.EXPORTS.AnimationCore}
+      * @name Pixel.AnimatedSprite#animation
+      * @type {Pixel.EXPORTS.AnimationCore}
     */
 
     this.animation = new AnimationCore(this);
@@ -34,7 +35,9 @@ export default class AnimatedSprite extends SpriteBase {
     /**
       * Speed of the animation
       *
-      * @member {number}
+      * @name Pixel.AnimatedSprite#speed
+      * @type {number}
+      * @default 0.15
     */
 
     this.speed = speed;
@@ -42,7 +45,8 @@ export default class AnimatedSprite extends SpriteBase {
     /**
       * SpriteSheet's image
       *
-      * @member {object|Pixel.SpriteSheet#sheet|Pixel.SpriteSheet#generateSheet}
+      * @name Pixel.AnimatedSprite#texture
+      * @type {object|Pixel.SpriteSheet#sheet|Pixel.SpriteSheet#generateSheet}
     */
 
     this.texture = {image: new Image()};
@@ -52,7 +56,8 @@ export default class AnimatedSprite extends SpriteBase {
       /**
         * JSON Config file
         *
-        * @member {object}
+        * @name Pixel.AnimatedSprite#config
+        * @type {object}
       */
 
       this.config = config;
@@ -69,6 +74,7 @@ export default class AnimatedSprite extends SpriteBase {
   /**
     * Slices each frame off of the SpriteSheet, used if JSON file exists
     *
+    * @member Pixel.AnimatedSprite#_splitFrames
     * @private
   */
 
@@ -93,6 +99,7 @@ export default class AnimatedSprite extends SpriteBase {
   /**
     * Slices each frame off of the SpriteSheet, used if no JSON file
     *
+    * @member Pixel.AnimatedSprite#_splitSheetFrames
     * @private
   */
 
@@ -111,6 +118,7 @@ export default class AnimatedSprite extends SpriteBase {
   /**
     * Cuts image
     *
+    * @member Pixel.AnimatedSprite#_slice
     * @private
     * @param {number} [x] - X position
     * @param {number} [y] - Y position
@@ -139,6 +147,7 @@ export default class AnimatedSprite extends SpriteBase {
   /**
     * Renders current animation frame of sprite
     *
+    * @member Pixel.AnimatedSprite#render
     * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
   */
 

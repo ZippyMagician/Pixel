@@ -30,7 +30,8 @@ export default class Map extends SpriteBase {
       * Stores the sheet
       *
       * @private
-      * @member {Pixel.SpriteSheet#sheet|Pixel.SpriteSheet#generateSheet}
+      * @name Pixel.Map#sheet
+      * @type {Pixel.SpriteSheet#sheet|Pixel.SpriteSheet#generateSheet}
     */
 
     this.sheet = sheet;
@@ -39,7 +40,8 @@ export default class Map extends SpriteBase {
       * Stores the data
       *
       * @private
-      * @member {object}
+      * @name Pixel.Map#data
+      * @type {object}
     */
 
     this.data = data;
@@ -47,7 +49,8 @@ export default class Map extends SpriteBase {
     /**
       * Tilemap array
       *
-      * @member {number[][]}
+      * @name Pixel.Map#tiles
+      * @type {number[][]}
     */
 
     this.tiles = [];
@@ -56,7 +59,8 @@ export default class Map extends SpriteBase {
       * Tiles excluded from collisions
       * 
       * @private
-      * @member {number[]}
+      * @name Pixel.Map#exclude
+      * @type {number[]}
     */
 
     this.exclude;
@@ -65,7 +69,8 @@ export default class Map extends SpriteBase {
       * Tile IDS that can collide
       * 
       * @private
-      * @member {number[]}
+      * @name Pixel.Map#colliders
+      * @type {number[]}
     */
 
     this.colliders = [];
@@ -75,6 +80,7 @@ export default class Map extends SpriteBase {
     * Checks if tile should be added to collide list
     *
     * @private
+    * @member Pixel.Map#_includeCollider
     * @param {number} [id] - ID of tile
     * @param {HTMLCanvasElement} [sprite] - Canvas element (sprite) to be either added or excluded
   */
@@ -89,6 +95,7 @@ export default class Map extends SpriteBase {
   /**
     * Applies a pre-determined tileset to the tilemap
     *
+    * @member Pixel.Map#applyTileset
     * @param {number[][]} [tiles] - Array of tiles
   */
 
@@ -109,6 +116,8 @@ export default class Map extends SpriteBase {
 
   /**
     * Generates a blank tilemap
+    * 
+    * @member Pixel.Map#generateBlankMap
   */
 
   generateBlankMap() {
@@ -122,6 +131,7 @@ export default class Map extends SpriteBase {
   /**
     * Sets collisions by excluding x ids
     *
+    * @member Pixel.Map#collideByExclusion
     * @param {number[]} [ids] - IDs of every tile that cannot collide
   */
 
@@ -132,6 +142,7 @@ export default class Map extends SpriteBase {
   /**
     * Checks collisions with a sprite
     *
+    * @member Pixel.Map#checkCollisions
     * @param {Pixel.Sprite} [rect2] - Sprite that tilemap checks to see if it is colliding with
   */
 
@@ -154,6 +165,7 @@ export default class Map extends SpriteBase {
   /**
     * Gives random item in array based on each weight
     *
+    * @member Pixel.Map#_match
     * @private
     * @param {number} [max] - The total weight
     * @param {object[]} [array] - Every item
@@ -184,11 +196,15 @@ export default class Map extends SpriteBase {
   /**
     * Randomly places tiles based on weight
     *
+    * @member Pixel.Map#weightedRandomize
     * @param {number} [gx] - Starting tile x
     * @param {number} [gy] - Starting tile y
     * @param {number} [w] - Tile width (amount going across)
     * @param {number} [h] - Tile height (amount going down)
     * @param {object[]} [index] - All indexes + weights of ids to place
+    * 
+    * @example
+    *     Pixel.Map.weightedRandomize(10, 10, 10, 10, [{index: 4, weight: 3}, {index: 10, weight: 0.5}]);
   */
 
   weightedRandomize(gx, gy, w, h, index) {
@@ -207,7 +223,7 @@ export default class Map extends SpriteBase {
         let til = this._match(max, index);
 
         this.tiles[x + y * this.data.height] = new Sprite({image: self.sheet[til], renderable: true});
-        this._includeCollider(til, this.tiles[x + y * this.data.height]); // Include in others
+        this._includeCollider(til, this.tiles[x + y * this.data.height]);
       }
     }
   }
@@ -215,6 +231,7 @@ export default class Map extends SpriteBase {
   /**
     * Places single tile at TileX and TileY
     *
+    * @member Pixel.Map#placeTile
     * @param {number} [id] - ID of tile
     * @param {number} [x] - TileX of tile
     * @param {number} [y] - TileY of tile
@@ -229,6 +246,7 @@ export default class Map extends SpriteBase {
   /**
     * Converts tile to world x
     *
+    * @member Pixel.Map#tileToWorldX
     * @param {number} [x] - TileX
   */
 
@@ -239,6 +257,7 @@ export default class Map extends SpriteBase {
   /**
     * Converts tile to world y
     *
+    * @member Pixel.Map#tileToWorldY
     * @param {number} [y] - TileY
   */
 
@@ -249,18 +268,17 @@ export default class Map extends SpriteBase {
   /**
     * Places multiple tiles horizontally + vertically based on array
     *
+    * @member Pixel.Map#placeTiles
     * @param {number[]|number[][]} [tilesArray] - Array of tiles to be placed
     * @param {number} [x] - X position of first tile
     * @param {number} [y] - Y position of first tile
-    * @param {number} [w] - Width of the tile placement
-    * @param {number} [h] - Height of the tile placement
     * 
     * @example
-    *   [ [10], [50], [32] ] // Is vertically
-    *   [ 10, 50, 32 ] // Is horizontally
+    *   Pixel.Map.placeTiles([ [10], [50], [32] ], 5, 5);  // Is vertically, starting at tile index 5, 5
+    *   Pixel.Map.placeTiles([ 10, 50, 32 ], 5, 5); // Is horizontally, starting at tile index 5, 5
   */
 
-  placeTiles(tilesArray, x, y, w, h) {
+  placeTiles(tilesArray, x, y) {
     if (!Array.isArray(tilesArray[0])) {
       tilesArray = [ tilesArray ];
     }
@@ -279,6 +297,7 @@ export default class Map extends SpriteBase {
   /**
     * Fills area with 1 tile
     *
+    * @member Pixel.Map#fill
     * @param {number} [id] - ID of tile
     * @param {number} [gx] - Start x of fill
     * @param {number} [gy] - Start y of fill
@@ -297,6 +316,7 @@ export default class Map extends SpriteBase {
   /**
     * Renders the tilemap
     *
+    * @member Pixel.Map#render
     * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
   */
 

@@ -20,7 +20,8 @@ export default class Texture {
     /**
       * Where the image is stored once loaded
       *
-      * @member {HTMLImageElement}
+      * @name Pixel.Texture#image
+      * @type {HTMLImageElement}
     */
     
     this.image = new Image();
@@ -28,7 +29,8 @@ export default class Texture {
     /**
       * Records whether or not the image is renderable
       *
-      * @member {boolean}
+      * @name Pixel.Texture#renderable
+      * @type {boolean}
     */
     
     this.renderable = false;
