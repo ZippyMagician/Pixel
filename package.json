@@ -12,6 +12,7 @@
         "rollup": "^1.10.1",
         "rollup-plugin-babel-minify": "^8.0.0",
         "rollup-plugin-node-resolve": "^5.0.1",
-        "jsdoc": "^3.5.5"
+        "jsdoc": "^3.5.5",
+        "jaguarjs-jsdoc": "^1.1.0"
     }
 }
