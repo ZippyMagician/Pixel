@@ -1,7 +1,7 @@
 import SpriteBase from '../sprite/base';
 import { Sprite } from '../sprite';
 
-/*
+/**
   * TileMap element
   *
   * @class
@@ -11,7 +11,7 @@ import { Sprite } from '../sprite';
 
 export default class Map extends SpriteBase {
 
-  /*
+  /**
     * Initiates new Tilemap
     *
     * @constructor
@@ -26,7 +26,7 @@ export default class Map extends SpriteBase {
   constructor(sheet, data) {
     super();
 
-    /*
+    /**
       * Stores the sheet
       *
       * @private
@@ -35,7 +35,7 @@ export default class Map extends SpriteBase {
 
     this.sheet = sheet;
 
-    /*
+    /**
       * Stores the data
       *
       * @private
@@ -44,7 +44,7 @@ export default class Map extends SpriteBase {
 
     this.data = data;
 
-    /*
+    /**
       * Tilemap array
       *
       * @member {number[][]}
@@ -52,7 +52,7 @@ export default class Map extends SpriteBase {
 
     this.tiles = [];
 
-    /*
+    /**
       * Tiles excluded from collisions
       * 
       * @private
@@ -61,7 +61,7 @@ export default class Map extends SpriteBase {
 
     this.exclude;
 
-    /*
+    /**
       * Tile IDS that can collide
       * 
       * @private
@@ -71,7 +71,7 @@ export default class Map extends SpriteBase {
     this.colliders = [];
   }
 
-  /*
+  /**
     * Checks if tile should be added to collide list
     *
     * @private
@@ -86,7 +86,7 @@ export default class Map extends SpriteBase {
     }
   }
 
-  /*
+  /**
     * Applies a pre-determined tileset to the tilemap
     *
     * @param {number[][]} [tiles] - Array of tiles
@@ -107,7 +107,7 @@ export default class Map extends SpriteBase {
     }
   }
 
-  /*
+  /**
     * Generates a blank tilemap
   */
 
@@ -119,7 +119,7 @@ export default class Map extends SpriteBase {
     }
   }
 
-  /*
+  /**
     * Sets collisions by excluding x ids
     *
     * @param {number[]} [ids] - IDs of every tile that cannot collide
@@ -129,7 +129,7 @@ export default class Map extends SpriteBase {
     this.exclude = ids;
   }
 
-  /*
+  /**
     * Checks collisions with a sprite
     *
     * @param {Pixel.Sprite} [rect2] - Sprite that tilemap checks to see if it is colliding with
@@ -151,7 +151,7 @@ export default class Map extends SpriteBase {
     return ret;
   }
 
-  /*
+  /**
     * Gives random item in array based on each weight
     *
     * @private
@@ -181,7 +181,7 @@ export default class Map extends SpriteBase {
     return randomIndex;
   }
 
-  /*
+  /**
     * Randomly places tiles based on weight
     *
     * @param {number} [gx] - Starting tile x
@@ -212,7 +212,7 @@ export default class Map extends SpriteBase {
     }
   }
 
-  /*
+  /**
     * Places single tile at TileX and TileY
     *
     * @param {number} [id] - ID of tile
@@ -226,7 +226,7 @@ export default class Map extends SpriteBase {
     this._includeCollider(id, this.tiles[x + y * this.data.height]);
   }
 
-  /*
+  /**
     * Converts tile to world x
     *
     * @param {number} [x] - TileX
@@ -236,7 +236,7 @@ export default class Map extends SpriteBase {
     return (((this.data.width * this.data.tileWidth) / 2) * -1) + x * this.data.tileWidth;
   }
 
-  /*
+  /**
     * Converts tile to world y
     *
     * @param {number} [y] - TileY
@@ -246,7 +246,7 @@ export default class Map extends SpriteBase {
     return (((this.data.height * this.data.tileHeight) / 2) * -1) + y * this.data.tileHeight;
   }
 
-  /*
+  /**
     * Places multiple tiles horizontally + vertically based on array
     *
     * @param {number[]|number[][]} [tilesArray] - Array of tiles to be placed
@@ -276,7 +276,7 @@ export default class Map extends SpriteBase {
     }
   }
 
-  /*
+  /**
     * Fills area with 1 tile
     *
     * @param {number} [id] - ID of tile
@@ -294,7 +294,7 @@ export default class Map extends SpriteBase {
     }
   }
 
-  /*
+  /**
     * Renders the tilemap
     *
     * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
