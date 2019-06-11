@@ -1,7 +1,7 @@
 import FillStyle from './fillstyle';
 import ImageGraphics from './image';
 
-/*
+/**
   * Pixel Graphics Element
   *
   * @class
@@ -11,7 +11,7 @@ import ImageGraphics from './image';
 
 export default class Graphics extends ImageGraphics {
 
-  /*
+  /**
     * Iterates new Graphic element
     *
     * @constructor
@@ -21,7 +21,7 @@ export default class Graphics extends ImageGraphics {
   constructor(canvas) {
     super();
 
-    /*
+    /**
       * Stores canvas element
       *
       * @private
@@ -30,7 +30,7 @@ export default class Graphics extends ImageGraphics {
 
     this.ctx = canvas;
 
-    /*
+    /**
       * Stores original shadow color element value
       *
       * @private
@@ -39,7 +39,7 @@ export default class Graphics extends ImageGraphics {
 
     this.dsc = this.ctx.shadowColor;
 
-    /*
+    /**
       * The filling style element
       *
       * @private
@@ -49,7 +49,7 @@ export default class Graphics extends ImageGraphics {
     this._fillStyle = new FillStyle();
   }
 
-  /*
+  /**
     * Sets transparency
     *
     * @param {number} [value] - Value of alpha level
@@ -62,7 +62,7 @@ export default class Graphics extends ImageGraphics {
     return this;
   }
 
-  /*
+  /**
     * Sets shadows
     *
     * @param {number} [blue] - Blur of shadow
@@ -81,7 +81,7 @@ export default class Graphics extends ImageGraphics {
     return this;
   }
 
-  /*
+  /**
     * Sets fill color
     *
     * @param {string} [c] - Color used, RGB or Hex
@@ -94,7 +94,7 @@ export default class Graphics extends ImageGraphics {
     return this;
   }
 
-  /*
+  /**
     * Resets all values and terminates a chain
   */
 
@@ -108,7 +108,7 @@ export default class Graphics extends ImageGraphics {
     this.ctx.globalAlpha = 1.0;
   }
 
-  /*
+  /**
     * Draws rectangle
     *
     * @param {number} [a] - X position
@@ -124,7 +124,7 @@ export default class Graphics extends ImageGraphics {
     return this;
   }
 
-  /*
+  /**
     * Draws arc
     *
     * @param {number} [a] - X position
@@ -144,7 +144,7 @@ export default class Graphics extends ImageGraphics {
     return this;
   }
 
-  /*
+  /**
     * Draws arc
     *
     * @param {number} [a] - X position
@@ -163,7 +163,7 @@ export default class Graphics extends ImageGraphics {
     return this;
   }
 
-  /*
+  /**
     * Move to X, Y
     *
     * @param {number} [a] - X position
@@ -177,7 +177,7 @@ export default class Graphics extends ImageGraphics {
     return this;
   }
 
-  /*
+  /**
     * Clears rectangular area on screen
     *
     * @param {number} [x] - X position
@@ -193,7 +193,7 @@ export default class Graphics extends ImageGraphics {
     return this;
   }
 
-  /*
+  /**
     * Clears circular area
     *
     * @param {number} [x] - X position
