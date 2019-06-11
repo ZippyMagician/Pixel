@@ -1,27 +1,137 @@
 import Container from './container';
 
+/*
+  * The stage controls all things that run in Pixel
+  *
+  * @class
+*/
+
 class Stage {
+
+  /*
+    * Takes an options object, contains the width and height
+    *
+    * @constructor
+    * @param {object} [options] - The options rendering parameter
+    * @param {number} [options.width] - The width of the canvas
+    * @param {number} [options.height] - The height of the canvas
+    * @param {boolean} [options.ticker=true] - Whether or not the canvas automatically renders every tick
+  */
+
   constructor(options) {
     var self = this;
     var canvas = document.createElement("canvas");
     canvas.height = options.height;
     canvas.width = options.width;
     var ctx = canvas.getContext("2d");
+
+    /*
+      * The canvas element
+      * 
+      * @member {HTMLCanvasElement}
+    */
+
     this.view = ctx.canvas;
+
+    /*
+      * The primitive drawing function
+      * 
+      * @member {CanvasRenderingContext2d}
+    */
+
     this.draw = ctx;
+
+    /*
+      * Records whether or not the canvas renders every tick
+      * 
+      * @private
+      * @member {boolean}
+    */
+
     this.tick = false;
+
+    /*
+      * Current cursor displayed
+      * 
+      * @private
+    */
+
     this.cursor = canvas.style.cursor;
+
+    /*
+      * The background color
+      * 
+      * @private
+      * @member {string}
+    */
+
     this._backColor = "#FFFFFF";
 
+    /*
+      * Stores all element management
+      * 
+      * @type {object}
+      * @property {object[]} [sprites] - All of the sprites that are being drawn
+    */
+
     this.elements = { sprites: [] };
+
+    /*
+      * Stores all preloaded textures
+      * 
+      * @type {object}
+    */
+
     this.resources = {};
+
+    /*
+      * The current stage object
+      * 
+      * @type {object}
+      * @property {function} [add] - Adds and then renders an object
+      * @property {function} [clear] - Clears the screen
+      * @property {object} [regions] - Stores all regions
+      * @property {object} [keyboard] - All keyboard related functions
+      * @property {object} [mouse] - All mouse related objects
+    */
+
     this.stage = { add: {}, clear: {}, regions: {}, keyboard: {}, mouse: {} };
+
+    /*
+      * The physics storage object
+      * 
+      * @type {object}
+      * @property {object} [collider] - The collider element, allows to add more collisions
+      * @property {object[]} [collisions] - Stores all collision data
+      * @property {object} [colliding] - Stores the booleans of every colliding element
+    */
+
     this.physics = { collider: {}, collisions: [], colliding: {} }
 
-    this.physics.collider.add = function (name, sprite1, sprite2) { // Curently only Pixel#Map includes a checkCollisions ability
+    /*
+      * Adds new collider
+      * 
+      * @memberof physics.collider
+      * @method add
+      * @param {string} [name] - The name of the collision
+      * @param {Pixel.Sprite[]|Pixel.Map[]|Pixel.AnimatedSprite[]} [sprite1] - The first sprite(s) that will collide with the second
+      * @param {Pixel.Sprite|Pixel.Map|Pixel.AnimatedSprite} [sprite2] - The second sprite that collides with the first
+    */
+
+    this.physics.collider.add = function (name, sprite1, sprite2) {
       self.physics.collisions.push({name: name, parent: sprite1, child: sprite2});
       self.physics.colliding[name] = false;
     }
+
+    /*
+      * Gets the current mouse position
+      * 
+      * @private
+      * @memberof stage
+      * @method mousePos
+      * @param {DocumentEvent} [event] - The Document Event element
+      * @return {object} Returns the x and y in an object
+    */
 
     this.stage.mousePos = function(event) {
       var rect = canvas.getBoundingClientRect(),
@@ -34,9 +144,26 @@ class Stage {
       };
     };
 
+    /*
+      * Changes the background color
+      * 
+      * @memberof stage
+      * @method background
+      * @param {string} [color] - The color, in hexidecimal or rgb
+    */
+
     this.stage.background = function(color) {
       self._backColor = color;
     };
+
+    /*
+      * Checks if the mouse is inside any described click region
+      * 
+      * @private
+      * @param {DocumentEvent} [e] - The Document Event
+      * @param {boolean} [int=true] - Whether or not it will change the cursor
+      * @return {boolean} True or False
+    */
 
     this._checkRegions = function(e, int = true) {
       var c = false;
@@ -58,10 +185,24 @@ class Stage {
       return c;
     };
 
+    /*
+      * Private onclick function manager
+      * 
+      * @memberof view
+      * @method onclick
+      * @private
+    */
+
     this.view.onclick = function(e) {
       self._checkRegions(e);
       if (self.onclick) return self.onclick(e);
     };
+
+    /*
+      * Private onmousemove function manager
+      * 
+      * @private
+    */
 
     document.onmousemove = function(e) {
       var check = self._checkRegions(e, false);
@@ -69,10 +210,22 @@ class Stage {
       if (self.onmousemove) return self.onmousemove(e);
     };
 
+    /*
+      * Private onmousedown function manager
+      * 
+      * @private
+    */
+
     document.onmousedown = function(e) {
       self.lastClickTarget = e.target;
       if (self.onmousedown) return self.onmousedown(e);
     };
+
+    /*
+      * Private onkeydown function manager
+      * 
+      * @private
+    */
 
     document.onkeydown = function(e) {
       let key = e.key;
@@ -85,6 +238,12 @@ class Stage {
       if (self.onkeydown) return self.onkeydown(e);
     };
 
+    /*
+      * Private onkeyup function manager
+      * 
+      * @private
+    */
+
     document.onkeyup = function(e) {
       let key = e.key;
       let keys = _pixel_keys;
@@ -95,6 +254,16 @@ class Stage {
       }
       if (self.onkeyup) return self.onkeyup(e);
     };
+
+    /*
+      * Adds and preloads new Texture element to the resources
+      * 
+      * @memberof elements
+      * @method add
+      * @param {string} [name="default"] - Name this element will refer to
+      * @param {string} [url=""] - URL That image is loaded from
+      * @return {Promise}
+    */
 
     this.elements.add = function(name = "default", url = "") {
       var image = new Image();
@@ -111,13 +280,38 @@ class Stage {
       });
     };
 
+    /*
+      * Auto renders sprite
+      * 
+      * @memberof stage
+      * @method add
+      * @param {Pixel.Sprite|Pixel.SpriteSheet|Pixel.AnimatedSprite|Pixel.Map|Pixel.Rectangle|Pixel.Circle|Pixel.Text} [sprite] - Sprite to be rendered
+    */
+
     this.stage.add = function(sprite) {
       return sprite.render(ctx);
     };
 
+    /*
+      * Clears the screen
+      * 
+      * @private
+      * @memberof stage
+      * @method clear
+    */
+
     this.stage.clear = function() {
       ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     };
+
+    /*
+      * Event handler
+      * 
+      * @memberof stage
+      * @method on
+      * @param {string} [name] - Name of event
+      * @param {function} [call] - Function called whenever event occurs
+    */
 
     this.stage.on = function(name, call) {
       if (name === "mousemove" || name === "mousedown" || name === "click") {
@@ -127,10 +321,31 @@ class Stage {
       }
     };
 
+    /*
+      * Define keyboard event triggers
+      * 
+      * @memberof stage.keyboard
+      * @method on
+      * @param {string} [name] - Name of event
+      * @param {function} [call] - Function called whenever event occurs
+    */
+
     this.stage.keyboard.on = function(name, call) {
       if (name === "keydown" || name === "keyup") self["on" + name] = call;
       else document["on" + name] = call;
     };
+
+    /*
+      * Adds clickable region to the stage
+      * 
+      * @memberof stage
+      * @method addHitRegion
+      * @param {object} [opts] - Options for hit region
+      * @param {string} [opts.name] - Name of hit region
+      * @param {Pixel.Point} [opts.start] - Start point of hit region
+      * @param {Pixel.Point} [opts.end] - End point of hit region
+      * @param {function} [call] - Function called when region clicked
+    */
 
     this.stage.addHitRegion = function(opts, call) {
       self.stage.regions[opts.name] = new Object(
@@ -142,13 +357,30 @@ class Stage {
       this._animFrame(this);
   }
 
+  /*
+    * Adds child to stage
+    * 
+    * @param {Pixel.Sprite|Pixel.SpriteSheet|Pixel.AnimatedSprite|Pixel.Map|Pixel.Rectangle|Pixel.Circle|Pixel.Text} [sprite] - Sprite to be added
+  */
+
   addChild(sprite) {
     this.elements.sprites.push(sprite);
   }
 
+  /*
+    * Removes all children from stage
+  */
+
   removeChildren() {
     this.elements.sprites = [];
   }
+
+  /*
+    * Renders the entire stage
+    * 
+    * @static
+    * @param {Pixel.Stage} [self] - Stage to be rendered
+  */
 
   render(self) {
     var l = self.elements.sprites.length;
@@ -161,6 +393,14 @@ class Stage {
       self.stage.add(self.elements.sprites[i]);
     }
   }
+
+  /*
+    * Checks through all collisions
+    * 
+    * @private
+    * @static
+    * @param {Pixel.Stage} [self] - Stage that collisions are checked for
+  */
 
   _checkCollisions(self) {
     for (let i in self.physics.collisions) {
@@ -187,12 +427,28 @@ class Stage {
     }
   }
 
+  /*
+    * Animation frame loop
+    * 
+    * @static
+    * @private
+    * @param {Pixel.Stage} [self] - Stage anim frame occurs on
+  */
+
   _animFrame(self) {
     self.render(self);
     requestAnimationFrame(self._checkCollisions.bind(false, self));
     requestAnimationFrame(self._tick.bind(false, self));
     requestAnimationFrame(self._animFrame.bind(false, self));
   }
+
+  /*
+    * Ticker manager
+    * 
+    * @static
+    * @private
+    * @param {Pixel.Stage} [self] - Stage anim frame occurs on
+  */
 
   _tick(self) {
     if (self.tick) {

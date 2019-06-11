@@ -1,15 +1,83 @@
+import { Sprite } from "../../sprite";
+
+/*
+  * ImageGraphics class
+  *
+  * @class
+  * @memberof Pixel.EXPORTS
+*/
+
 export default class ImageGraphics {
-  constructor(canvas) {
-    this.ctx = canvas;
+
+  /*
+    * Iterates a new "ImageGraphics" Element
+    *
+    * @constructor
+  */
+
+  constructor() {
+
+    /*
+      * Storage for a backup rendering context element
+      *
+      * @member {CanvasRenderingContext2d}
+      * @private
+    */
+
     this.cctx;
+
+    /*
+      * Storage for a backup canvas element
+      *
+      * @member {HTMLCanvasElement}
+      * @private
+    */
+
     this.canvas;
+
+    /*
+      * Stores the image modified
+      *
+      * @member {HTMLImageElement}
+      * @private
+    */
+
     this.image = new Image();
+
+    /*
+      * Determines whether or not the image is renderable
+      *
+      * @member {boolean}
+      * @private
+    */
+
     this.renderabe = false;
 
+    /*
+      * Internal width of the canvas
+      *
+      * @member {number}
+      * @private
+    */
+
     this.width = 0;
+
+    /*
+      * Internal height of the canvas
+      *
+      * @member {number}
+      * @private
+    */
+
     this.height = 0;
-    this.math = false;
   }
+
+  /*
+    * Loads image based on url
+    *
+    * @return {Promise}
+    * @param {string} [url] - URL of Image Element
+  */
 
   loadImage(url) {
     var self = this;
@@ -27,6 +95,16 @@ export default class ImageGraphics {
     });
   }
 
+  /*
+    * Crops image based on x, y, width, and height
+    *
+    * @return {Pixel.Sprite}
+    * @param {number} [x] - X position of crop
+    * @param {number} [y] - Y position of crop
+    * @param {number} [w] - Width of crop
+    * @param {number} [h] - Height of crop
+  */
+
   cropRect(x, y, w, h) {
     var self = this;
     this.canvas = document.createElement("canvas");
@@ -42,22 +120,6 @@ export default class ImageGraphics {
     this.canvas.height = h;
     this.cctx.putImageData(data, 0, 0);
 
-    return {
-      x: 0,
-      y: 0,
-      image: self.canvas,
-      render: function (c) {
-        c.drawImage(this.image, this.x, this.y);
-      },
-      clone: function () {
-        var s = this;
-        return {
-          x: s.x,
-          y: s.y,
-          image: s.image,
-          render: s.render
-        };
-      }
-    }
+    return new Sprite({renderable: true, image: self.canvas});
   }
 }

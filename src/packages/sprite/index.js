@@ -2,11 +2,40 @@ import SpriteBase from './base';
 import AnimatedSprite from './animation';
 import SpriteSheet from './sheet';
 
+/*
+  * Sprite class
+  *
+  * @class
+  * @memberof Pixel
+  * @extends Pixel.EXPORTS.SpriteBase
+*/
+
 class Sprite extends SpriteBase {
+
+  /*
+    * Create new Sprite
+    *
+    * @constructor
+    * @param {Pixel.Texture} [texture] - Pass a texture to be used by the sprite
+  */
+
   constructor(texture) {
     super();
+
+    /*
+      * Store the texture for later use
+      * 
+      * @method {Pixel.Texture}
+    */
+
     this.texture = texture;
   }
+
+  /*
+    * Renders sprite
+    *
+    * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
+  */
 
   render(canvas) {
     if (this.texture.renderable) {
@@ -22,6 +51,12 @@ class Sprite extends SpriteBase {
       this.reset(canvas);
     }
   }
+
+  /*
+    * Renders the sprite at an angle
+    *
+    * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
+  */
 
   rotation_render(ctx) {
     var image = this.texture.image;
@@ -40,7 +75,16 @@ class Sprite extends SpriteBase {
     ctx.restore();
   }
 
-  checkCollisions(otherobj) { // Ported from https://www.w3schools.com/graphics/game_obstacles.asp
+  /*
+    * Check if object is colliding with another object
+    *
+    * Ported from https://www.w3schools.com/graphics/game_obstacles.asp
+    * 
+    * @param {Pixel.Sprite} [otherobj] - The other sprite
+    * @returns {object}
+  */
+
+  checkCollisions(otherobj) {
     let bias = 0;
     var myleft = this.x / this.scale - this.texture.image.width * this.anchor.x;
     var myright = myleft + (this.texture.image.width);
@@ -50,8 +94,7 @@ class Sprite extends SpriteBase {
     var otherright = otherleft + (otherobj.width || otherobj.texture.image.width) / otherobj.scale;
     var othertop = otherobj.y / otherobj.scale - (otherobj.height || otherobj.texture.image.height) * otherobj.anchor.y;
     var otherbottom = othertop + (otherobj.height || otherobj.texture.image.height) / otherobj.scale;
-    //console.log(this.anchor.x, this.anchor.y);
-    //console.log(myleft, otherleft, myright, otherright, mytop, othertop, mybottom, otherbottom);
+    
     var crash = true;
     var left = false;
     var right = false;
@@ -72,6 +115,12 @@ class Sprite extends SpriteBase {
     }
     return {body: crash, left: left, right: right, top: top, bottom: bottom};
   }
+
+  /*
+    * Clones the sprite
+    *
+    * @returns {Pixel.Sprite}
+  */
 
   clone() {
     return new Sprite(this.texture);

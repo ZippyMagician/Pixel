@@ -1,19 +1,76 @@
 import FillStyle from './fillstyle';
 import ImageGraphics from './image';
 
+/*
+  * Pixel Graphics Element
+  *
+  * @class
+  * @memberof Pixel
+  * @extends Pixel.EXPORTS.ImageGraphics
+*/
+
 export default class Graphics extends ImageGraphics {
+
+  /*
+    * Iterates new Graphic element
+    *
+    * @constructor
+    * @param {CanvasRenderingContext2d} [canvas] - Canvas rendering context (usually Pixel.Stage#draw)
+  */
+
   constructor(canvas) {
-    super(canvas);
+    super();
+
+    /*
+      * Stores canvas element
+      *
+      * @private
+      * @member {CanvasRenderingContext2d}
+    */
+
     this.ctx = canvas;
+
+    /*
+      * Stores original shadow color element value
+      *
+      * @private
+      * @member {number}
+    */
+
     this.dsc = this.ctx.shadowColor;
+
+    /*
+      * The filling style element
+      *
+      * @private
+      * @member {Pixel.EXPORTS.FillStyle}
+    */
+
     this._fillStyle = new FillStyle();
   }
+
+  /*
+    * Sets transparency
+    *
+    * @param {number} [value] - Value of alpha level
+    * @return {Pixel.Graphics}
+  */
 
   transparency(value) {
     this.ctx.globalAlpha = value;
 
     return this;
   }
+
+  /*
+    * Sets shadows
+    *
+    * @param {number} [blue] - Blur of shadow
+    * @param {string} [color] - Color of shadow
+    * @param {number} [offsetx] - X offset of shadow
+    * @param {number} [offsety] - Y offset of shadow
+    * @return {Pixel.Graphics}
+  */
 
   shadow(blur, color, offsetx, offsety) {
     this.ctx.shadowBlur = blur;
@@ -24,11 +81,22 @@ export default class Graphics extends ImageGraphics {
     return this;
   }
 
+  /*
+    * Sets fill color
+    *
+    * @param {string} [c] - Color used, RGB or Hex
+    * @return {Pixel.Graphics}
+  */
+
   fill(c) {
     this.ctx.fillStyle = this._fillStyle.fill(c);
     
     return this;
   }
+
+  /*
+    * Resets all values and terminates a chain
+  */
 
   end() {
     this._fillStyle.reset();
@@ -40,11 +108,33 @@ export default class Graphics extends ImageGraphics {
     this.ctx.globalAlpha = 1.0;
   }
 
+  /*
+    * Draws rectangle
+    *
+    * @param {number} [a] - X position
+    * @param {number} [b] - Y position
+    * @param {number} [c] - Width
+    * @param {number} [d] - Height
+    * @return {Pixel.Graphics}
+  */
+
   drawRect(a, b, c, d) {
     this.ctx.fillRect(a, b, c, d);
 
     return this;
   }
+
+  /*
+    * Draws arc
+    *
+    * @param {number} [a] - X position
+    * @param {number} [b] - Y position
+    * @param {number} [c] - Radius
+    * @param {number} [d] - Start angle
+    * @param {number} [e] - End angle
+    * @param {boolean} [f=false] - Anti-clockwise
+    * @return {Pixel.Graphics}
+  */
 
   arc(a, b, c, d, e, f=false) {
     this.ctx.beginPath();
@@ -54,6 +144,17 @@ export default class Graphics extends ImageGraphics {
     return this;
   }
 
+  /*
+    * Draws arc
+    *
+    * @param {number} [a] - X position
+    * @param {number} [b] - Y position
+    * @param {number} [c] - Radius
+    * @param {number} [d] - Start angle
+    * @param {number} [e] - End angle
+    * @return {Pixel.Graphics}
+  */
+
   arcTo(a, b, c, d, e) {
     this.ctx.beginPath();
     this.ctx.arcTo(a, b, c, d, e)
@@ -62,17 +163,44 @@ export default class Graphics extends ImageGraphics {
     return this;
   }
 
+  /*
+    * Move to X, Y
+    *
+    * @param {number} [a] - X position
+    * @param {number} [b] - Y position
+    * @return {Pixel.Graphics}
+  */
+
   move(a, b) {
     this.ctx.moveTo(a, b);
 
     return this;
   }
 
+  /*
+    * Clears rectangular area on screen
+    *
+    * @param {number} [x] - X position
+    * @param {number} [y] - Y position
+    * @param {number} [w] - Width
+    * @param {number} [h] - Height
+    * @return {Pixel.Graphics}
+  */
+
   clearRect(x, y, w, h) {
     this.ctx.clearRect(x, y, w, h);
 
     return this;
   }
+
+  /*
+    * Clears circular area
+    *
+    * @param {number} [x] - X position
+    * @param {number} [y] - Y position
+    * @param {number} [radius] - Radius of circle
+    * @return {Pixel.Graphics}
+  */
 
   clearCircle(x, y, radius) {
     this.ctx.globalCompositeOperation = 'destination-out';

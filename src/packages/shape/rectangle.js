@@ -1,12 +1,60 @@
 import SpriteBase from '../sprite/base';
 
+/*
+  * New rectangle class
+  *
+  * @class
+  * @memberof Pixel
+  * @extends Pixel.EXPORTS.SpriteBase
+*/
+
 export default class Rectangle extends SpriteBase {
+
+  /*
+    * Create new rectangle
+    *
+    * @constructor
+    * @param {number} [w] - Width of rectangle
+    * @param {number} [h] - Height of rectangle
+    * @param {string} [c="#000000"] - Color of rectangle
+  */
+
   constructor(w, h, c = "#000000") {
     super(true);
+
+    /*
+      * Stores width of rectangle
+      *
+      * @readonly
+      * @member {number}
+    */
+
     this.width = w;
+
+    /*
+      * Stores height of rectangle
+      *
+      * @readonly
+      * @member {number}
+    */
+
     this.height = h;
+
+    /*
+      * Stores color of rectangle
+      *
+      * @readonly
+      * @member {string}
+    */
+
     this.color = c;
   }
+
+  /*
+    * Renders rectangle
+    *
+    * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
+  */
 
   render(canvas) {
     this.settings(canvas);
@@ -23,6 +71,13 @@ export default class Rectangle extends SpriteBase {
     }
     this.reset(canvas);
   }
+
+  /*
+    * Renders the rectangle at an angle, if necessary
+    *
+    * @private
+    * @param {CanvasRenderingContext2d} [ctx] - Rendering context drawn on
+  */
 
   rotation_render(ctx) {
     ctx.save();

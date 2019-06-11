@@ -1,21 +1,119 @@
 import { Point } from '../shape';
 
+/*
+  * The base of every Sprite
+  *
+  * @class
+  * @memberof Pixel.EXPORTS
+*/
+
 export default class SpriteBase {
+
+  /*
+    * Create new Sprite Base
+    *
+    * @param {boolean} [noscale=false] - Determines whether or not object can be rotated and scaled
+  */
+
   constructor(noscale = false) {
+
+    /*
+      * The position of the sprite
+      *
+      * @member {Pixel.Point}
+    */
+
     this.point = new Point();
+
+    /*
+      * The anchor position of the sprite
+      *
+      * @member {Pixel.Point}
+    */
+
     this.anchor = new Point();
+
+    /*
+      * The opacity of the sprite
+      *
+      * @member {number}
+    */
+
     this.opacity = 1.0;
+
+    /*
+      * The degress of rotation on the sprite
+      *
+      * @member {number}
+    */
+
     this.deg = 0;
+
+    /*
+      * The scale of the sprite (0 --> 1)
+      *
+      * @member {number}
+    */
+
     this.scale = 1;
+
+    /*
+      * Whether the sprite is scaled, stored
+      * 
+      * @private
+      * @member {boolean}
+    */
+
     this.noscale = noscale;
+
+    /*
+      * Determines if the sprite is flipped over the x axis
+      *
+      * @member {boolean}
+    */
+
     this.flipX = false;
+
+    /*
+      * Determines if the sprite is flipped over the y axis
+      *
+      * @member {boolean}
+    */
+
     this.flipY = false;
   }
 
+  /*
+    * Sets the hitbox size of the sprite
+    *
+    * @param {number} [w] - Width
+    * @param {number} [h] - Height
+  */
+
   setSize(w, h) {
+
+    /*
+      * Width of the Sprite's hitbox
+      *
+      * @member {number}
+    */
+
     this.width = w;
+
+    /*
+      * Height of the Sprite's hitbox
+      *
+      * @member {number}
+    */
+
     this.height = h;
   }
+
+  /*
+    * X position
+    *
+    * @member {number}
+  */
 
   get x() {
     return this.point.x;
@@ -25,6 +123,12 @@ export default class SpriteBase {
     return (this.point.x = v);
   }
 
+  /*
+    * Y position
+    *
+    * @member {number}
+  */
+
   get y() {
     return this.point.y;
   }
@@ -33,10 +137,23 @@ export default class SpriteBase {
     return (this.point.y = v);
   }
 
+  /*
+    * Set the position the sprite is anchored to (0-->1)
+    *
+    * @param {number} [x] - X position, scale of 0 to 1
+    * @param {number} [y] - Y position, scale of 0 to 1
+  */
+
   setAnchor(x, y) {
     this.anchor.x = x;
     this.anchor.y = y;
   }
+
+  /*
+    * Copy the value of another sprite onto this one
+    *
+    * @param {Pixel.Sprite} [sprite] - Sprite who's values this will copy
+  */
 
   copy(sprite) {
     this.point = sprite.point;
@@ -48,14 +165,32 @@ export default class SpriteBase {
     this.scale = sprite.scale;
   }
 
+  /*
+    * Spins x * 360 degrees
+    *
+    * @param {number} [num] - Amount of times sprite rotates 360 degrees
+  */
+
   spin(num) {
     this.deg = num * 360;
   }
+
+  /*
+    * Applies settings set on sprite
+    *
+    * @param {CanvasRenderingContext2d} [ctx] - Context to apply settings to
+  */
 
   settings(ctx) {
     if (!this.noscale) ctx.globalAlpha = this.opacity;
     ctx.scale(this.scale, this.scale);
   }
+
+  /*
+    * Resets settings set on sprite
+    *
+    * @param {CanvasRenderingContext2d} [ctx] - Context to reset settings on
+  */
 
   reset(ctx) {
     ctx.globalAlpha = 1.0;

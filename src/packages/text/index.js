@@ -8,6 +8,12 @@ export default class Text extends SpriteBase {
     this.color = c;
   }
 
+  /*
+    * Renders text
+    *
+    * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
+  */
+
   render(canvas) {
     this.settings(canvas);
     canvas.beginPath();

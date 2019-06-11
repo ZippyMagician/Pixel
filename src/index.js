@@ -8,6 +8,8 @@ import Graphics from './packages/graphics';
 import Map from './packages/map';
 import SpriteBase from './packages/sprite/base';
 import AnimationCore from './packages/sprite/animation/base';
+import ImageGraphics from'./packages/graphics/image';
+import FillStyle from './packages/graphics/fillstyle';
 
 window.Pixel = {
   App: Stage,
@@ -37,7 +39,9 @@ window.Pixel = {
   Map: Map,
   EXPORTS: {
     SpriteBase: SpriteBase,
-    AnimationCore: AnimationCore
+    AnimationCore: AnimationCore,
+    FillStyle: FillStyle,
+    ImageGraphics: ImageGraphics
   }
 };
 
