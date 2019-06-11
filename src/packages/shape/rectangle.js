@@ -1,6 +1,6 @@
 import SpriteBase from '../sprite/base';
 
-/*
+/**
   * New rectangle class
   *
   * @class
@@ -10,7 +10,7 @@ import SpriteBase from '../sprite/base';
 
 export default class Rectangle extends SpriteBase {
 
-  /*
+  /**
     * Create new rectangle
     *
     * @constructor
@@ -22,7 +22,7 @@ export default class Rectangle extends SpriteBase {
   constructor(w, h, c = "#000000") {
     super(true);
 
-    /*
+    /**
       * Stores width of rectangle
       *
       * @readonly
@@ -31,7 +31,7 @@ export default class Rectangle extends SpriteBase {
 
     this.width = w;
 
-    /*
+    /**
       * Stores height of rectangle
       *
       * @readonly
@@ -40,7 +40,7 @@ export default class Rectangle extends SpriteBase {
 
     this.height = h;
 
-    /*
+    /**
       * Stores color of rectangle
       *
       * @readonly
@@ -50,7 +50,7 @@ export default class Rectangle extends SpriteBase {
     this.color = c;
   }
 
-  /*
+  /**
     * Renders rectangle
     *
     * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
@@ -72,7 +72,7 @@ export default class Rectangle extends SpriteBase {
     this.reset(canvas);
   }
 
-  /*
+  /**
     * Renders the rectangle at an angle, if necessary
     *
     * @private
