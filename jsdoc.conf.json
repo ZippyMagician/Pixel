@@ -6,6 +6,9 @@
     "include": "src",
     "excludePattern": "(node_modules|dist)"
   },
+  "plugins": [
+    "@pixi/jsdoc-template/plugins/es6-fix"
+  ],
   "template": {
     "default": {
       "outputSourceFiles" : true

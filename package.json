@@ -10,10 +10,11 @@
         "docs:test": "node build/test-docs.js"
     },
     "devDependencies": {
+        "@pixi/jsdoc-template": "^2.4.2",
+        "docdash": "^1.1.1",
+        "jsdoc": "^3.5.5",
         "rollup": "^1.10.1",
         "rollup-plugin-babel-minify": "^8.0.0",
-        "rollup-plugin-node-resolve": "^5.0.1",
-        "jsdoc": "^3.5.5",
-        "docdash": "^1.1.1"
+        "rollup-plugin-node-resolve": "^5.0.1"
     }
 }

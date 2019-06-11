@@ -18,7 +18,7 @@ export default class FillStyle {
     /**
       * The color of the fill element
       *
-      * @name Pixel.Graphics._fillStyle#color
+      * @name Pixel.EXPORTS.FillStyle#color
       * @type {number}
     */
 
@@ -27,7 +27,7 @@ export default class FillStyle {
     /**
       * Alpha (transparency) of element
       *
-      * @name Pixel.Graphics._fillStyle#alpha
+      * @name Pixel.EXPORTS.FillStyle#alpha
       * @type {number}
     */
 
@@ -39,7 +39,7 @@ export default class FillStyle {
   /**
     * Resets color and alpha
     * 
-    * @method Pixel.Graphics._fillStyle#reset
+    * @method Pixel.EXPORTS.FillStyle#reset
   */
 
   reset() {
@@ -50,7 +50,7 @@ export default class FillStyle {
   /**
     * Clones this fill iteration into new one
     *
-    * @method Pixel.Graphics._fillStyle#clone
+    * @method Pixel.EXPORTS.FillStyle#clone
     * @return {Pixel.EXPORTS.FillStyle}
   */
 
@@ -65,7 +65,7 @@ export default class FillStyle {
   /**
     * Fills color to new color
     *
-    * @method Pixel.Graphics._fillStyle#fill
+    * @method Pixel.EXPORTS.FillStyle#fill
     * @param {number} [c] - Color to be set, Hex or RGB
     * @return {number}
   */

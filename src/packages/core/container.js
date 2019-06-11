@@ -4,6 +4,7 @@ import { Point } from '../shape';
   * Container class
   *
   * @class
+  * @memberof Pixel
 */
 
 export default class Container {

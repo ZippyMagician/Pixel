@@ -20,7 +20,7 @@ export default class AnimationCore {
       * Stores parent of this core
       *
       * @private
-      * @name Pixel.AnimatedSprite.animation#parent
+      * @name Pixel.EXPORTS.AnimationCore#parent
       * @type {Pixel.AnimatedSprite}
     */
 
@@ -29,7 +29,7 @@ export default class AnimationCore {
     /**
       * Current frame this core is on
       *
-      * @name Pixel.AnimatedSprite.animation#frame
+      * @name Pixel.EXPORTS.AnimationCore#frame
       * @type {number}
     */
 
@@ -38,7 +38,7 @@ export default class AnimationCore {
     /**
       * Stores spritesheet
       *
-      * @name Pixel.AnimatedSprite.animation#cache
+      * @name Pixel.EXPORTS.AnimationCore#cache
       * @type {Pixel.Sprite}
     */
 
@@ -47,7 +47,7 @@ export default class AnimationCore {
     /**
       * All tracks created that can be played
       *
-      * @name Pixel.AnimatedSprite.animation#tracks
+      * @name Pixel.EXPORTS.AnimationCore#tracks
       * @type {object}
     */
 
@@ -56,7 +56,7 @@ export default class AnimationCore {
     /**
       * Current track being played
       *
-      * @name Pixel.AnimatedSprite.animation#current
+      * @name Pixel.EXPORTS.AnimationCore#current
       * @type {boolean|Pixel.Sprite[]}
     */
 
@@ -65,7 +65,7 @@ export default class AnimationCore {
     /**
       * Current name of the track being played
       *
-      * @name Pixel.AnimatedSprite.animation#track
+      * @name Pixel.EXPORTS.AnimationCore#track
       * @type {string}
     */
 
@@ -75,7 +75,7 @@ export default class AnimationCore {
   /**
     * Stops the current animation and plays 1 item in the cache on continous loop
     *
-    * @member Pixel.AnimatedSprite.animation#stop
+    * @member Pixel.EXPORTS.AnimationCore#stop
     * @param {number} [num] - ID of image being played continously
   */
 
@@ -91,7 +91,7 @@ export default class AnimationCore {
   /**
     * Plays an animation saved in the cache
     *
-    * @member Pixel.AnimatedSprite.animation#play
+    * @member Pixel.EXPORTS.AnimationCore#play
     * @param {string} [name] - Name of track to be played
   */
 
@@ -104,7 +104,7 @@ export default class AnimationCore {
   /**
     * Add track when cached spritesheet is defined through a json file
     *
-    * @member Pixel.AnimatedSprite.animation#add
+    * @member Pixel.EXPORTS.AnimationCore#add
     * @param {string} [name] - Name of track
     * @param {string} [prefix] - Name every item in track begins with
     * @param {number} [delay=0] - How many items to skip before they are added
@@ -129,7 +129,7 @@ export default class AnimationCore {
   /**
     * Create a new track if there is no json file
     *
-    * @member Pixel.AnimatedSprite.animation#create
+    * @member Pixel.EXPORTS.AnimationCore#create
     * @param {object} [data] - Data for the creation
     * @param {string} [data.name] - Name of track
     * @param {number[]} [data.positions] - Array of start and end id of animation
@@ -152,7 +152,7 @@ export default class AnimationCore {
   /**
     * Add multiple animation tracks at once (with json file)
     *
-    * @member Pixel.AnimatedSprite.animation#multiAdd
+    * @member Pixel.EXPORTS.AnimationCore#multiAdd
     * @param {object[]} [groups] - Data of every group to be added
     * 
     * @example

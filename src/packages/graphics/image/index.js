@@ -20,7 +20,7 @@ export default class ImageGraphics {
     /**
       * Storage for a backup rendering context element
       *
-      * @name Pixel.Graphics#cctx
+      * @name Pixel.EXPORTS.ImageGraphics#cctx
       * @type {CanvasRenderingContext2d}
       * @private
     */
@@ -30,7 +30,7 @@ export default class ImageGraphics {
     /**
       * Storage for a backup canvas element
       *
-      * @name Pixel.Graphics#canvas
+      * @name Pixel.EXPORTS.ImageGraphics#canvas
       * @type {HTMLCanvasElement}
       * @private
     */
@@ -40,7 +40,7 @@ export default class ImageGraphics {
     /**
       * Stores the image modified
       *
-      * @name Pixel.Graphics#image
+      * @name Pixel.EXPORTS.ImageGraphics#image
       * @type {HTMLImageElement}
       * @private
     */
@@ -50,7 +50,7 @@ export default class ImageGraphics {
     /**
       * Determines whether or not the image is renderable
       *
-      * @name Pixel.Graphics#renderable
+      * @name Pixel.EXPORTS.ImageGraphics#renderable
       * @type {boolean}
       * @private
     */
@@ -60,7 +60,7 @@ export default class ImageGraphics {
     /**
       * Internal width of the canvas
       *
-      * @name Pixel.Graphics#width
+      * @name Pixel.EXPORTS.ImageGraphics#width
       * @type {number}
       * @private
     */
@@ -70,7 +70,7 @@ export default class ImageGraphics {
     /**
       * Internal height of the canvas
       *
-      * @name Pixel.Graphics#height
+      * @name Pixel.EXPORTS.ImageGraphics#height
       * @type {number}
       * @private
     */
@@ -81,7 +81,7 @@ export default class ImageGraphics {
   /**
     * Loads image based on url
     *
-    * @method Pixel.Graphics#loadImage
+    * @method Pixel.EXPORTS.ImageGraphics#loadImage
     * @return {Promise}
     * @param {string} [url] - URL of Image Element
   */
@@ -105,7 +105,7 @@ export default class ImageGraphics {
   /**
     * Crops image based on x, y, width, and height
     *
-    * @method Pixel.Graphics#cropRect
+    * @method Pixel.EXPORTS.ImageGraphics#cropRect
     * @return {Pixel.Sprite}
     * @param {number} [x] - X position of crop
     * @param {number} [y] - Y position of crop
