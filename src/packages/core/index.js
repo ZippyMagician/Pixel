@@ -4,6 +4,7 @@ import Container from './container';
   * The stage controls all things that run in Pixel
   *
   * @class
+  * @memberof Pixel
 */
 
 class Stage {
