@@ -1,6 +1,6 @@
 import SpriteBase from '../sprite/base';
 
-/*
+/**
   * Circle class
   *
   * @class
@@ -10,7 +10,7 @@ import SpriteBase from '../sprite/base';
 
 export default class Circle extends SpriteBase {
 
-  /*
+  /**
     * Create new Circle element
     *
     * @constructor
@@ -21,7 +21,7 @@ export default class Circle extends SpriteBase {
   constructor(r, c = "#000000") {
     super(true);
 
-    /*
+    /**
       * The radius of the circle
       *
       * @readonly
@@ -30,7 +30,7 @@ export default class Circle extends SpriteBase {
 
     this.radius = r;
 
-    /*
+    /**
       * The color of the circle
       *
       * @readonly
@@ -40,7 +40,7 @@ export default class Circle extends SpriteBase {
     this.color = c;
   }
 
-  /*
+  /**
     * Renders circle
     *
     * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
