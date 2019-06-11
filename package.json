@@ -6,7 +6,8 @@
     "author": "Joshua Barnett",
     "scripts": {
         "build": "rollup -c",
-        "docs": "jsdoc -c jsdoc.conf.json -R README.md"
+        "docs": "jsdoc -c jsdoc.conf.json -R README.md",
+        "docs:test": "node build/test-docs.js"
     },
     "devDependencies": {
         "rollup": "^1.10.1",
