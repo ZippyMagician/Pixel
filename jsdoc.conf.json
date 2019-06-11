@@ -3,7 +3,7 @@
     "include": [
       "src"
     ],
-    "excludePattern": "(node_modules|dist)
+    "excludePattern": "(node_modules|dist)"
   },
   "opts": {
     "encoding"      : "utf8",
