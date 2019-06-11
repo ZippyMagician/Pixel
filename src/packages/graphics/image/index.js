@@ -1,6 +1,6 @@
 import { Sprite } from "../../sprite";
 
-/*
+/**
   * ImageGraphics class
   *
   * @class
@@ -9,7 +9,7 @@ import { Sprite } from "../../sprite";
 
 export default class ImageGraphics {
 
-  /*
+  /**
     * Iterates a new "ImageGraphics" Element
     *
     * @constructor
@@ -17,7 +17,7 @@ export default class ImageGraphics {
 
   constructor() {
 
-    /*
+    /**
       * Storage for a backup rendering context element
       *
       * @member {CanvasRenderingContext2d}
@@ -26,7 +26,7 @@ export default class ImageGraphics {
 
     this.cctx;
 
-    /*
+    /**
       * Storage for a backup canvas element
       *
       * @member {HTMLCanvasElement}
@@ -35,7 +35,7 @@ export default class ImageGraphics {
 
     this.canvas;
 
-    /*
+    /**
       * Stores the image modified
       *
       * @member {HTMLImageElement}
@@ -44,7 +44,7 @@ export default class ImageGraphics {
 
     this.image = new Image();
 
-    /*
+    /**
       * Determines whether or not the image is renderable
       *
       * @member {boolean}
@@ -53,7 +53,7 @@ export default class ImageGraphics {
 
     this.renderabe = false;
 
-    /*
+    /**
       * Internal width of the canvas
       *
       * @member {number}
@@ -62,7 +62,7 @@ export default class ImageGraphics {
 
     this.width = 0;
 
-    /*
+    /**
       * Internal height of the canvas
       *
       * @member {number}
@@ -72,7 +72,7 @@ export default class ImageGraphics {
     this.height = 0;
   }
 
-  /*
+  /**
     * Loads image based on url
     *
     * @return {Promise}
@@ -95,7 +95,7 @@ export default class ImageGraphics {
     });
   }
 
-  /*
+  /**
     * Crops image based on x, y, width, and height
     *
     * @return {Pixel.Sprite}
