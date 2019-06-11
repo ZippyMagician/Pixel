@@ -1,0 +1,15 @@
+{
+  "source": {
+    "include": [
+      "src"
+    ],
+    "excludePattern": "(node_modules|dist)
+  },
+  "opts": {
+    "encoding"      : "utf8",
+    "recurse"       : true,
+    "lenient"       : true,
+    "destination"   : "./dist/docs",
+    "template"      : "./node_modules/jaguarjs-jsdoc"
+    }
+}
