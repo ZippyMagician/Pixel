@@ -76,12 +76,19 @@ class Stage {
     /**
       * Stores all element management
       * 
-      * @type {object}
-      * @name Pixel.Stage#elements
-      * @property {object[]} [sprites] - All of the sprites that are being drawn
+      * @namespace Pixel.Stage.elements
     */
 
-    this.elements = { sprites: [] };
+    this.elements = {};
+   
+    /**
+      * Stores all textures loaded with `Pixel.Stage.elements.add`
+      *
+      * @name Pixel.Stage.elements#sprites
+      * @type {object[]}
+    */
+   
+    this.elements.sprites = [];
 
     /**
       * Stores all preloaded textures
@@ -95,25 +102,46 @@ class Stage {
     /**
       * The current stage object
       * 
-      * @type {object}
-      * @name Pixel.Stage#stage
-      * @property {object} [regions] - Stores all regions
-      * @property {object} [keyboard] - All keyboard related functions
+      * @namespace Pixel.Stage.stage
     */
 
-    this.stage = { regions: {}, keyboard: {} };
+    this.stage = {};
+   
+    /**
+      * Stores all clickable regions on the screen
+      *
+      * @name Pixel.Stage.stage#regions
+      * @type {object}
+    */
+   
+    this.stage.regions = {};
+   
+    /**
+      * All keyboard related functions exist here
+      *
+      * @namespace Pixel.Stage.stage.keyboard
+    */
+   
+    this.stage.keyboard = {};
 
     /**
       * The physics storage object
       * 
       * @type {object}
       * @name Pixel.Stage#physics
-      * @property {object} [collider] - The collider element, allows to add more collisions
       * @property {object[]} [collisions] - Stores all collision data
       * @property {object} [colliding] - Stores the booleans of every colliding element
     */
 
-    this.physics = { collider: {}, collisions: [], colliding: {} }
+    this.physics = { collisions: [], colliding: {} }
+   
+    /**
+      * The collider element, allows to add more collisions
+      *
+      * @namespace Pixel.Stage.physics.collider
+    */
+   
+    this.physics.collider = {};
 
     /**
       * Adds new collider
