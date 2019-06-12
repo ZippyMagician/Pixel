@@ -11,7 +11,7 @@ export default class AnimationCore {
     * Create new Animation Core element
     *
     * @constructor
-    * @param {Pixel.AnimatedSprite} [parent] - Parent of Animation Core
+    * @param {Pixel.AnimatedSprite} parent - Parent of Animation Core
   */
 
   constructor(parent) {
@@ -75,8 +75,8 @@ export default class AnimationCore {
   /**
     * Stops the current animation and plays 1 item in the cache on continous loop
     *
-    * @member Pixel.EXPORTS.AnimationCore#stop
-    * @param {number} [num] - ID of image being played continously
+    * @method Pixel.EXPORTS.AnimationCore#stop
+    * @param {number} num - ID of image being played continously
   */
 
   stop(num) {
@@ -91,8 +91,8 @@ export default class AnimationCore {
   /**
     * Plays an animation saved in the cache
     *
-    * @member Pixel.EXPORTS.AnimationCore#play
-    * @param {string} [name] - Name of track to be played
+    * @method Pixel.EXPORTS.AnimationCore#play
+    * @param {string} name - Name of track to be played
   */
 
   play(name) {
@@ -104,9 +104,9 @@ export default class AnimationCore {
   /**
     * Add track when cached spritesheet is defined through a json file
     *
-    * @member Pixel.EXPORTS.AnimationCore#add
-    * @param {string} [name] - Name of track
-    * @param {string} [prefix] - Name every item in track begins with
+    * @method Pixel.EXPORTS.AnimationCore#add
+    * @param {string} name - Name of track
+    * @param {string} prefix - Name every item in track begins with
     * @param {number} [delay=0] - How many items to skip before they are added
   */
 
@@ -129,10 +129,10 @@ export default class AnimationCore {
   /**
     * Create a new track if there is no json file
     *
-    * @member Pixel.EXPORTS.AnimationCore#create
-    * @param {object} [data] - Data for the creation
-    * @param {string} [data.name] - Name of track
-    * @param {number[]} [data.positions] - Array of start and end id of animation
+    * @method Pixel.EXPORTS.AnimationCore#create
+    * @param {object} data - Data for the creation
+    * @param {string} data.name - Name of track
+    * @param {number[]} data.positions - Array of start and end id of animation
   */
 
   create(data) {
@@ -152,8 +152,8 @@ export default class AnimationCore {
   /**
     * Add multiple animation tracks at once (with json file)
     *
-    * @member Pixel.EXPORTS.AnimationCore#multiAdd
-    * @param {object[]} [groups] - Data of every group to be added
+    * @method Pixel.EXPORTS.AnimationCore#multiAdd
+    * @param {object[]} groups - Data of every group to be added
     * 
     * @example
     *   data = { name: 'name', filter: 'prefix', offset: 'delay' }

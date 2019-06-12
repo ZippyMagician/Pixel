@@ -11,7 +11,7 @@ export default class Texture {
     * Create new texture object
     *
     * @constructor
-    * @param {string} [src] - Image to be loaded
+    * @param {string} src - Image to be loaded
   */
   
   constructor(src) {

@@ -16,7 +16,7 @@ class Sprite extends SpriteBase {
     * Create new Sprite
     *
     * @constructor
-    * @param {Pixel.Texture} [texture] - Pass a texture to be used by the sprite
+    * @param {Pixel.Texture} texture - Pass a texture to be used by the sprite
   */
 
   constructor(texture) {
@@ -36,7 +36,7 @@ class Sprite extends SpriteBase {
     * Renders sprite
     *
     * @method Pixel.Sprite#render
-    * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
+    * @param {CanvasRenderingContext2d} ctx - The Canvas to print to
   */
 
   render(canvas) {
@@ -58,7 +58,7 @@ class Sprite extends SpriteBase {
     * Renders the sprite at an angle
     *
     * @method Pixel.Sprite#rotation_render
-    * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
+    * @param {CanvasRenderingContext2d} ctx - The Canvas to print to
   */
 
   rotation_render(ctx) {
@@ -84,7 +84,7 @@ class Sprite extends SpriteBase {
     * Ported from https://www.w3schools.com/graphics/game_obstacles.asp
     * 
     * @method Pixel.Sprite#checkCollisions
-    * @param {Pixel.Sprite} [otherobj] - The other sprite
+    * @param {Pixel.Sprite} otherobj - The other sprite
     * @returns {object}
   */
 
@@ -128,7 +128,9 @@ class Sprite extends SpriteBase {
   */
 
   clone() {
-    return new Sprite(this.texture);
+    let sprite = new Sprite(this.texture);
+    sprite.copy(this);
+    return sprite;
   }
 }
 

@@ -83,7 +83,7 @@ export default class ImageGraphics {
     *
     * @method Pixel.EXPORTS.ImageGraphics#loadImage
     * @return {Promise}
-    * @param {string} [url] - URL of Image Element
+    * @param {string} url - URL of Image Element
   */
 
   loadImage(url) {
@@ -107,10 +107,10 @@ export default class ImageGraphics {
     *
     * @method Pixel.EXPORTS.ImageGraphics#cropRect
     * @return {Pixel.Sprite}
-    * @param {number} [x] - X position of crop
-    * @param {number} [y] - Y position of crop
-    * @param {number} [w] - Width of crop
-    * @param {number} [h] - Height of crop
+    * @param {number} x - X position of crop
+    * @param {number} y - Y position of crop
+    * @param {number} w - Width of crop
+    * @param {number} h - Height of crop
   */
 
   cropRect(x, y, w, h) {

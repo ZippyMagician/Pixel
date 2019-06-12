@@ -99,8 +99,8 @@ export default class SpriteBase {
     * Sets the hitbox size of the sprite
     *
     * @method Pixel.EXPORTS.SpriteBase#setSize
-    * @param {number} [w] - Width
-    * @param {number} [h] - Height
+    * @param {number} w - Width
+    * @param {number} h - Height
   */
 
   setSize(w, h) {
@@ -158,8 +158,8 @@ export default class SpriteBase {
     * Set the position the sprite is anchored to (0-->1)
     *
     * @method Pixel.EXPORTS.SpriteBase#setAnchor
-    * @param {number} [x] - X position, scale of 0 to 1
-    * @param {number} [y] - Y position, scale of 0 to 1
+    * @param {number} x - X position, scale of 0 to 1
+    * @param {number} y - Y position, scale of 0 to 1
   */
 
   setAnchor(x, y) {
@@ -171,7 +171,7 @@ export default class SpriteBase {
     * Copy the value of another sprite onto this one
     *
     * @method Pixel.EXPORTS.SpriteBase#copy
-    * @param {Pixel.Sprite} [sprite] - Sprite who's values this will copy
+    * @param {Pixel.Sprite} sprite - Sprite who's values this will copy
   */
 
   copy(sprite) {
@@ -188,7 +188,7 @@ export default class SpriteBase {
     * Spins x * 360 degrees
     *
     * @method Pixel.EXPORTS.SpriteBase#spin
-    * @param {number} [num] - Amount of times sprite rotates 360 degrees
+    * @param {number} num - Amount of times sprite rotates 360 degrees
   */
 
   spin(num) {
@@ -199,7 +199,7 @@ export default class SpriteBase {
     * Applies settings set on sprite
     *
     * @method Pixel.EXPORTS.SpriteBase#settings
-    * @param {CanvasRenderingContext2d} [ctx] - Context to apply settings to
+    * @param {CanvasRenderingContext2d} ctx - Context to apply settings to
   */
 
   settings(ctx) {
@@ -211,7 +211,7 @@ export default class SpriteBase {
     * Resets settings set on sprite
     *
     * @method Pixel.EXPORTS.SpriteBase#reset
-    * @param {CanvasRenderingContext2d} [ctx] - Context to reset settings on
+    * @param {CanvasRenderingContext2d} ctx - Context to reset settings on
   */
 
   reset(ctx) {

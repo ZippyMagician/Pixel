@@ -49,7 +49,7 @@ export default class Container {
     * Adds child to container
     *
     * @method Pixel.Container#addChild
-    * @param {Pixel.Sprite} [sprite] - Sprite to add
+    * @param {Pixel.Sprite} sprite - Sprite to add
   */
 
   addChild(sprite) {
@@ -60,7 +60,7 @@ export default class Container {
     * Moves all children into a Pixel.Stage element
     *
     * @method Pixel.Container#cloneChildren
-    * @param {Pixel.Stage} [base] - Stage contents are moved to
+    * @param {Pixel.Stage} base - Stage contents are moved to
   */
 
   cloneChildren(base) {
@@ -114,7 +114,7 @@ export default class Container {
     * Renders all elements in container
     *
     * @method Pixel.Container#render
-    * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
+    * @param {CanvasRenderingContext2d} ctx - The Canvas to print to
   */
 
   render(ctx) {

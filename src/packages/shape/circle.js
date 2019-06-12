@@ -14,7 +14,7 @@ export default class Circle extends SpriteBase {
     * Create new Circle element
     *
     * @constructor
-    * @param {number} [r] - Radius of circle
+    * @param {number} r - Radius of circle
     * @param {string} [c="#000000"] - Color of circle
   */
 
@@ -46,7 +46,7 @@ export default class Circle extends SpriteBase {
     * Renders circle
     *
     * @member Pixel.Circle#render
-    * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
+    * @param {CanvasRenderingContext2d} ctx - The Canvas to print to
   */
 
   render(canvas) {

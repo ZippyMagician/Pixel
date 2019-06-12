@@ -15,8 +15,8 @@ export default class AnimatedSprite extends SpriteBase {
     * Create new Animated Sprite Object
     *
     * @constructor
-    * @param {object|false} [config] - The configuration object, only passed if it is a json file
-    * @param {Pixel.SpriteSheet#sheet|Pixel.SpriteSheet#generateSheet} [sheet] - The Sprite Sheet
+    * @param {object|false} config - The configuration object, only passed if it is a json file
+    * @param {Pixel.SpriteSheet#sheet|Pixel.SpriteSheet#generateSheet} sheet - The Sprite Sheet
     * @param {number} [speed=0.15] - Speed of animation
   */
 
@@ -120,10 +120,10 @@ export default class AnimatedSprite extends SpriteBase {
     *
     * @member Pixel.AnimatedSprite#_slice
     * @private
-    * @param {number} [x] - X position
-    * @param {number} [y] - Y position
-    * @param {number} [w] - Width
-    * @param {number} [h] - Height
+    * @param {number} x - X position
+    * @param {number} y - Y position
+    * @param {number} w - Width
+    * @param {number} h - Height
     * @returns {HTMLCanvasElement}
   */
 
@@ -148,7 +148,7 @@ export default class AnimatedSprite extends SpriteBase {
     * Renders current animation frame of sprite
     *
     * @member Pixel.AnimatedSprite#render
-    * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
+    * @param {CanvasRenderingContext2d} ctx - The Canvas to print to
   */
 
   render(ctx) {

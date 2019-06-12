@@ -15,12 +15,12 @@ export default class Map extends SpriteBase {
     * Initiates new Tilemap
     *
     * @constructor
-    * @param {Pixel.SpriteSheet#sheet|Pixel.SpriteSheet#generateSheet} [sheet] - The spritesheet used for the tilemap
-    * @param {object} [data] - The data object for the tilemap
-    * @param {number} [data.width] - The width of the spritesheet (in tile numbers)
-    * @param {number} [data.height] - The height of the spritesheet (in tile numbers)
-    * @param {number} [data.tileHeight] - Height of a tile
-    * @param {number} [data.tileWidth] - Width of a tile
+    * @param {Pixel.SpriteSheet#sheet|Pixel.SpriteSheet#generateSheet} sheet - The spritesheet used for the tilemap
+    * @param {object} data - The data object for the tilemap
+    * @param {number} data.width - The width of the spritesheet (in tile numbers)
+    * @param {number} data.height - The height of the spritesheet (in tile numbers)
+    * @param {number} data.tileHeight - Height of a tile
+    * @param {number} data.tileWidth - Width of a tile
   */
 
   constructor(sheet, data) {
@@ -81,8 +81,8 @@ export default class Map extends SpriteBase {
     *
     * @private
     * @member Pixel.Map#_includeCollider
-    * @param {number} [id] - ID of tile
-    * @param {HTMLCanvasElement} [sprite] - Canvas element (sprite) to be either added or excluded
+    * @param {number} id - ID of tile
+    * @param {HTMLCanvasElement} sprite - Canvas element (sprite) to be either added or excluded
   */
 
   _includeCollider(id, sprite) {
@@ -96,7 +96,7 @@ export default class Map extends SpriteBase {
     * Applies a pre-determined tileset to the tilemap
     *
     * @member Pixel.Map#applyTileset
-    * @param {number[][]} [tiles] - Array of tiles
+    * @param {number[][]} tiles - Array of tiles
   */
 
   applyTileset(tiles) {
@@ -132,7 +132,7 @@ export default class Map extends SpriteBase {
     * Sets collisions by excluding x ids
     *
     * @member Pixel.Map#collideByExclusion
-    * @param {number[]} [ids] - IDs of every tile that cannot collide
+    * @param {number[]} ids - IDs of every tile that cannot collide
   */
 
   collideByExclusion(ids) {
@@ -143,7 +143,7 @@ export default class Map extends SpriteBase {
     * Checks collisions with a sprite
     *
     * @member Pixel.Map#checkCollisions
-    * @param {Pixel.Sprite} [rect2] - Sprite that tilemap checks to see if it is colliding with
+    * @param {Pixel.Sprite} rect2 - Sprite that tilemap checks to see if it is colliding with
   */
 
   checkCollisions(rect2) {
@@ -167,8 +167,8 @@ export default class Map extends SpriteBase {
     *
     * @member Pixel.Map#_match
     * @private
-    * @param {number} [max] - The total weight
-    * @param {object[]} [array] - Every item
+    * @param {number} max - The total weight
+    * @param {object[]} array - Every item
     * @return {object[]}
     * 
     * @example
@@ -197,11 +197,11 @@ export default class Map extends SpriteBase {
     * Randomly places tiles based on weight
     *
     * @member Pixel.Map#weightedRandomize
-    * @param {number} [gx] - Starting tile x
-    * @param {number} [gy] - Starting tile y
-    * @param {number} [w] - Tile width (amount going across)
-    * @param {number} [h] - Tile height (amount going down)
-    * @param {object[]} [index] - All indexes + weights of ids to place
+    * @param {number} gx - Starting tile x
+    * @param {number} gy - Starting tile y
+    * @param {number} w - Tile width (amount going across)
+    * @param {number} h - Tile height (amount going down)
+    * @param {object[]} index - All indexes + weights of ids to place
     * 
     * @example
     *     Pixel.Map.weightedRandomize(10, 10, 10, 10, [{index: 4, weight: 3}, {index: 10, weight: 0.5}]);
@@ -232,9 +232,9 @@ export default class Map extends SpriteBase {
     * Places single tile at TileX and TileY
     *
     * @member Pixel.Map#placeTile
-    * @param {number} [id] - ID of tile
-    * @param {number} [x] - TileX of tile
-    * @param {number} [y] - TileY of tile
+    * @param {number} id - ID of tile
+    * @param {number} x - TileX of tile
+    * @param {number} y - TileY of tile
   */
 
   placeTile(id, x, y) {
@@ -247,7 +247,7 @@ export default class Map extends SpriteBase {
     * Converts tile to world x
     *
     * @member Pixel.Map#tileToWorldX
-    * @param {number} [x] - TileX
+    * @param {number} x - TileX
   */
 
   tileToWorldX(x) {
@@ -258,7 +258,7 @@ export default class Map extends SpriteBase {
     * Converts tile to world y
     *
     * @member Pixel.Map#tileToWorldY
-    * @param {number} [y] - TileY
+    * @param {number} y - TileY
   */
 
   tileToWorldY(y) {
@@ -269,9 +269,9 @@ export default class Map extends SpriteBase {
     * Places multiple tiles horizontally + vertically based on array
     *
     * @member Pixel.Map#placeTiles
-    * @param {number[]|number[][]} [tilesArray] - Array of tiles to be placed
-    * @param {number} [x] - X position of first tile
-    * @param {number} [y] - Y position of first tile
+    * @param {number[]|number[][]} tilesArray - Array of tiles to be placed
+    * @param {number} x - X position of first tile
+    * @param {number} y - Y position of first tile
     * 
     * @example
     *   Pixel.Map.placeTiles([ [10], [50], [32] ], 5, 5);  // Is vertically, starting at tile index 5, 5
@@ -298,11 +298,11 @@ export default class Map extends SpriteBase {
     * Fills area with 1 tile
     *
     * @member Pixel.Map#fill
-    * @param {number} [id] - ID of tile
-    * @param {number} [gx] - Start x of fill
-    * @param {number} [gy] - Start y of fill
-    * @param {number} [w] - Width of fill
-    * @param {number} [h] - Height of fill
+    * @param {number} id - ID of tile
+    * @param {number} gx - Start x of fill
+    * @param {number} gy - Start y of fill
+    * @param {number} w - Width of fill
+    * @param {number} h - Height of fill
   */
 
   fill(id, gx, gy, w, h) {
@@ -317,7 +317,7 @@ export default class Map extends SpriteBase {
     * Renders the tilemap
     *
     * @member Pixel.Map#render
-    * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
+    * @param {CanvasRenderingContext2d} ctx - The Canvas to print to
   */
 
   render(ctx) {

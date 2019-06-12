@@ -66,7 +66,7 @@ export default class FillStyle {
     * Fills color to new color
     *
     * @method Pixel.EXPORTS.FillStyle#fill
-    * @param {number} [c] - Color to be set, Hex or RGB
+    * @param {number} c - Color to be set, Hex or RGB
     * @return {number}
   */
 

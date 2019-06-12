@@ -13,9 +13,9 @@ class Stage {
     * Takes an options object, contains the width and height
     *
     * @constructor
-    * @param {object} [options] - The options rendering parameter
-    * @param {number} [options.width] - The width of the canvas
-    * @param {number} [options.height] - The height of the canvas
+    * @param {object} options - The options rendering parameter
+    * @param {number} options.width - The width of the canvas
+    * @param {number} options.height - The height of the canvas
     * @param {boolean} [options.ticker=true] - Whether or not the canvas automatically renders every tick
   */
 
@@ -76,12 +76,19 @@ class Stage {
     /**
       * Stores all element management
       * 
-      * @type {object}
-      * @name Pixel.Stage#elements
-      * @property {object[]} [sprites] - All of the sprites that are being drawn
+      * @namespace Pixel.Stage.elements
     */
 
-    this.elements = { sprites: [] };
+    this.elements = {};
+   
+    /**
+      * Stores all textures loaded with `Pixel.Stage.elements.add`
+      *
+      * @name Pixel.Stage.elements#sprites
+      * @type {object[]}
+    */
+   
+    this.elements.sprites = [];
 
     /**
       * Stores all preloaded textures
@@ -95,33 +102,54 @@ class Stage {
     /**
       * The current stage object
       * 
-      * @type {object}
-      * @name Pixel.Stage#stage
-      * @property {object} [regions] - Stores all regions
-      * @property {object} [keyboard] - All keyboard related functions
+      * @namespace Pixel.Stage.stage
     */
 
-    this.stage = { regions: {}, keyboard: {} };
+    this.stage = {};
+   
+    /**
+      * Stores all clickable regions on the screen
+      *
+      * @name Pixel.Stage.stage#regions
+      * @type {object}
+    */
+   
+    this.stage.regions = {};
+   
+    /**
+      * All keyboard related functions exist here
+      *
+      * @namespace Pixel.Stage.stage.keyboard
+    */
+   
+    this.stage.keyboard = {};
 
     /**
       * The physics storage object
       * 
       * @type {object}
-      * @name Pixel.Stage#physics
-      * @property {object} [collider] - The collider element, allows to add more collisions
+      * @namespace Pixel.Stage.physics
       * @property {object[]} [collisions] - Stores all collision data
       * @property {object} [colliding] - Stores the booleans of every colliding element
     */
 
-    this.physics = { collider: {}, collisions: [], colliding: {} }
+    this.physics = { collisions: [], colliding: {} }
+   
+    /**
+      * The collider element, allows to add more collisions
+      *
+      * @namespace Pixel.Stage.physics.collider
+    */
+   
+    this.physics.collider = {};
 
     /**
       * Adds new collider
       * 
-      * @method Pixel.Stage.physics.collider#add
-      * @param {string} [name] - The name of the collision
-      * @param {Pixel.Sprite[]|Pixel.Map[]|Pixel.AnimatedSprite[]} [sprite1] - The first sprite(s) that will collide with the second
-      * @param {Pixel.Sprite|Pixel.Map|Pixel.AnimatedSprite} [sprite2] - The second sprite that collides with the first
+      * @function Pixel.Stage.physics.collider#add
+      * @param {string} name - The name of the collision
+      * @param {Pixel.Sprite[]|Pixel.Map[]|Pixel.AnimatedSprite[]} sprite1 - The first sprite(s) that will collide with the second
+      * @param {Pixel.Sprite|Pixel.Map|Pixel.AnimatedSprite} sprite2 - The second sprite that collides with the first
     */
 
     this.physics.collider.add = function (name, sprite1, sprite2) {
@@ -133,8 +161,8 @@ class Stage {
       * Gets the current mouse position
       * 
       * @private
-      * @method Pixel.Stage.stage#mousePos
-      * @param {DocumentEvent} [event] - The Document Event element
+      * @function Pixel.Stage.stage#mousePos
+      * @param {DocumentEvent} event - The Document Event element
       * @return {object} Returns the x and y in an object
     */
 
@@ -152,8 +180,8 @@ class Stage {
     /**
       * Changes the background color
       * 
-      * @method Pixel.Stage.stage#background
-      * @param {string} [color] - The color, in hexidecimal or rgb
+      * @function Pixel.Stage.stage#background
+      * @param {string} color - The color, in hexidecimal or rgb
     */
 
     this.stage.background = function(color) {
@@ -164,8 +192,8 @@ class Stage {
       * Checks if the mouse is inside any described click region
       * 
       * @private
-      * @name Pixel.Stage#_checkRegions
-      * @param {DocumentEvent} [e] - The Document Event
+      * @function Pixel.Stage#_checkRegions
+      * @param {DocumentEvent} e - The Document Event
       * @param {boolean} [int=true] - Whether or not it will change the cursor
       * @return {boolean} True or False
     */
@@ -193,7 +221,7 @@ class Stage {
     /**
       * Private onclick function manager
       * 
-      * @method Pixel.Stage.view#onclick
+      * @function Pixel.Stage.view#onclick
       * @private
     */
 
@@ -266,13 +294,13 @@ class Stage {
     /**
       * Adds and preloads new Texture element to the resources
       * 
-      * @method Pixel.Stage.elements#add
-      * @param {string} [name="default"] - Name this element will refer to
-      * @param {string} [url=""] - URL That image is loaded from
+      * @function Pixel.Stage.elements#add
+      * @param {string} name - Name this element will refer to
+      * @param {string} url - URL That image is loaded from
       * @return {Promise}
     */
 
-    this.elements.add = function(name = "default", url = "") {
+    this.elements.add = function(name, url) {
       var image = new Image();
       return new Promise(function(resolve, reject) {
         image.onload = function() {
@@ -290,8 +318,8 @@ class Stage {
     /**
       * Auto renders sprite
       * 
-      * @method Pixel.Stage.stage#add
-      * @param {Pixel.Sprite|Pixel.SpriteSheet|Pixel.AnimatedSprite|Pixel.Map|Pixel.Rectangle|Pixel.Circle|Pixel.Text} [sprite] - Sprite to be rendered
+      * @function Pixel.Stage.stage#add
+      * @param {Pixel.Sprite|Pixel.SpriteSheet|Pixel.AnimatedSprite|Pixel.Map|Pixel.Rectangle|Pixel.Circle|Pixel.Text} sprite - Sprite to be rendered
     */
 
     this.stage.add = function(sprite) {
@@ -302,7 +330,7 @@ class Stage {
       * Clears the screen
       * 
       * @private
-      * @method Pixel.Stage.stage#clear
+      * @function Pixel.Stage.stage#clear
     */
 
     this.stage.clear = function() {
@@ -312,9 +340,9 @@ class Stage {
     /**
       * Event handler
       * 
-      * @method Pixel.Stage.stage#on
-      * @param {string} [name] - Name of event
-      * @param {function} [call] - Function called whenever event occurs
+      * @function Pixel.Stage.stage#on
+      * @param {string} name - Name of event
+      * @param {function} call - Function called whenever event occurs
     */
 
     this.stage.on = function(name, call) {
@@ -328,9 +356,9 @@ class Stage {
     /**
       * Define keyboard event triggers
       * 
-      * @method Pixel.Stage.stage.keyboard#on
-      * @param {string} [name] - Name of event
-      * @param {function} [call] - Function called whenever event occurs
+      * @function Pixel.Stage.stage.keyboard#on
+      * @param {string} name - Name of event
+      * @param {function} call - Function called whenever event occurs
     */
 
     this.stage.keyboard.on = function(name, call) {
@@ -341,12 +369,12 @@ class Stage {
     /**
       * Adds clickable region to the stage
       * 
-      * @method Pixel.Stage.stage#addHitRegion
-      * @param {object} [opts] - Options for hit region
-      * @param {string} [opts.name] - Name of hit region
-      * @param {Pixel.Point} [opts.start] - Start point of hit region
-      * @param {Pixel.Point} [opts.end] - End point of hit region
-      * @param {function} [call] - Function called when region clicked
+      * @function Pixel.Stage.stage#addHitRegion
+      * @param {object} opts - Options for hit region
+      * @param {string} opts.name - Name of hit region
+      * @param {Pixel.Point} opts.start - Start point of hit region
+      * @param {Pixel.Point} opts.end - End point of hit region
+      * @param {function} call - Function called when region clicked
     */
 
     this.stage.addHitRegion = function(opts, call) {
@@ -363,7 +391,7 @@ class Stage {
     * Adds child to stage
     * 
     * @method Pixel.Stage#addChild
-    * @param {Pixel.Sprite} [sprite] - Sprite to be added
+    * @param {Pixel.Sprite} sprite - Sprite to be added
   */
 
   addChild(sprite) {
@@ -384,7 +412,7 @@ class Stage {
     * Renders the entire stage
     * 
     * @method Pixel.Stage#render
-    * @param {Pixel.Stage} [self] - Stage to be rendered
+    * @param {Pixel.Stage} self - Stage to be rendered
   */
 
   render(self) {
@@ -404,7 +432,7 @@ class Stage {
     * 
     * @private
     * @method Pixel.Stage#_checkCollisions
-    * @param {Pixel.Stage} [self] - Stage that collisions are checked for
+    * @param {Pixel.Stage} self - Stage that collisions are checked for
   */
 
   _checkCollisions(self) {
@@ -437,7 +465,7 @@ class Stage {
     * 
     * @method Pixel.Stage#_animFrame
     * @private
-    * @param {Pixel.Stage} [self] - Stage anim frame occurs on
+    * @param {Pixel.Stage} self - Stage anim frame occurs on
   */
 
   _animFrame(self) {
@@ -452,7 +480,7 @@ class Stage {
     * 
     * @method Pixel.Stage#_tick
     * @private
-    * @param {Pixel.Stage} [self] - Stage anim frame occurs on
+    * @param {Pixel.Stage} self - Stage anim frame occurs on
   */
 
   _tick(self) {

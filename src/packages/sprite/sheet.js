@@ -14,15 +14,15 @@ export default class SpriteSheet extends SpriteBase {
     * Create new Sprite sheet class
     * 
     * @constructor
-    * @param {Pixel.Texture} [texture] - The texture used for the sprite sheet
-    * @param {object} [data] - Data passed in order to split spritesheet
-    * @param {number} [data.width] - Width of the spritesheet (in tiles)
-    * @param {number} [data.height] - Height of the spritesheet (in tiles)
-    * @param {number} [data.margin] - Amount of padding around each sprite
-    * @param {number} [data.spacing] - Amount of space between each sprite
-    * @param {object} [data.image] - Stores data for each image being split
-    * @param {number} [data.image.width] - Width of single tile
-    * @param {number} [data.image.height] - Height of single tile
+    * @param {Pixel.Texture} texture - The texture used for the sprite sheet
+    * @param {object} data - Data passed in order to split spritesheet
+    * @param {number} data.width - Width of the spritesheet (in tiles)
+    * @param {number} data.height - Height of the spritesheet (in tiles)
+    * @param {number} data.margin - Amount of padding around each sprite
+    * @param {number} data.spacing - Amount of space between each sprite
+    * @param {object} data.image - Stores data for each image being split
+    * @param {number} data.image.width - Width of single tile
+    * @param {number} data.image.height - Height of single tile
   */
   
   constructor(texture, data) {
@@ -57,10 +57,10 @@ export default class SpriteSheet extends SpriteBase {
     *
     * @method Pixel.SpriteSheet#_slice
     * @private
-    * @param {number} [x] - X position of crop
-    * @param {number} [y] - Y position of crop
-    * @param {number} [w] - Width of crop
-    * @param {number} [h] - Height of crop
+    * @param {number} x - X position of crop
+    * @param {number} y - Y position of crop
+    * @param {number} w - Width of crop
+    * @param {number} h - Height of crop
     * @param {image} [image=false] - If you want to pass a texture other than the main texture, use this
     * @returns {HTMLCanvasElement}
   */
@@ -88,7 +88,7 @@ export default class SpriteSheet extends SpriteBase {
     * @method Pixel.SpriteSheet#trim
     * @private
     * @deprecated
-    * @param {object} [data] - Data object passed
+    * @param {object} data - Data object passed
   */
 
   trim(data) {
@@ -107,7 +107,7 @@ export default class SpriteSheet extends SpriteBase {
     *
     * @method Pixel.SpriteSheet#_parse
     * @private
-    * @param {object} [data] - Data passed
+    * @param {object} data - Data passed
   */
 
   _parse(data) {

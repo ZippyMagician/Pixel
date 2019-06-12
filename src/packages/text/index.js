@@ -14,8 +14,8 @@ export default class Text extends SpriteBase {
     * Create new text object
     *
     * @constructor
-    * @param {string|number} [txt] - Text to be printed
-    * @param {number} [size] - Size of the text
+    * @param {string|number} txt - Text to be printed
+    * @param {number} size - Size of the text
     * @param {string} [c="#000000"] - Color of the text
   */
   
@@ -54,7 +54,7 @@ export default class Text extends SpriteBase {
     * Renders text
     *
     * @method Pixel.Text#render
-    * @param {CanvasRenderingContext2d} [ctx] - The Canvas to print to
+    * @param {CanvasRenderingContext2d} ctx - The Canvas to print to
   */
 
   render(canvas) {
