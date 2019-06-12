@@ -11,6 +11,24 @@ import AnimationCore from './packages/sprite/animation/base';
 import ImageGraphics from'./packages/graphics/image';
 import FillStyle from './packages/graphics/fillstyle';
 
+/**
+  * The main namespace, contains all of Pixel's functions
+  *
+  * @namespace Pixel
+  * @property {object} Keys - Stores all keys that can be pressed, along with methods to tell if they are being pressed
+  * @example
+  *   Pixel.Stage.on("keydown", function (e) {
+  *     if (e.key === Pixel.Keys.SHIFT) { // Check if shift is pressed
+  *       // Do something
+  *     }
+  *   });
+  *   
+  *   Pixel.Stage.tick = function () {
+  *     if (Pixel.Keys.down.SHIFT) { // Another way of detecting is shift is pressed
+  *       // Do something else
+  *     }
+  *   }
+*/
 window.Pixel = {
   Stage: Stage,
   Sprite: Sprite,
