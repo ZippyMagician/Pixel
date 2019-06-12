@@ -146,7 +146,7 @@ class Stage {
     /**
       * Adds new collider
       * 
-      * @method Pixel.Stage.physics.collider#add
+      * @function Pixel.Stage.physics.collider#add
       * @param {string} [name] - The name of the collision
       * @param {Pixel.Sprite[]|Pixel.Map[]|Pixel.AnimatedSprite[]} [sprite1] - The first sprite(s) that will collide with the second
       * @param {Pixel.Sprite|Pixel.Map|Pixel.AnimatedSprite} [sprite2] - The second sprite that collides with the first
@@ -161,7 +161,7 @@ class Stage {
       * Gets the current mouse position
       * 
       * @private
-      * @method Pixel.Stage.stage#mousePos
+      * @function Pixel.Stage.stage#mousePos
       * @param {DocumentEvent} [event] - The Document Event element
       * @return {object} Returns the x and y in an object
     */
@@ -180,7 +180,7 @@ class Stage {
     /**
       * Changes the background color
       * 
-      * @method Pixel.Stage.stage#background
+      * @function Pixel.Stage.stage#background
       * @param {string} [color] - The color, in hexidecimal or rgb
     */
 
@@ -192,7 +192,7 @@ class Stage {
       * Checks if the mouse is inside any described click region
       * 
       * @private
-      * @name Pixel.Stage#_checkRegions
+      * @function Pixel.Stage#_checkRegions
       * @param {DocumentEvent} [e] - The Document Event
       * @param {boolean} [int=true] - Whether or not it will change the cursor
       * @return {boolean} True or False
@@ -221,7 +221,7 @@ class Stage {
     /**
       * Private onclick function manager
       * 
-      * @method Pixel.Stage.view#onclick
+      * @function Pixel.Stage.view#onclick
       * @private
     */
 
@@ -294,7 +294,7 @@ class Stage {
     /**
       * Adds and preloads new Texture element to the resources
       * 
-      * @method Pixel.Stage.elements#add
+      * @function Pixel.Stage.elements#add
       * @param {string} [name="default"] - Name this element will refer to
       * @param {string} [url=""] - URL That image is loaded from
       * @return {Promise}
@@ -318,7 +318,7 @@ class Stage {
     /**
       * Auto renders sprite
       * 
-      * @method Pixel.Stage.stage#add
+      * @function Pixel.Stage.stage#add
       * @param {Pixel.Sprite|Pixel.SpriteSheet|Pixel.AnimatedSprite|Pixel.Map|Pixel.Rectangle|Pixel.Circle|Pixel.Text} [sprite] - Sprite to be rendered
     */
 
@@ -330,7 +330,7 @@ class Stage {
       * Clears the screen
       * 
       * @private
-      * @method Pixel.Stage.stage#clear
+      * @function Pixel.Stage.stage#clear
     */
 
     this.stage.clear = function() {
@@ -340,7 +340,7 @@ class Stage {
     /**
       * Event handler
       * 
-      * @method Pixel.Stage.stage#on
+      * @function Pixel.Stage.stage#on
       * @param {string} [name] - Name of event
       * @param {function} [call] - Function called whenever event occurs
     */
@@ -356,7 +356,7 @@ class Stage {
     /**
       * Define keyboard event triggers
       * 
-      * @method Pixel.Stage.stage.keyboard#on
+      * @function Pixel.Stage.stage.keyboard#on
       * @param {string} [name] - Name of event
       * @param {function} [call] - Function called whenever event occurs
     */
@@ -369,7 +369,7 @@ class Stage {
     /**
       * Adds clickable region to the stage
       * 
-      * @method Pixel.Stage.stage#addHitRegion
+      * @function Pixel.Stage.stage#addHitRegion
       * @param {object} [opts] - Options for hit region
       * @param {string} [opts.name] - Name of hit region
       * @param {Pixel.Point} [opts.start] - Start point of hit region
