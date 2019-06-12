@@ -18,11 +18,11 @@ import FillStyle from './packages/graphics/fillstyle';
   * @property {object} Keys - Stores all keys that can be pressed, along with methods to tell if they are being pressed
   * @example
   *   Pixel.Stage.on("keydown", function (e) {
-  *     if (e.key === Pixel.Keys.SHIFT) {}
+  *     if (e.key === Pixel.Keys.SHIFT) {} // If shift is pressed, this triggers
   *   });
   *   
   *   Pixel.Stage.tick = function () {
-  *     if (Pixel.Keys.down.SHIFT) {}
+  *     if (Pixel.Keys.down.SHIFT) {} // If shift is pressed, this also triggers, and runs quicker (prefered)
   *   }
 */
 window.Pixel = {
