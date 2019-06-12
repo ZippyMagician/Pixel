@@ -1,6 +1,7 @@
 ### PixelJS - Small Javascript game API
 
 ![PixelJS Logo](https://raw.githubusercontent.com/ZippyMagician/Pixel/master/assets/pixeljs.png)
+<br>
 ![Dependencies](https://david-dm.org/ZippyMagician/Pixel/dev-status.svg)
 ![Build](https://api.travis-ci.org/ZippyMagician/Pixel.svg?branch=master)
 ![Release](https://img.shields.io/badge/version-v1.4.3-blue.svg)
