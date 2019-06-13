@@ -15,6 +15,12 @@
         "semi": "error",
         "eqeqeq": "error",
         "curly": "warn",
-        "quotes": ["error", "double"]
+        "quotes": ["error", "double"],
+        "object-curly-spacing": ["error", "never", {
+            "objectsInObjects": true,
+            "arraysInObjects": true
+        }],
+        "space-in-parens": ["error", "never"],
+        "array-bracket-spacing": ["error", "never"]
     }
 }

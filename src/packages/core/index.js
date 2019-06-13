@@ -133,7 +133,7 @@ class Stage {
       * @property {object} [colliding] - Stores the booleans of every colliding element
     */
 
-    this.physics = { collisions: [], colliding: {} };
+    this.physics = {collisions: [], colliding: {} };
    
     /**
       * The collider element, allows to add more collisions
@@ -379,7 +379,7 @@ class Stage {
 
     this.stage.addHitRegion = function(opts, call) {
       self.stage.regions[opts.name] = new Object(
-        Object.assign({ call: call }, opts)
+        Object.assign({call: call}, opts)
       );
     };
 
@@ -490,4 +490,4 @@ class Stage {
   }
 }
 
-export { Stage as Stage, Container as Container };
+export {Stage as Stage, Container as Container};

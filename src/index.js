@@ -1,7 +1,7 @@
-import { Stage, Container } from "./packages/core";
-import { Sprite, AnimatedSprite, SpriteSheet } from "./packages/sprite";
+import {Stage, Container} from "./packages/core";
+import {Sprite, AnimatedSprite, SpriteSheet} from "./packages/sprite";
 import Texture from "./packages/texture";
-import { Rectangle, Circle, Point } from "./packages/shape";
+import {Rectangle, Circle, Point} from "./packages/shape";
 import Text from "./packages/text";
 import Sound from "./packages/sound";
 import Graphics from "./packages/graphics";

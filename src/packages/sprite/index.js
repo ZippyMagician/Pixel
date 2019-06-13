@@ -134,4 +134,4 @@ class Sprite extends SpriteBase {
   }
 }
 
-export { Sprite as Sprite, AnimatedSprite as AnimatedSprite, SpriteSheet as SpriteSheet };
+export {Sprite as Sprite, AnimatedSprite as AnimatedSprite, SpriteSheet as SpriteSheet};

@@ -1,5 +1,5 @@
 import SpriteBase from "../sprite/base";
-import { Sprite } from "../sprite";
+import {Sprite} from "../sprite";
 
 /**
   * TileMap element
@@ -106,7 +106,7 @@ export default class Map extends SpriteBase {
     for (var lay = 0; lay < layers; lay++) {
       for (var col = 0; col < cols; col++) {
         let tile = tiles[lay][col];
-        let sprite = this.sheet[tile] ? new Sprite({ image: self.sheet[tile], renderable: true }) : false;
+        let sprite = this.sheet[tile] ? new Sprite({image: self.sheet[tile], renderable: true}) : false;
         this.tiles.push(sprite);
         if (sprite) {this._includeCollider(tile, sprite);}
       }
@@ -280,7 +280,7 @@ export default class Map extends SpriteBase {
 
   placeTiles(tilesArray, x, y) {
     if (!Array.isArray(tilesArray[0])) {
-      tilesArray = [ tilesArray ];
+      tilesArray = [tilesArray];
     }
 
     var height = tilesArray.length;

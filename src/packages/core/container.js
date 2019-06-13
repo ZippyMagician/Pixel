@@ -1,4 +1,4 @@
-import { Point } from "../shape";
+import {Point} from "../shape";
 
 /**
   * Container class

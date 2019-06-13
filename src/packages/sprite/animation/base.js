@@ -119,7 +119,7 @@ export default class AnimationCore {
       var fram = frames[frame];
 
       if (fram.name.startsWith(prefix) && cur_delay === 0) {
-        var dummy = new Sprite({ renderable: true, image: fram.image });
+        var dummy = new Sprite({renderable: true, image: fram.image});
         storage.push(dummy);
       } else if (cur_delay > 0) {cur_delay--;}
     }
@@ -143,7 +143,7 @@ export default class AnimationCore {
     let storage = [];
 
     for (var i = start - 1; i < end; i++) {
-      var dummy = new Sprite({ renderable: true, image: frames[i].image });
+      var dummy = new Sprite({renderable: true, image: frames[i].image});
       storage.push(dummy);
     }
     this.tracks[name] = storage;
