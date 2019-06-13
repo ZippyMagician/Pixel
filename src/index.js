@@ -25,6 +25,7 @@ import FillStyle from './packages/graphics/fillstyle';
   *     if (Pixel.Keys.down.SHIFT) {} // If shift is pressed, this also triggers, and runs quicker (prefered)
   *   }
 */
+
 window.Pixel = {
   Stage: Stage,
   Sprite: Sprite,
