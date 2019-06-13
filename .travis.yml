@@ -11,5 +11,4 @@ cache:
     - node_modules
 
 script:
-  - npm run docs
-  - npm run docs:test
+  - npm run test
