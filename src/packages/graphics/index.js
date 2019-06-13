@@ -1,5 +1,5 @@
-import FillStyle from './fillstyle';
-import ImageGraphics from './image';
+import FillStyle from "./fillstyle";
+import ImageGraphics from "./image";
 
 /**
   * Pixel Graphics Element
@@ -108,7 +108,7 @@ export default class Graphics extends ImageGraphics {
 
   end() {
     this._fillStyle.reset();
-    this.ctx.fillStyle = '#000000';
+    this.ctx.fillStyle = "#000000";
     this.ctx.shadowBlur = 0;
     this.ctx.shadowColor = this.dsc;
     this.ctx.shadowOffsetX = 0;
@@ -169,7 +169,7 @@ export default class Graphics extends ImageGraphics {
 
   arcTo(a, b, c, d, e) {
     this.ctx.beginPath();
-    this.ctx.arcTo(a, b, c, d, e)
+    this.ctx.arcTo(a, b, c, d, e);
     this.ctx.fill();
 
     return this;
@@ -218,9 +218,9 @@ export default class Graphics extends ImageGraphics {
   */
 
   clearCircle(x, y, radius) {
-    this.ctx.globalCompositeOperation = 'destination-out';
+    this.ctx.globalCompositeOperation = "destination-out";
     this.ctx.arc(x, y, radius, 0, 2 * Math.PI);
     this.ctx.fill();
-    this.ctx.globalCompositeOperation = 'source-over';
+    this.ctx.globalCompositeOperation = "source-over";
   }
 }

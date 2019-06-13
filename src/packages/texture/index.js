@@ -39,7 +39,7 @@ export default class Texture {
     
     this.image.onload = function () {
       self.renderable = true;
-    }
+    };
     
     
     

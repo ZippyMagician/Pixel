@@ -1,5 +1,5 @@
-import SpriteBase from '../base';
-import AnimationCore from './base';
+import SpriteBase from "../base";
+import AnimationCore from "./base";
 
 /**
   * AnimatedSprite Class

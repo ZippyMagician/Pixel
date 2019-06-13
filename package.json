@@ -5,13 +5,17 @@
     "main": "src/index.js",
     "author": "Joshua Barnett",
     "scripts": {
+        "test": "npm run docs && npm run docs:test && npm run lint",
         "build": "rollup -c",
         "docs": "jsdoc -c jsdoc.conf.json -R README.md",
-        "docs:test": "node build/test-docs.js"
+        "docs:test": "node build/test-docs.js",
+        "lint": "eslint src *.js",
+        "lint:fix": "eslint --fix src *.js"
     },
     "devDependencies": {
         "@pixi/jsdoc-template": "^2.4.2",
         "docdash": "^1.1.1",
+        "eslint": "^5.16.0",
         "jsdoc": "^3.5.5",
         "rollup": "^1.10.1",
         "rollup-plugin-babel-minify": "^8.0.0",

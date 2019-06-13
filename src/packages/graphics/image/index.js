@@ -97,7 +97,7 @@ export default class ImageGraphics {
         self.height = self.image.height;
 
         return resolve(self);
-      }
+      };
       self.image.src = url;
     });
   }

@@ -1,4 +1,4 @@
-import { Point } from '../shape';
+import { Point } from "../shape";
 
 /**
   * The base of every Sprite
@@ -203,7 +203,7 @@ export default class SpriteBase {
   */
 
   settings(ctx) {
-    if (!this.noscale) ctx.globalAlpha = this.opacity;
+    if (!this.noscale) {ctx.globalAlpha = this.opacity;}
     ctx.scale(this.scale, this.scale);
   }
 
@@ -216,6 +216,6 @@ export default class SpriteBase {
 
   reset(ctx) {
     ctx.globalAlpha = 1.0;
-    if (!this.noscale) ctx.scale(1 / this.scale, 1 / this.scale);
+    if (!this.noscale) {ctx.scale(1 / this.scale, 1 / this.scale);}
   }
 }

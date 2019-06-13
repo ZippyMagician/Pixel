@@ -1,4 +1,4 @@
-import SpriteBase from '../sprite/base';
+import SpriteBase from "../sprite/base";
 
 /**
   * Circle class

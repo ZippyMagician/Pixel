@@ -1,6 +1,6 @@
-import SpriteBase from './base';
-import AnimatedSprite from './animation';
-import SpriteSheet from './sheet';
+import SpriteBase from "./base";
+import AnimatedSprite from "./animation";
+import SpriteSheet from "./sheet";
 
 /**
   * Sprite class
@@ -43,13 +43,13 @@ class Sprite extends SpriteBase {
     if (this.texture.renderable) {
       this.settings(canvas);
       if (this.deg > 0 || this.flipX || this.flipY)
-        this.rotation_render(canvas);
+        {this.rotation_render(canvas);}
       else
-        canvas.drawImage(
+        {canvas.drawImage(
           this.texture.image,
           this.x / this.scale - this.texture.image.width * this.anchor.x,
           this.y / this.scale - this.texture.image.height * this.anchor.y
-        );
+        );}
       this.reset(canvas);
     }
   }
@@ -66,8 +66,8 @@ class Sprite extends SpriteBase {
 
     ctx.save();
     ctx.translate(this.x / this.scale, this.y / this.scale);
-    if (this.flipX) ctx.scale(-1, 1);
-    if (this.flipY) ctx.scale(1, -1);
+    if (this.flipX) {ctx.scale(-1, 1);}
+    if (this.flipY) {ctx.scale(1, -1);}
     ctx.fillStyle = "#000000";
     ctx.rotate((Math.PI / 180) * this.deg);
     ctx.drawImage(
@@ -112,10 +112,10 @@ class Sprite extends SpriteBase {
       crash = false;
     }
     if (crash) {
-      if (mybottom - bias > otherbottom && mytop + bias < otherbottom) bottom = true;
-      if (mytop + bias < othertop && mybottom - bias > othertop) top = true;
-      if (myleft + bias < otherleft && myright - bias > otherleft) left = true;
-      if (myright - bias > otherright && myleft + bias < otherright) right = true;
+      if (mybottom - bias > otherbottom && mytop + bias < otherbottom) {bottom = true;}
+      if (mytop + bias < othertop && mybottom - bias > othertop) {top = true;}
+      if (myleft + bias < otherleft && myright - bias > otherleft) {left = true;}
+      if (myright - bias > otherright && myleft + bias < otherright) {right = true;}
     }
     return {body: crash, left: left, right: right, top: top, bottom: bottom};
   }

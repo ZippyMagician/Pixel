@@ -1,9 +1,9 @@
-import minifier from 'rollup-plugin-babel-minify';
-import resolver from 'rollup-plugin-node-resolve';
+import minifier from "rollup-plugin-babel-minify";
+import resolver from "rollup-plugin-node-resolve";
 
-let ENTRY = 'src/index.js';
-let EXIT = [ 'dist/Pixel.js', 'dist/Pixel.min.js' ];
-let resolve = resolver({ mainFields: [ 'main' ] });
+let ENTRY = "src/index.js";
+let EXIT = [ "dist/Pixel.js", "dist/Pixel.min.js" ];
+let resolve = resolver({ mainFields: [ "main" ] });
 let minify = minifier({ comments: false });
 
 module.exports = [
@@ -11,7 +11,7 @@ module.exports = [
     input: ENTRY,
     output: {
       file: EXIT[0],
-      format: 'cjs'
+      format: "cjs"
     },
     plugins: [resolve]
   },
@@ -19,7 +19,7 @@ module.exports = [
     input: ENTRY,
     output: {
       file: EXIT[1],
-      format: 'cjs'
+      format: "cjs"
     },
     plugins: [minify, resolve]
   }

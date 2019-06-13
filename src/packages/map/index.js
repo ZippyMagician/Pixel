@@ -1,5 +1,5 @@
-import SpriteBase from '../sprite/base';
-import { Sprite } from '../sprite';
+import SpriteBase from "../sprite/base";
+import { Sprite } from "../sprite";
 
 /**
   * TileMap element
@@ -88,7 +88,7 @@ export default class Map extends SpriteBase {
   _includeCollider(id, sprite) {
     if (this.exclude) {
       let shouldInclude = this.exclude.indexOf(id) > -1 ? false : true;
-      if (shouldInclude) this.colliders.push(sprite);
+      if (shouldInclude) {this.colliders.push(sprite);}
     }
   }
 
@@ -108,7 +108,7 @@ export default class Map extends SpriteBase {
         let tile = tiles[lay][col];
         let sprite = this.sheet[tile] ? new Sprite({ image: self.sheet[tile], renderable: true }) : false;
         this.tiles.push(sprite);
-        if (sprite) this._includeCollider(tile, sprite);
+        if (sprite) {this._includeCollider(tile, sprite);}
       }
       col = 0;
     }

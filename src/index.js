@@ -1,15 +1,15 @@
-import { Stage, Container } from './packages/core';
-import { Sprite, AnimatedSprite, SpriteSheet } from './packages/sprite';
-import Texture from './packages/texture';
-import { Rectangle, Circle, Point } from './packages/shape';
-import Text from './packages/text';
-import Sound from './packages/sound';
-import Graphics from './packages/graphics';
-import Map from './packages/map';
-import SpriteBase from './packages/sprite/base';
-import AnimationCore from './packages/sprite/animation/base';
-import ImageGraphics from'./packages/graphics/image';
-import FillStyle from './packages/graphics/fillstyle';
+import { Stage, Container } from "./packages/core";
+import { Sprite, AnimatedSprite, SpriteSheet } from "./packages/sprite";
+import Texture from "./packages/texture";
+import { Rectangle, Circle, Point } from "./packages/shape";
+import Text from "./packages/text";
+import Sound from "./packages/sound";
+import Graphics from "./packages/graphics";
+import Map from "./packages/map";
+import SpriteBase from "./packages/sprite/base";
+import AnimationCore from "./packages/sprite/animation/base";
+import ImageGraphics from"./packages/graphics/image";
+import FillStyle from "./packages/graphics/fillstyle";
 
 /**
   * The main namespace, contains all of Pixel's functions

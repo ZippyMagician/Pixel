@@ -1,4 +1,4 @@
-import Container from './container';
+import Container from "./container";
 
 /**
   * The stage controls all things that run in Pixel
@@ -133,7 +133,7 @@ class Stage {
       * @property {object} [colliding] - Stores the booleans of every colliding element
     */
 
-    this.physics = { collisions: [], colliding: {} }
+    this.physics = { collisions: [], colliding: {} };
    
     /**
       * The collider element, allows to add more collisions
@@ -155,7 +155,7 @@ class Stage {
     this.physics.collider.add = function (name, sprite1, sprite2) {
       self.physics.collisions.push({name: name, parent: sprite1, child: sprite2});
       self.physics.colliding[name] = false;
-    }
+    };
 
     /**
       * Gets the current mouse position
@@ -210,8 +210,8 @@ class Stage {
           mouse.y > reg.start.y &&
           mouse.y < reg.end.y
         ) {
-          if (int) reg.call();
-          else canvas.style.cursor = "pointer";
+          if (int) {reg.call();}
+          else {canvas.style.cursor = "pointer";}
           c = true;
         }
       }
@@ -227,7 +227,7 @@ class Stage {
 
     this.view.onclick = function(e) {
       self._checkRegions(e);
-      if (self.onclick) return self.onclick(e);
+      if (self.onclick) {return self.onclick(e);}
     };
 
     /**
@@ -239,8 +239,8 @@ class Stage {
 
     document.onmousemove = function(e) {
       var check = self._checkRegions(e, false);
-      if (!check) canvas.style.cursor = self.cursor;
-      if (self.onmousemove) return self.onmousemove(e);
+      if (!check) {canvas.style.cursor = self.cursor;}
+      if (self.onmousemove) {return self.onmousemove(e);}
     };
 
     /**
@@ -252,7 +252,7 @@ class Stage {
 
     document.onmousedown = function(e) {
       self.lastClickTarget = e.target;
-      if (self.onmousedown) return self.onmousedown(e);
+      if (self.onmousedown) {return self.onmousedown(e);}
     };
 
     /**
@@ -270,7 +270,7 @@ class Stage {
           keys.down[ke] = true;
         }
       }
-      if (self.onkeydown) return self.onkeydown(e);
+      if (self.onkeydown) {return self.onkeydown(e);}
     };
 
     /**
@@ -288,7 +288,7 @@ class Stage {
           keys.down[ke] = false;
         }
       }
-      if (self.onkeyup) return self.onkeyup(e);
+      if (self.onkeyup) {return self.onkeyup(e);}
     };
 
     /**
@@ -362,8 +362,8 @@ class Stage {
     */
 
     this.stage.keyboard.on = function(name, call) {
-      if (name === "keydown" || name === "keyup") self["on" + name] = call;
-      else document["on" + name] = call;
+      if (name === "keydown" || name === "keyup") {self["on" + name] = call;}
+      else {document["on" + name] = call;}
     };
 
     /**
@@ -384,7 +384,7 @@ class Stage {
     };
 
     if ((options.ticker === undefined) | null || options.ticker)
-      this._animFrame(this);
+      {this._animFrame(this);}
   }
 
   /**
@@ -417,7 +417,7 @@ class Stage {
 
   render(self) {
     var l = self.elements.sprites.length;
-    if (l >= 1) self.stage.clear();
+    if (l >= 1) {self.stage.clear();}
 
     self.draw.fillStyle = self._backColor;
     self.draw.fillRect(0, 0, self.view.width, self.view.height);
@@ -440,7 +440,7 @@ class Stage {
       let collision = self.physics.collisions[i];
       let name = collision.name;
       let sprite = collision.parent;
-      let ret = {top: false, bottom: false, left: false, right: false, body: false}
+      let ret = {top: false, bottom: false, left: false, right: false, body: false};
 
 
       if (Array.isArray(sprite)) {
@@ -454,7 +454,7 @@ class Stage {
           ret.bottom = col.bottom === true || ret.bottom === true ? true : false;
           ret.top = col.top === true || ret.top === true ? true : false;
         }
-      } else ret = sprite.checkCollisions(collision.child);
+      } else {ret = sprite.checkCollisions(collision.child);}
 
       self.physics.colliding[name] = ret;
     }
@@ -490,4 +490,4 @@ class Stage {
   }
 }
 
-export { Stage as Stage, Container as Container }
+export { Stage as Stage, Container as Container };

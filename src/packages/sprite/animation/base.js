@@ -96,7 +96,7 @@ export default class AnimationCore {
   */
 
   play(name) {
-    if (this.track !== name) this.frame = 0;
+    if (this.track !== name) {this.frame = 0;}
     this.current = this.tracks[name];
     this.track = name;
   }
@@ -121,9 +121,9 @@ export default class AnimationCore {
       if (fram.name.startsWith(prefix) && cur_delay === 0) {
         var dummy = new Sprite({ renderable: true, image: fram.image });
         storage.push(dummy);
-      } else if (cur_delay > 0) cur_delay--;
+      } else if (cur_delay > 0) {cur_delay--;}
     }
-    if (storage.length > 0) this.tracks[name] = storage;
+    if (storage.length > 0) {this.tracks[name] = storage;}
   }
 
   /**

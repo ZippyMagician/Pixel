@@ -1,4 +1,4 @@
-import SpriteBase from '../sprite/base';
+import SpriteBase from "../sprite/base";
 
 /**
   * New rectangle class
@@ -62,7 +62,7 @@ export default class Rectangle extends SpriteBase {
 
   render(canvas) {
     this.settings(canvas);
-    if (this.deg > 0 || this.flipX || this.flipY) this.rotation_render(canvas);
+    if (this.deg > 0 || this.flipX || this.flipY) {this.rotation_render(canvas);}
     else {
       canvas.fillStyle = this.color;
       canvas.fillRect(
@@ -87,8 +87,8 @@ export default class Rectangle extends SpriteBase {
   rotation_render(ctx) {
     ctx.save();
     ctx.translate(this.x, this.y);
-    if (this.flipX) ctx.scale(-1, 1);
-    if (this.flipY) ctx.scale(1, -1);
+    if (this.flipX) {ctx.scale(-1, 1);}
+    if (this.flipY) {ctx.scale(1, -1);}
     ctx.rotate((Math.PI / 180) * this.deg);
     ctx.fillStyle = this.color;
     ctx.fillRect(
