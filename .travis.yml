@@ -1,3 +1,5 @@
+# Travis build details
+
 language: node_js
 node_js:
   - "9"
@@ -12,3 +14,4 @@ cache:
 
 script:
   - npm run test
+  - bash ./build/push.sh
