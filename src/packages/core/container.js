@@ -13,9 +13,11 @@ export default class Container {
     * Creates a container element
     *
     * @constructor
+    * @param {CanvasRenderingContext2D} ctx - The screen every object is rendered to
   */
 
-  constructor() {
+  constructor(ctx) {
+    let self = this;
 
     /**
       * Contains all sprites
@@ -24,7 +26,26 @@ export default class Container {
       * @type {Pixel.Sprite[]}
     */
 
-    this.stage = [];
+    this.sprites = [];
+
+    /**
+     * Stores the background color
+     * 
+     * @name Pixel.Container#_backColor
+     * @type {string}
+     * @private
+    */
+
+    this._backColor = '#FFFFFF';
+
+    /**
+     * Stores the canvas 2d context
+     * 
+     * @name Pixel.Container#ctx
+     * @type {CanvasRenderingContext2D}
+    */
+
+    this.ctx = ctx;
 
     /**
       * I forgot what this is for but am to worried to get rid of it
@@ -58,10 +79,11 @@ export default class Container {
       * @private
       * @function Pixel.Container#mousePos
       * @param {DocumentEvent} event - The Document Event element
+      * @param {HTMLCanvasElement} canvas - The canvas it gets the mouse position on
       * @return {object} Returns the x and y in an object
     */
 
-    this.mousePos = function(event) {
+    this.mousePos = function(canvas, event) {
       var rect = canvas.getBoundingClientRect(),
         scaleX = canvas.width / rect.width,
         scaleY = canvas.height / rect.height;
@@ -91,7 +113,7 @@ export default class Container {
     */
 
     this.add = function(sprite) {
-      return sprite.render(ctx);
+      return sprite.render(this.ctx);
     };
 
     /**
@@ -102,7 +124,7 @@ export default class Container {
     */
 
     this.clear = function() {
-      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+      this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     };
 
     /**
@@ -181,13 +203,12 @@ export default class Container {
     * Renders all elements in container
     *
     * @method Pixel.Container#render
-    * @param {CanvasRenderingContext2d} ctx - The Canvas to print to
   */
 
-  render(ctx) {
-    var con = this.contents;
+  render() {
+    var con = this.sprites;
     for (var i in con) {
-      con[i].render(ctx);
+      con[i].render(this.ctx);
     }
   }
 }

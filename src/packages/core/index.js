@@ -78,7 +78,7 @@ class Stage {
       * @name Pixel.Stage#stage
     */
 
-    this.stage = new Container();
+    this.stage = new Container(this.draw);
 
     /**
       * The physics storage object
@@ -125,7 +125,7 @@ class Stage {
 
     this._checkRegions = function(e, int = true) {
       var c = false;
-      var mouse = self.stage.mousePos(e);
+      var mouse = self.stage.mousePos(canvas, e);
       self.stage.mouse = mouse;
       for (var r in self.stage.regions) {
         var reg = self.stage.regions[r];
