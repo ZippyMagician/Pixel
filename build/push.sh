@@ -9,8 +9,9 @@ if [[ $TRAVIS_BRANCH != master ]]; then
   return 0
 fi
 
-cd docs
-git pull https://github.com/ZippyMagician/Pixel-Docs
+git clone https://github.com/ZippyMagician/Pixel-Docs build-docs
+cp -r ~/docs/. ~/build-docs
+cd build-docs
 
 git stash
 git checkout ${TRAVIS_BRANCH}
