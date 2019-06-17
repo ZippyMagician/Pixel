@@ -17,7 +17,7 @@ upload_files() {
   
   git remote add origin https://ZippyMagician:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs.git > /dev/null 2>&1
   cd docs
-  # git pull origin master --quiet
+  git pull origin master --quiet
   git add .
   git commit -m "Travis update: $dateAndMonth (Build $TRAVIS_BUILD_NUMBER)" -m "[skip ci]"
   git push origin master --quiet
