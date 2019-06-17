@@ -17,7 +17,7 @@ commit_country_json_files() {
 upload_files() {
   git remote rm origin
   
-  git remote add origin https://vinaygopinath:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs > /dev/null 2>&1
+  git remote add origin https://ZippyMagician:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs.git > /dev/null 2>&1
   git push origin master --quiet
 }
 
