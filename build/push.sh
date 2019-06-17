@@ -1,20 +1,40 @@
 #!/bin/sh
+# Adapted from https://gist.github.com/willprice/e07efd73fb7f13f917ea
 
-git config --global user.email "$GH_EMAIL"
-git config --global user.name "$GH_USERNAME"
-git config --global push.default current
+setup_git() {
+  git config --global user.email "$GH_EMAIL"
+  git config --global user.name "$GH_USERNAME"
+}
 
-if [[ $TRAVIS_BRANCH != master ]]; then
-  msg "Not pushing updates to branch $TRAVIS_BRANCH"
-  return 0
+commit_country_json_files() {
+  git checkout master
+  
+  dateAndMonth=`date "+%b %Y"`
+  
+  git add -f dist/output/*.json
+  
+  git commit -m "Travis update: $dateAndMonth (Build $TRAVIS_BUILD_NUMBER)" -m "[skip ci]"
+}
+
+upload_files() {
+  git remote rm origin
+  
+  git remote add origin https://vinaygopinath:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs > /dev/null 2>&1
+  git push origin master --quiet
+}
+
+if [[ "$TRAVIS_BRANCH" != master ]]; then
+  echo -e "\e[36m\e[1mTest triggered for branch \"${TRAVIS_BRANCH}\" - doing nothing."
+  exit 0
 fi
 
-git clone https://github.com/ZippyMagician/Pixel-Docs build-docs
-cp -r docs/. build-docs
-cd build-docs
+setup_git
 
-git stash
-git checkout ${TRAVIS_BRANCH}
-git stash pop
+commit_country_json_files
 
-git push https://${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs.git
+if [ $? -eq 0 ]; then
+  echo "A new commit with changed country JSON files exists. Uploading to GitHub"
+  upload_files
+else
+  echo "No changes in country JSON files. Nothing to do"
+fi
