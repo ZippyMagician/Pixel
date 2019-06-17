@@ -6,15 +6,13 @@ setup_git() {
   git config --global user.name "$GH_USERNAME"
 }
 
-checkout() {
-  git checkout master
-}
-
 upload_files() {
   dateAndMonth=`date "+%b %Y"`
 
   cd docs
   git init
+
+  git checkout master
   
   git remote add docs https://ZippyMagician:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs.git # > /dev/null 2>&1
   git add .
@@ -29,8 +27,6 @@ if [[ "$TRAVIS_BRANCH" != master ]]; then
 fi
 
 setup_git
-
-checkout
 
 echo "Uploading to GitHub"
 upload_files
