@@ -20,11 +20,11 @@ export default class Container {
     /**
       * Contains all sprites
       *
-      * @name Pixel.Container#contents
+      * @name Pixel.Container#stage
       * @type {Pixel.Sprite[]}
     */
 
-    this.contents = [];
+    this.stage = [];
 
     /**
       * I forgot what this is for but am to worried to get rid of it
@@ -34,15 +34,122 @@ export default class Container {
     */
 
     this.container = true;
+   
+    /**
+      * Stores all clickable regions on the screen
+      *
+      * @name Pixel.Container#regions
+      * @type {object}
+    */
+   
+    this.regions = {};
+   
+    /**
+      * All keyboard related functions exist here
+      *
+      * @namespace Pixel.Container.keyboard
+    */
+   
+    this.keyboard = {};
 
     /**
-      * Position of this container
-      *
-      * @name Pixel.Container#point
-      * @type {Pixel.Point}
+      * Gets the current mouse position
+      * 
+      * @private
+      * @function Pixel.Container#mousePos
+      * @param {DocumentEvent} event - The Document Event element
+      * @return {object} Returns the x and y in an object
     */
 
-    this.point = new Point();
+    this.mousePos = function(event) {
+      var rect = canvas.getBoundingClientRect(),
+        scaleX = canvas.width / rect.width,
+        scaleY = canvas.height / rect.height;
+
+      return {
+        x: (event.clientX - rect.left) * scaleX,
+        y: (event.clientY - rect.top) * scaleY
+      };
+    };
+
+    /**
+      * Changes the background color
+      * 
+      * @function Pixel.Container#background
+      * @param {string} color - The color, in hexidecimal or rgb
+    */
+
+    this.background = function(color) {
+      self._backColor = color;
+    };
+
+    /**
+      * Auto renders sprite
+      * 
+      * @function Pixel.Container#add
+      * @param {Pixel.Sprite|Pixel.SpriteSheet|Pixel.AnimatedSprite|Pixel.Map|Pixel.Rectangle|Pixel.Circle|Pixel.Text} sprite - Sprite to be rendered
+    */
+
+    this.add = function(sprite) {
+      return sprite.render(ctx);
+    };
+
+    /**
+      * Clears the screen
+      * 
+      * @private
+      * @function Pixel.Container#clear
+    */
+
+    this.clear = function() {
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    };
+
+    /**
+      * Event handler
+      * 
+      * @function Pixel.Container#on
+      * @param {string} name - Name of event
+      * @param {function} call - Function called whenever event occurs
+    */
+
+    this.on = function(name, call) {
+      if (name === "mousemove" || name === "mousedown" || name === "click") {
+        self["on" + name] = call;
+      } else {
+        self.view.addEventListener(name, call);
+      }
+    };
+
+    /**
+      * Define keyboard event triggers
+      * 
+      * @function Pixel.Container.keyboard#on
+      * @param {string} name - Name of event
+      * @param {function} call - Function called whenever event occurs
+    */
+
+    this.keyboard.on = function(name, call) {
+      if (name === "keydown" || name === "keyup") {self["on" + name] = call;}
+      else {document["on" + name] = call;}
+    };
+
+    /**
+      * Adds clickable region to the stage
+      * 
+      * @function Pixel.Container#addHitRegion
+      * @param {object} opts - Options for hit region
+      * @param {string} opts.name - Name of hit region
+      * @param {Pixel.Point} opts.start - Start point of hit region
+      * @param {Pixel.Point} opts.end - End point of hit region
+      * @param {function} call - Function called when region clicked
+    */
+
+    this.addHitRegion = function(opts, call) {
+      self.stage.regions[opts.name] = new Object(
+        Object.assign({call: call}, opts)
+      );
+    };
   }
 
   /**
@@ -53,7 +160,7 @@ export default class Container {
   */
 
   addChild(sprite) {
-    this.contents.push(sprite);
+    this.sprites.push(sprite);
   }
 
   /**
@@ -68,46 +175,6 @@ export default class Container {
     for(var i in con) {
       base.addChild(con[i]);
     }
-  }
-
-  /**
-    * X position
-    *
-    * @name Pixel.Container#x
-    * @type {number}
-  */
-
-  get x() {
-    return this.point.x;
-  }
-
-  /**
-    * Y position
-    *
-    * @name Pixel.Container#y
-    * @type {number}
-  */
-
-  get y() {
-    return this.point.y;
-  }
-
-  set x(v) {
-    var con = this.contents;
-    for (var i in con) {
-      var c = con[i];
-      c.x = c.x + (v - this.x);
-    }
-    this.point.x = v;
-  }
-
-  set y(v) {
-    var con = this.contents;
-    for (var i in con) {
-      var c = con[i];
-      c.y = c.y + (v - this.y);
-    }
-    this.point.y = v;
   }
 
   /**
