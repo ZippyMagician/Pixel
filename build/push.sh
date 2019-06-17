@@ -1,6 +1,5 @@
 #!/bin/sh
 
-cd docs
 git config --global user.email "$GH_EMAIL"
 git config --global user.name "$GH_USERNAME"
 git config --global push.default current
@@ -10,7 +9,8 @@ if [[ $TRAVIS_BRANCH != master ]]; then
   return 0
 fi
 
-git clone https://github.com/ZippyMagician/Pixel-Docs
+git clone https://github.com/ZippyMagician/Pixel-Docs docs
+cd docs
 git pull https://github.com/ZippyMagician/Pixel-Docs
 
 git stash
