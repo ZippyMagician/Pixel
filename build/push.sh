@@ -15,6 +15,7 @@ upload_files() {
   git checkout master
   
   git remote add docs https://ZippyMagician:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs.git # > /dev/null 2>&1
+  git add .
   
   git pull docs master --allow-unrelated-histories --rebase
   git add .
