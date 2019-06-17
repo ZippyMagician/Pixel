@@ -36,7 +36,7 @@ export default class Container {
      * @private
     */
 
-    this._backColor = '#FFFFFF';
+    this._backColor = "#FFFFFF";
 
     /**
      * Stores the canvas 2d context
