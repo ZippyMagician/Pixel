@@ -10,7 +10,7 @@ if [[ $TRAVIS_BRANCH != master ]]; then
 fi
 
 git clone https://github.com/ZippyMagician/Pixel-Docs build-docs
-cp -r ~/docs/. ~/build-docs
+cp -r docs/. build-docs
 cd build-docs
 
 git stash
