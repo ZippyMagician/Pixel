@@ -11,8 +11,6 @@ commit_country_json_files() {
   
   dateAndMonth=`date "+%b %Y"`
   
-  git add -f dist/output/*.json
-  
   git commit -m "Travis update: $dateAndMonth (Build $TRAVIS_BUILD_NUMBER)" -m "[skip ci]"
 }
 
