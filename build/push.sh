@@ -30,9 +30,5 @@ setup_git
 
 commit_country_json_files
 
-if [ $? -eq 0 ]; then
-  echo "A new commit with changed country JSON files exists. Uploading to GitHub"
-  upload_files
-else
-  echo "No changes in country JSON files. Nothing to do"
-fi
+echo "Uploading to GitHub"
+upload_files
