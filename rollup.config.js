@@ -6,12 +6,21 @@ let EXIT = ["dist/Pixel.js", "dist/Pixel.min.js"];
 let resolve = resolver({mainFields: ["main"] });
 let minify = minifier({comments: false});
 
+let banner = `/**
+  * Created by Joshua Barnett
+  * 
+  * Licensed under MIT, 2019
+  * All Rights reserved
+  */
+`
+
 module.exports = [
   {
     input: ENTRY,
     output: {
       file: EXIT[0],
-      format: "cjs"
+      format: "cjs",
+      banner: banner
     },
     plugins: [resolve]
   },
@@ -19,7 +28,8 @@ module.exports = [
     input: ENTRY,
     output: {
       file: EXIT[1],
-      format: "cjs"
+      format: "cjs",
+      banner: banner
     },
     plugins: [minify, resolve]
   }
