@@ -12,7 +12,7 @@ let banner = `/**
   * Licensed under MIT, 2019
   * All Rights reserved
   */
-`
+`;
 
 module.exports = [
   {
