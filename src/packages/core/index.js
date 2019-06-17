@@ -64,37 +64,9 @@ class Stage {
     this.cursor = canvas.style.cursor;
 
     /**
-      * The background color
-      * 
-      * @private
-      * @name Pixel.Stage#_backColor
-      * @type {string}
-    */
-
-    this._backColor = "#FFFFFF";
-
-    /**
-      * Stores all element management
-      * 
-      * @namespace Pixel.Stage.elements
-    */
-
-    this.elements = {};
-   
-    /**
-      * Stores all textures loaded with `Pixel.Stage.elements.add`
-      *
-      * @name Pixel.Stage.elements#sprites
-      * @type {object[]}
-    */
-   
-    this.elements.sprites = [];
-
-    /**
       * Stores all preloaded textures
       * 
-      * @type {object}
-      * @name Pixel.Stage#resources
+      * @namespace Pixel.Stage.resources
     */
 
     this.resources = {};
@@ -102,27 +74,11 @@ class Stage {
     /**
       * The current stage object
       * 
-      * @namespace Pixel.Stage.stage
+      * @type {Pixel.Container}
+      * @name Pixel.Stage#stage
     */
 
-    this.stage = {};
-   
-    /**
-      * Stores all clickable regions on the screen
-      *
-      * @name Pixel.Stage.stage#regions
-      * @type {object}
-    */
-   
-    this.stage.regions = {};
-   
-    /**
-      * All keyboard related functions exist here
-      *
-      * @namespace Pixel.Stage.stage.keyboard
-    */
-   
-    this.stage.keyboard = {};
+    this.stage = new Container();
 
     /**
       * The physics storage object
@@ -155,37 +111,6 @@ class Stage {
     this.physics.collider.add = function (name, sprite1, sprite2) {
       self.physics.collisions.push({name: name, parent: sprite1, child: sprite2});
       self.physics.colliding[name] = false;
-    };
-
-    /**
-      * Gets the current mouse position
-      * 
-      * @private
-      * @function Pixel.Stage.stage#mousePos
-      * @param {DocumentEvent} event - The Document Event element
-      * @return {object} Returns the x and y in an object
-    */
-
-    this.stage.mousePos = function(event) {
-      var rect = canvas.getBoundingClientRect(),
-        scaleX = canvas.width / rect.width,
-        scaleY = canvas.height / rect.height;
-
-      return {
-        x: (event.clientX - rect.left) * scaleX,
-        y: (event.clientY - rect.top) * scaleY
-      };
-    };
-
-    /**
-      * Changes the background color
-      * 
-      * @function Pixel.Stage.stage#background
-      * @param {string} color - The color, in hexidecimal or rgb
-    */
-
-    this.stage.background = function(color) {
-      self._backColor = color;
     };
 
     /**
@@ -240,7 +165,7 @@ class Stage {
     document.onmousemove = function(e) {
       var check = self._checkRegions(e, false);
       if (!check) {canvas.style.cursor = self.cursor;}
-      if (self.onmousemove) {return self.onmousemove(e);}
+      if (self.stage.onmousemove) {return self.stage.onmousemove(e);}
     };
 
     /**
@@ -252,7 +177,7 @@ class Stage {
 
     document.onmousedown = function(e) {
       self.lastClickTarget = e.target;
-      if (self.onmousedown) {return self.onmousedown(e);}
+      if (self.stage.onmousedown) {return self.stage.onmousedown(e);}
     };
 
     /**
@@ -270,7 +195,7 @@ class Stage {
           keys.down[ke] = true;
         }
       }
-      if (self.onkeydown) {return self.onkeydown(e);}
+      if (self.stage.onkeydown) {return self.stage.onkeydown(e);}
     };
 
     /**
@@ -288,19 +213,19 @@ class Stage {
           keys.down[ke] = false;
         }
       }
-      if (self.onkeyup) {return self.onkeyup(e);}
+      if (self.stage.onkeyup) {return self.stage.onkeyup(e);}
     };
 
     /**
       * Adds and preloads new Texture element to the resources
       * 
-      * @function Pixel.Stage.elements#add
+      * @function Pixel.Stage.resources#add
       * @param {string} name - Name this element will refer to
       * @param {string} url - URL That image is loaded from
       * @return {Promise}
     */
 
-    this.elements.add = function(name, url) {
+    this.resources.add = function(name, url) {
       var image = new Image();
       return new Promise(function(resolve, reject) {
         image.onload = function() {
@@ -315,74 +240,6 @@ class Stage {
       });
     };
 
-    /**
-      * Auto renders sprite
-      * 
-      * @function Pixel.Stage.stage#add
-      * @param {Pixel.Sprite|Pixel.SpriteSheet|Pixel.AnimatedSprite|Pixel.Map|Pixel.Rectangle|Pixel.Circle|Pixel.Text} sprite - Sprite to be rendered
-    */
-
-    this.stage.add = function(sprite) {
-      return sprite.render(ctx);
-    };
-
-    /**
-      * Clears the screen
-      * 
-      * @private
-      * @function Pixel.Stage.stage#clear
-    */
-
-    this.stage.clear = function() {
-      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    };
-
-    /**
-      * Event handler
-      * 
-      * @function Pixel.Stage.stage#on
-      * @param {string} name - Name of event
-      * @param {function} call - Function called whenever event occurs
-    */
-
-    this.stage.on = function(name, call) {
-      if (name === "mousemove" || name === "mousedown" || name === "click") {
-        self["on" + name] = call;
-      } else {
-        self.view.addEventListener(name, call);
-      }
-    };
-
-    /**
-      * Define keyboard event triggers
-      * 
-      * @function Pixel.Stage.stage.keyboard#on
-      * @param {string} name - Name of event
-      * @param {function} call - Function called whenever event occurs
-    */
-
-    this.stage.keyboard.on = function(name, call) {
-      if (name === "keydown" || name === "keyup") {self["on" + name] = call;}
-      else {document["on" + name] = call;}
-    };
-
-    /**
-      * Adds clickable region to the stage
-      * 
-      * @function Pixel.Stage.stage#addHitRegion
-      * @param {object} opts - Options for hit region
-      * @param {string} opts.name - Name of hit region
-      * @param {Pixel.Point} opts.start - Start point of hit region
-      * @param {Pixel.Point} opts.end - End point of hit region
-      * @param {function} call - Function called when region clicked
-    */
-
-    this.stage.addHitRegion = function(opts, call) {
-      self.stage.regions[opts.name] = new Object(
-        Object.assign({call: call}, opts)
-      );
-    };
-
     if ((options.ticker === undefined) | null || options.ticker)
       {this._animFrame(this);}
   }
@@ -395,17 +252,7 @@ class Stage {
   */
 
   addChild(sprite) {
-    this.elements.sprites.push(sprite);
-  }
-
-  /**
-    * Removes all children from stage
-    * 
-    * @method Pixel.Stage#removeChildren
-  */
-
-  removeChildren() {
-    this.elements.sprites = [];
+    this.stage.addChild(sprite);
   }
 
   /**
@@ -416,14 +263,14 @@ class Stage {
   */
 
   render(self) {
-    var l = self.elements.sprites.length;
+    var l = self.stage.sprites.length;
     if (l >= 1) {self.stage.clear();}
 
-    self.draw.fillStyle = self._backColor;
+    self.draw.fillStyle = self.stage._backColor;
     self.draw.fillRect(0, 0, self.view.width, self.view.height);
 
     for (var i = 0; i < l; i++) {
-      self.stage.add(self.elements.sprites[i]);
+      self.stage.sprites[i].render(self.draw);
     }
   }
 
