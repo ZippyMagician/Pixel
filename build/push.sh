@@ -9,7 +9,6 @@ if [[ $TRAVIS_BRANCH != master ]]; then
   return 0
 fi
 
-git clone https://github.com/ZippyMagician/Pixel-Docs docs
 cd docs
 git pull https://github.com/ZippyMagician/Pixel-Docs
 
