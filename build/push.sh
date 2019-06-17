@@ -6,20 +6,20 @@ setup_git() {
   git config --global user.name "$GH_USERNAME"
 }
 
-commit_country_json_files() {
+checkout() {
   git checkout master
-  
-  dateAndMonth=`date "+%b %Y"`
-  
-  git commit -m "Travis update: $dateAndMonth (Build $TRAVIS_BUILD_NUMBER)" -m "[skip ci]"
 }
 
 upload_files() {
+  dateAndMonth=`date "+%b %Y"`
+
   git remote rm origin
   
   git remote add origin https://ZippyMagician:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs.git > /dev/null 2>&1
   cd docs
   # git pull origin master --quiet
+  git add .
+  git commit -m "Travis update: $dateAndMonth (Build $TRAVIS_BUILD_NUMBER)" -m "[skip ci]"
   git push origin master --quiet
 }
 
@@ -30,7 +30,7 @@ fi
 
 setup_git
 
-commit_country_json_files
+checkout
 
 echo "Uploading to GitHub"
 upload_files
