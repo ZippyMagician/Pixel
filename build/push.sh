@@ -13,11 +13,10 @@ checkout() {
 upload_files() {
   dateAndMonth=`date "+%b %Y"`
 
-  # git remote rm docs
-  
-  git remote add docs https://ZippyMagician:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs.git # > /dev/null 2>&1
   cd docs
   git init
+  
+  git remote add docs https://ZippyMagician:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs.git # > /dev/null 2>&1
   git add .
   git commit -m "Travis update: $dateAndMonth (Build $TRAVIS_BUILD_NUMBER)" -m "[skip ci]"
   git pull docs master
