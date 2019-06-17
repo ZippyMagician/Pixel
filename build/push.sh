@@ -18,6 +18,7 @@ upload_files() {
   git remote rm origin
   
   git remote add origin https://ZippyMagician:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs.git > /dev/null 2>&1
+  cd docs
   git push origin master --quiet
 }
 
