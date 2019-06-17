@@ -13,7 +13,7 @@ checkout() {
 upload_files() {
   dateAndMonth=`date "+%b %Y"`
 
-  git remote rm docs
+  # git remote rm docs
   
   git remote add docs https://ZippyMagician:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs.git # > /dev/null 2>&1
   cd docs
