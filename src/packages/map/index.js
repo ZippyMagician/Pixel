@@ -170,9 +170,6 @@ export default class Map extends SpriteBase {
     * @param {number} max - The total weight
     * @param {object[]} array - Every item
     * @return {object[]}
-    * 
-    * @example
-    *     _match(10, [{id: 10, weight: 5}, {id: 20, weight: 5}]);
   */
 
   _match(max, array) {
@@ -204,7 +201,8 @@ export default class Map extends SpriteBase {
     * @param {object[]} index - All indexes + weights of ids to place
     * 
     * @example
-    *     Pixel.Map.weightedRandomize(10, 10, 10, 10, [{index: 4, weight: 3}, {index: 10, weight: 0.5}]);
+    * // Example of weightedRandomize use, where map is a Pixel.Map
+    * map.weightedRandomize(10, 10, 10, 10, [{index: 4, weight: 3}, {index: 10, weight: 0.5}]);
   */
 
   weightedRandomize(gx, gy, w, h, index) {
@@ -274,8 +272,20 @@ export default class Map extends SpriteBase {
     * @param {number} y - Y position of first tile
     * 
     * @example
-    *   Pixel.Map.placeTiles([ [10], [50], [32] ], 5, 5);  // Is vertically, starting at tile index 5, 5
-    *   Pixel.Map.placeTiles([ 10, 50, 32 ], 5, 5); // Is horizontally, starting at tile index 5, 5
+    * // Create new map
+    * var map = new Pixel.Map(Pixel.SpriteSheet.generateSheet(), { // Use an existing sprite sheet to pass to the map
+    *   width: 48,
+    *   height: 48,
+    *   tileWidth: 48,
+    *   tileHeight: 48
+    * });
+    * 
+    * // Generate a blank map
+    * map.generateBlankMap();
+    * 
+    * // Place tiles on the map
+    * map.placeTiles([ [10], [50], [32] ], 5, 5);  // Is vertically, starting at tile index 5, 5
+    * map.placeTiles([ 10, 50, 32 ], 5, 5); // Is horizontally, starting at tile index 5, 5
   */
 
   placeTiles(tilesArray, x, y) {

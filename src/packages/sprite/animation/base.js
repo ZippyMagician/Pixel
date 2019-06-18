@@ -156,8 +156,9 @@ export default class AnimationCore {
     * @param {object[]} groups - Data of every group to be added
     * 
     * @example
-    *   data = { name: 'name', filter: 'prefix', offset: 'delay' }
-    *   Pixel.AnimatedSprite.animation.multiAdd([data]) // Adds just one, but you get the idea
+    * // Example of creating an animation, where sprite is Pixel.AnimatedSprite
+    * data = { name: 'name', filter: 'prefix', offset: 'delay' }
+    * sprite.animation.multiAdd([data]) // Adds just one, but you get the idea
   */
 
   multiAdd(groups) {
