@@ -11,10 +11,11 @@ upload_files() {
 
   cd docs
   git init
+  git remote add docs https://ZippyMagician:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs.git # > /dev/null 2>&1
 
+  git fetch docs
   git checkout master
   
-  git remote add docs https://ZippyMagician:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs.git # > /dev/null 2>&1
   git add .
   git commit -m "Travis pre-update: $dateAndMonth (Build $TRAVIS_BUILD_NUMBER)" -m "[skip ci]"
   
