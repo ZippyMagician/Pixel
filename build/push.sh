@@ -16,6 +16,7 @@ upload_files() {
   
   git remote add docs https://ZippyMagician:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs.git # > /dev/null 2>&1
   git add .
+  git commit -m "Travis pre-update: $dateAndMonth (Build $TRAVIS_BUILD_NUMBER)" -m "[skip ci]"
   
   git pull docs master
   git checkout --theirs .
@@ -35,3 +36,5 @@ setup_git
 
 echo "Uploading to GitHub"
 upload_files
+
+exit 0
