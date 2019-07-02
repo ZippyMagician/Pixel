@@ -19,7 +19,7 @@ upload_files() {
   git add .
   git commit -m "Travis pre-update: $dateAndMonth (Build $TRAVIS_BUILD_NUMBER)" -m "[skip ci]"
   
-  git pull docs master
+  git pull docs master --merge-unrelated-histories
   git checkout --theirs .
 
   git add .
