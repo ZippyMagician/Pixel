@@ -18,9 +18,8 @@ upload_files() {
   git add .
   git commit -m "Travis update: $dateAndMonth (Build $TRAVIS_BUILD_NUMBER)" -m "[skip ci]"
   
-  git stash
   git pull docs master
-  git stash pop
+  git checkout --theirs .
 
   git push docs master
 }
