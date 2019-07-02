@@ -223,6 +223,13 @@ class Stage {
       * @param {string} name - Name this element will refer to
       * @param {string} url - URL That image is loaded from
       * @return {Promise}
+      * @example
+      * // Example of use where app is an instance of Pixel.Stage
+      * app.resources.add('name', 'image/path').then(function (resources) {
+      *   let sprite = new Pixel.Sprite(resources.name); // Automatically preloaded as a Pixel.Texture, pass through this
+      * 
+      *   // ...
+      * });
     */
 
     this.resources.add = function(name, url) {
