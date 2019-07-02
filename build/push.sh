@@ -17,13 +17,13 @@ upload_files() {
   git checkout master
   
   git add .
-  git commit -m "Travis pre-update: $dateAndMonth (Build $TRAVIS_BUILD_NUMBER)" -m "[skip ci]"
+  git commit -m "Travis update: $dateAndMonth (Build $TRAVIS_BUILD_NUMBER)" -m "[skip ci]"
   
   git pull docs master --allow-unrelated-histories
   git checkout --ours .
 
   git add .
-  git commit -m "Travis update: $dateAndMonth (Build $TRAVIS_BUILD_NUMBER)" -m "[skip ci]"
+  git commit -m "Travis finalize-update: $dateAndMonth (Build $TRAVIS_BUILD_NUMBER)" -m "[skip ci]"
 
   git push docs master
 }
