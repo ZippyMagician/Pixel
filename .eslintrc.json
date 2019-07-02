@@ -18,7 +18,7 @@
         "quotes": ["error", "double"],
         "object-curly-spacing": ["error", "never", {
             "objectsInObjects": true,
-            "arraysInObjects": true
+            "arraysInObjects": false
         }],
         "space-in-parens": ["error", "never"],
         "array-bracket-spacing": ["error", "never"]
