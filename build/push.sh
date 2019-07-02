@@ -37,5 +37,3 @@ setup_git
 
 echo "Uploading to GitHub"
 upload_files
-
-exit 0
