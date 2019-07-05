@@ -168,7 +168,7 @@ export default class Container {
     */
 
     this.addHitRegion = function(opts, call) {
-      self.stage.regions[opts.name] = new Object(
+      self.regions[opts.name] = new Object(
         Object.assign({call: call}, opts)
       );
     };
