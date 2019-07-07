@@ -32,6 +32,7 @@
             "before": false,
             "after": true
         }],
-        "multiline-ternary": ["error", "never"]
+        "multiline-ternary": ["error", "never"],
+        "operator-linebreak": ["error", "none"]
     }
 }
