@@ -11,7 +11,7 @@ upload_files() {
 
   cd docs
   git init
-  git remote add docs https://ZippyMagician:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs.git # > /dev/null 2>&1
+  git remote add docs https://ZippyMagician:${GH_TOKEN}@github.com/ZippyMagician/Pixel-Docs.git > /dev/null 2>&1
 
   git fetch docs
   git checkout master
@@ -25,7 +25,7 @@ upload_files() {
   git add .
   git commit -m "Travis finalize-update: $dateAndMonth (Build $TRAVIS_BUILD_NUMBER)" -m "[skip ci]"
 
-  git push docs master
+  git push --quiet docs master
 }
 
 if [[ "$TRAVIS_BRANCH" != master ]]; then
