@@ -203,9 +203,7 @@ export default class Map extends SpriteBase {
     * map.weightedRandomize(10, 10, 10, 10, [{index: 4, weight: 3}, {index: 10, weight: 0.5}]);
   */
 
-  weightedRandomize(
-gx, gy, w, h, index
-) {
+  weightedRandomize(gx, gy, w, h, index) {
     let bias = index.map(a => {
       return a.weight;
     });
@@ -315,9 +313,7 @@ gx, gy, w, h, index
     * @param {number} h - Height of fill
   */
 
-  fill(
-id, gx, gy, w, h
-) {
+  fill(id, gx, gy, w, h) {
     for (let y = gy; y < gy + h; y++) {
       for (let x = gx; x < gx + w; x++) {
         this.placeTile(id, x, y);
