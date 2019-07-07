@@ -26,11 +26,14 @@
             "before": true,
             "after": true
         }],
-        "function-paren-newline": ["error", "never"],
+        "function-paren-newline": ["error", {
+            "minItems": 5
+        }],
         "space-before-blocks": ["error", "always"],
         "comma-spacing": ["error", {
             "before": false,
             "after": true
-        }]
+        }],
+        "multiline-ternary": ["error", "never"]
     }
 }
