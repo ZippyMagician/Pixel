@@ -53,7 +53,9 @@ export default class Circle extends SpriteBase {
     this.settings(canvas);
     canvas.beginPath();
     canvas.fillStyle = this.color;
-    canvas.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+    canvas.arc(
+this.x, this.y, this.radius, 0, 2 * Math.PI
+);
     canvas.fill();
     this.reset(canvas);
   }

@@ -181,9 +181,7 @@ export default class Map extends SpriteBase {
       sum += array[j].weight;
       if (rand <= sum) {
         var chosen = array[j].index;
-        randomIndex = Array.isArray(chosen)
-        ? chosen[Math.floor(Math.random() * chosen.length)]
-        : chosen;
+        randomIndex = Array.isArray(chosen) ? chosen[Math.floor(Math.random() * chosen.length)] : chosen;
         break;
       }
     }
@@ -205,7 +203,9 @@ export default class Map extends SpriteBase {
     * map.weightedRandomize(10, 10, 10, 10, [{index: 4, weight: 3}, {index: 10, weight: 0.5}]);
   */
 
-  weightedRandomize(gx, gy, w, h, index) {
+  weightedRandomize(
+gx, gy, w, h, index
+) {
     let bias = index.map(a => {
       return a.weight;
     });
@@ -315,7 +315,9 @@ export default class Map extends SpriteBase {
     * @param {number} h - Height of fill
   */
 
-  fill(id, gx, gy, w, h) {
+  fill(
+id, gx, gy, w, h
+) {
     for (let y = gy; y < gy + h; y++) {
       for (let x = gx; x < gx + w; x++) {
         this.placeTile(id, x, y);

@@ -146,9 +146,13 @@ export default class Graphics extends ImageGraphics {
     * @return {Pixel.Graphics}
   */
 
-  arc(a, b, c, d, e, f=false) {
+  arc(
+a, b, c, d, e, f=false
+) {
     this.ctx.beginPath();
-    this.ctx.arc(a, b, c, d, e, f);
+    this.ctx.arc(
+a, b, c, d, e, f
+);
     this.ctx.fill();
 
     return this;
@@ -167,9 +171,13 @@ export default class Graphics extends ImageGraphics {
     * @return {Pixel.Graphics}
   */
 
-  arcTo(a, b, c, d, e) {
+  arcTo(
+a, b, c, d, e
+) {
     this.ctx.beginPath();
-    this.ctx.arcTo(a, b, c, d, e);
+    this.ctx.arcTo(
+a, b, c, d, e
+);
     this.ctx.fill();
 
     return this;
@@ -219,7 +227,9 @@ export default class Graphics extends ImageGraphics {
 
   clearCircle(x, y, radius) {
     this.ctx.globalCompositeOperation = "destination-out";
-    this.ctx.arc(x, y, radius, 0, 2 * Math.PI);
+    this.ctx.arc(
+x, y, radius, 0, 2 * Math.PI
+);
     this.ctx.fill();
     this.ctx.globalCompositeOperation = "source-over";
   }

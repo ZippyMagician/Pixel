@@ -65,7 +65,9 @@ export default class SpriteSheet extends SpriteBase {
     * @returns {HTMLCanvasElement}
   */
 
-  _slice(x, y, w, h, image=false) {
+  _slice(
+x, y, w, h, image=false
+) {
     let img = image || this.texture;
     let canvas = document.createElement("canvas");
     let ctx = canvas.getContext("2d");
@@ -98,7 +100,9 @@ export default class SpriteSheet extends SpriteBase {
     for (let i in this.sheet) {
       let image = this.sheet[i];
       let diffW = prev_w - w, diffH = prev_h - h;
-      this.sheet[i] = this._slice(diffW / 2, diffH / 2, w - diffW / 2, h - diffH / 2, image);
+      this.sheet[i] = this._slice(
+diffW / 2, diffH / 2, w - diffW / 2, h - diffH / 2, image
+);
     }
   }
   
