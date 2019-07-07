@@ -75,6 +75,6 @@ window.Pixel = {
   }
 };
 
-window.requestAnimationFrame =  window.requestAnimationFrame ||  window.mozRequestAnimationFrame ||  window.webkitRequestAnimationFrame ||  window.msRequestAnimationFrame ||  function(f) {
-    return setTimeout(f, 1000 / 60);
-  };
+window.requestAnimationFrame =  window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function(f) {
+  return setTimeout(f, 1000 / 60);
+};

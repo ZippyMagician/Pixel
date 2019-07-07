@@ -129,9 +129,7 @@ class Stage {
       self.stage.mouse = mouse;
       for (var r in self.stage.regions) {
         var reg = self.stage.regions[r];
-        if (
-          mouse.x > reg.start.x &&          mouse.x < reg.end.x &&          mouse.y > reg.start.y &&          mouse.y < reg.end.y
-        ) {
+        if (mouse.x > reg.start.x && mouse.x < reg.end.x && mouse.y > reg.start.y && mouse.y < reg.end.y) {
           if (int) {reg.call();}
           else {canvas.style.cursor = "pointer";}
           c = true;
