@@ -101,10 +101,7 @@ class Sprite extends SpriteBase {
     var top = false;
     var bottom = false;
 
-    if ((mybottom < othertop) ||
-        (mytop > otherbottom) ||
-        (myright < otherleft) ||
-        (myleft > otherright)) {
+    if ((mybottom < othertop) ||        (mytop > otherbottom) ||        (myright < otherleft) ||        (myleft > otherright)) {
       crash = false;
     }
     if (crash) {
