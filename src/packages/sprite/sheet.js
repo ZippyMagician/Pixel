@@ -122,12 +122,10 @@ export default class SpriteSheet extends SpriteBase {
 
     for (curCol = 1; curCol <= cols; curCol++) {
       for (curRow = 1; curRow <= rows; curRow++) {
-        let img = this._slice(
-          curRow * (data.width + spacing) - data.width,
+        let img = this._slice(curRow * (data.width + spacing) - data.width,
           curCol * (data.height + spacing + margin) - data.height,
           data.width - margin - spacing,
-          data.height - margin - spacing
-        );
+          data.height - margin - spacing);
         this.sheet.push(img);
       }
     }

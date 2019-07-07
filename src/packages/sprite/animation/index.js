@@ -86,12 +86,10 @@ export default class AnimatedSprite extends SpriteBase {
       let frame = conf.textures[0].frames[f];
       this.animation.cache.push({
         name: frame.name,
-        image: self._slice(
-          frame.position.x,
+        image: self._slice(frame.position.x,
           frame.position.y,
           frame.position.w,
-          frame.position.h
-        )
+          frame.position.h)
       });
     }
   }

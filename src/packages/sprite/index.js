@@ -45,11 +45,9 @@ class Sprite extends SpriteBase {
       if (this.deg > 0 || this.flipX || this.flipY)
         {this.rotation_render(canvas);}
       else
-        {canvas.drawImage(
-          this.texture.image,
+        {canvas.drawImage(this.texture.image,
           this.x / this.scale - this.texture.image.width * this.anchor.x,
-          this.y / this.scale - this.texture.image.height * this.anchor.y
-        );}
+          this.y / this.scale - this.texture.image.height * this.anchor.y);}
       this.reset(canvas);
     }
   }
@@ -70,11 +68,9 @@ class Sprite extends SpriteBase {
     if (this.flipY) {ctx.scale(1, -1);}
     ctx.fillStyle = "#000000";
     ctx.rotate((Math.PI / 180) * this.deg);
-    ctx.drawImage(
-      image,
+    ctx.drawImage(image,
       -image.width * this.anchor.x,
-      -image.height * this.anchor.y
-    );
+      -image.height * this.anchor.y);
     ctx.restore();
   }
 

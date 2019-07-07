@@ -65,12 +65,10 @@ export default class Rectangle extends SpriteBase {
     if (this.deg > 0 || this.flipX || this.flipY) {this.rotation_render(canvas);}
     else {
       canvas.fillStyle = this.color;
-      canvas.fillRect(
-        this.x - this.width * this.anchor.x,
+      canvas.fillRect(this.x - this.width * this.anchor.x,
         this.y - this.height * this.anchor.y,
         this.width,
-        this.height
-      );
+        this.height);
       canvas.fill();
     }
     this.reset(canvas);
@@ -91,12 +89,10 @@ export default class Rectangle extends SpriteBase {
     if (this.flipY) {ctx.scale(1, -1);}
     ctx.rotate((Math.PI / 180) * this.deg);
     ctx.fillStyle = this.color;
-    ctx.fillRect(
-      0 - this.width * this.anchor.x,
+    ctx.fillRect(0 - this.width * this.anchor.x,
       0 - this.height * this.anchor.y,
       this.width,
-      this.height
-    );
+      this.height);
     ctx.fill();
     ctx.restore();
   }

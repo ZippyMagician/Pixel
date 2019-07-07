@@ -168,9 +168,7 @@ export default class Container {
     */
 
     this.addHitRegion = function(opts, call) {
-      self.regions[opts.name] = new Object(
-        Object.assign({call: call}, opts)
-      );
+      self.regions[opts.name] = new Object(Object.assign({call: call}, opts));
     };
   }
 
@@ -194,7 +192,7 @@ export default class Container {
 
   cloneChildren(base) {
     var con = this.contents;
-    for(var i in con) {
+    for (var i in con) {
       base.addChild(con[i]);
     }
   }
