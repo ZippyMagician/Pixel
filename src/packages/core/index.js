@@ -20,7 +20,6 @@ class Stage {
   */
 
   constructor(options) {
-    var self = this;
     var canvas = document.createElement("canvas");
     canvas.height = options.height;
     canvas.width = options.width;
@@ -108,9 +107,9 @@ class Stage {
       * @param {Pixel.Sprite|Pixel.Map|Pixel.AnimatedSprite} sprite2 - The second sprite that collides with the first
     */
 
-    this.physics.collider.add = function (name, sprite1, sprite2) {
-      self.physics.collisions.push({name: name, parent: sprite1, child: sprite2});
-      self.physics.colliding[name] = false;
+    this.physics.collider.add = (name, sprite1, sprite2) => {
+      this.physics.collisions.push({name: name, parent: sprite1, child: sprite2});
+      this.physics.colliding[name] = false;
     };
 
     /**
@@ -123,15 +122,19 @@ class Stage {
       * @return {boolean} True or False
     */
 
-    this._checkRegions = function(e, int = true) {
+    this._checkRegions = (e, int = true) => {
       var c = false;
-      var mouse = self.stage.mousePos(canvas, e);
-      self.stage.mouse = mouse;
-      for (var r in self.stage.regions) {
-        var reg = self.stage.regions[r];
+      var mouse = this.stage.mousePos(canvas, e);
+      this.stage.mouse = mouse;
+      for (var r in this.stage.regions) {
+        var reg = this.stage.regions[r];
         if (mouse.x > reg.start.x && mouse.x < reg.end.x && mouse.y > reg.start.y && mouse.y < reg.end.y) {
-          if (int) {reg.call();}
-          else {canvas.style.cursor = "pointer";}
+          if (int) {
+            reg.call();
+          }
+          else {
+            canvas.style.cursor = "pointer";
+          }
           c = true;
         }
       }
@@ -145,9 +148,11 @@ class Stage {
       * @private
     */
 
-    this.view.onclick = function(e) {
-      self._checkRegions(e);
-      if (self.onclick) {return self.onclick(e);}
+    this.view.onclick = (e) => {
+      this._checkRegions(e);
+      if (this.onclick) {
+        return this.onclick(e);
+      }
     };
 
     /**
@@ -157,10 +162,14 @@ class Stage {
       * @static
     */
 
-    document.onmousemove = function(e) {
-      var check = self._checkRegions(e, false);
-      if (!check) {canvas.style.cursor = self.cursor;}
-      if (self.stage.onmousemove) {return self.stage.onmousemove(e);}
+    document.onmousemove = (e) => {
+      var check = this._checkRegions(e, false);
+      if (!check) {
+        canvas.style.cursor = this.cursor;
+      }
+      if (this.stage.onmousemove) {
+        return this.stage.onmousemove(e);
+      }
     };
 
     /**
@@ -170,9 +179,11 @@ class Stage {
       * @static
     */
 
-    document.onmousedown = function(e) {
-      self.lastClickTarget = e.target;
-      if (self.stage.onmousedown) {return self.stage.onmousedown(e);}
+    document.onmousedown = (e) => {
+      this.lastClickTarget = e.target;
+      if (this.stage.onmousedown) {
+        return this.stage.onmousedown(e);
+      }
     };
 
     /**
@@ -182,15 +193,17 @@ class Stage {
       * @static
     */
 
-    document.onkeydown = function(e) {
+    document.onkeydown = (e) => {
       let key = e.key;
-      let keys = _pixel_keys;
+      let keys = Pixel.Keys;
       for (var ke in keys) {
         if (key === keys[ke]) {
           keys.down[ke] = true;
         }
       }
-      if (self.stage.onkeydown) {return self.stage.onkeydown(e);}
+      if (this.stage.onkeydown) {
+        return this.stage.onkeydown(e);
+      }
     };
 
     /**
@@ -202,13 +215,15 @@ class Stage {
 
     document.onkeyup = function(e) {
       let key = e.key;
-      let keys = _pixel_keys;
+      let keys = Pixel.Keys;
       for (var ke in keys) {
         if (key === keys[ke]) {
           keys.down[ke] = false;
         }
       }
-      if (self.stage.onkeyup) {return self.stage.onkeyup(e);}
+      if (this.stage.onkeyup) {
+        return this.stage.onkeyup(e);
+      }
     };
 
     /**
@@ -227,23 +242,24 @@ class Stage {
       * });
     */
 
-    this.resources.add = function(name, url) {
+    this.resources.add = (name, url) => {
       var image = new Image();
-      return new Promise(function(resolve, reject) {
+      return new Promise((resolve, reject) => {
         image.onload = function() {
-          self.resources[name] = {
+          this.resources[name] = {
             image: image,
             renderable: true
           };
-          return resolve(self.resources);
+          return resolve(this.resources);
         };
         image.crossOrigin = "Anonymous";
         image.src = url;
       });
     };
 
-    if ((options.ticker === undefined) | null || options.ticker)
-      {this._animFrame(this);}
+    if ((options.ticker === undefined) | null || options.ticker) {
+      window.requestAnimationFrame(this._animFrame.bind(this));
+    }
   }
 
   /**
@@ -261,18 +277,17 @@ class Stage {
     * Renders the entire stage
     * 
     * @method Pixel.Stage#render
-    * @param {Pixel.Stage} self - Stage to be rendered
   */
 
-  render(self) {
-    var l = self.stage.sprites.length;
-    if (l >= 1) {self.stage.clear();}
+  render() {
+    var l = this.stage.sprites.length;
+    if (l >= 1) {this.stage.clear();}
 
-    self.draw.fillStyle = self.stage._backColor;
-    self.draw.fillRect(0, 0, self.view.width, self.view.height);
+    this.draw.fillStyle = this.stage._backColor;
+    this.draw.fillRect(0, 0, this.view.width, this.view.height);
 
     for (var i = 0; i < l; i++) {
-      self.stage.sprites[i].render(self.draw);
+      this.stage.sprites[i].render(this.draw);
     }
   }
 
@@ -281,12 +296,11 @@ class Stage {
     * 
     * @private
     * @method Pixel.Stage#_checkCollisions
-    * @param {Pixel.Stage} self - Stage that collisions are checked for
   */
 
-  _checkCollisions(self) {
-    for (let i in self.physics.collisions) {
-      let collision = self.physics.collisions[i];
+  _checkCollisions() {
+    for (let i in this.physics.collisions) {
+      let collision = this.physics.collisions[i];
       let name = collision.name;
       let sprite = collision.parent;
       let ret = {top: false, bottom: false, left: false, right: false, body: false};
@@ -305,7 +319,7 @@ class Stage {
         }
       } else {ret = sprite.checkCollisions(collision.child);}
 
-      self.physics.colliding[name] = ret;
+      this.physics.colliding[name] = ret;
     }
   }
 
@@ -314,14 +328,13 @@ class Stage {
     * 
     * @method Pixel.Stage#_animFrame
     * @private
-    * @param {Pixel.Stage} self - Stage anim frame occurs on
   */
 
-  _animFrame(self) {
-    self.render(self);
-    requestAnimationFrame(self._checkCollisions.bind(false, self));
-    requestAnimationFrame(self._tick.bind(false, self));
-    requestAnimationFrame(self._animFrame.bind(false, self));
+  _animFrame() {
+    this.render();
+    window.requestAnimationFrame(this._checkCollisions.bind(this));
+    window.requestAnimationFrame(this._tick.bind(this));
+    window.requestAnimationFrame(this._animFrame.bind(this));
   }
 
   /**
@@ -332,9 +345,9 @@ class Stage {
     * @param {Pixel.Stage} self - Stage anim frame occurs on
   */
 
-  _tick(self) {
-    if (self.tick) {
-      self.tick();
+  _tick() {
+    if (this.tick) {
+      this.tick();
     }
   }
 }

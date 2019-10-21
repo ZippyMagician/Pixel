@@ -17,8 +17,6 @@ export default class Container {
   */
 
   constructor(ctx) {
-    let self = this;
-
     /**
       * Contains all sprites
       *
@@ -83,7 +81,7 @@ export default class Container {
       * @return {object} Returns the x and y in an object
     */
 
-    this.mousePos = function(canvas, event) {
+    this.mousePos = (canvas, event) => {
       var rect = canvas.getBoundingClientRect(),
         scaleX = canvas.width / rect.width,
         scaleY = canvas.height / rect.height;
@@ -101,8 +99,8 @@ export default class Container {
       * @param {string} color - The color, in hexidecimal or rgb
     */
 
-    this.background = function(color) {
-      self._backColor = color;
+    this.background = (color) => {
+      this._backColor = color;
     };
 
     /**
@@ -112,7 +110,7 @@ export default class Container {
       * @param {Pixel.Sprite|Pixel.SpriteSheet|Pixel.AnimatedSprite|Pixel.Map|Pixel.Rectangle|Pixel.Circle|Pixel.Text} sprite - Sprite to be rendered
     */
 
-    this.add = function(sprite) {
+    this.add = (sprite) => {
       return sprite.render(this.ctx);
     };
 
@@ -123,24 +121,8 @@ export default class Container {
       * @function Pixel.Container#clear
     */
 
-    this.clear = function() {
+    this.clear = () => {
       this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-    };
-
-    /**
-      * Event handler
-      * 
-      * @function Pixel.Container#on
-      * @param {string} name - Name of event
-      * @param {function} call - Function called whenever event occurs
-    */
-
-    this.on = function(name, call) {
-      if (name === "mousemove" || name === "mousedown" || name === "click") {
-        self["on" + name] = call;
-      } else {
-        self.view.addEventListener(name, call);
-      }
     };
 
     /**
@@ -151,9 +133,13 @@ export default class Container {
       * @param {function} call - Function called whenever event occurs
     */
 
-    this.keyboard.on = function(name, call) {
-      if (name === "keydown" || name === "keyup") {self["on" + name] = call;}
-      else {document["on" + name] = call;}
+    this.keyboard.on = (name, call) => {
+      if (name === "keydown" || name === "keyup") {
+        this["on" + name] = call;
+      }
+      else {
+        document["on" + name] = call;
+      }
     };
 
     /**
@@ -168,7 +154,7 @@ export default class Container {
     */
 
     this.addHitRegion = function(opts, call) {
-      self.regions[opts.name] = new Object(Object.assign({call: call}, opts));
+      this.regions[opts.name] = new Object(Object.assign({call: call}, opts));
     };
   }
 
@@ -182,6 +168,22 @@ export default class Container {
   addChild(sprite) {
     this.sprites.push(sprite);
   }
+
+  /**
+      * Event handler
+      * 
+      * @function Pixel.Container#on
+      * @param {string} name - Name of event
+      * @param {function} call - Function called whenever event occurs
+    */
+
+   on(name, call) {
+    if (name === "mousemove" || name === "mousedown" || name === "click") {
+      this["on" + name] = call;
+    } else {
+      this.view.addEventListener(name, call);
+    }
+  };
 
   /**
     * Moves all children into a Pixel.Stage element
