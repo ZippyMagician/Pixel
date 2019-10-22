@@ -23,11 +23,11 @@ let babel = babelify({
   exclude: "node_modules/**",
   presets: [
     [
-      '@babel/env',
+      "@babel/env",
       {
-        modules: 'auto',
+        modules: "auto",
         targets: {
-          browsers: '> 1%, IE 11, not op_mini all, not dead'
+          browsers: "> 1%, IE 11, not op_mini all, not dead"
         }
       }
     ]
