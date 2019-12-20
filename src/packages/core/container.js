@@ -153,7 +153,7 @@ export default class Container {
       * @param {function} call - Function called when region clicked
     */
 
-    this.addHitRegion = function(opts, call) {
+    this.addHitRegion = (opts, call) => {
       this.regions[opts.name] = new Object(Object.assign({call: call}, opts));
     };
   }
