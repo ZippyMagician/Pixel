@@ -213,7 +213,7 @@ class Stage {
       * @static
     */
 
-    document.onkeyup = function(e) {
+    document.onkeyup = (e) => {
       let key = e.key;
       let keys = Pixel.Keys;
       for (var ke in keys) {
@@ -245,7 +245,7 @@ class Stage {
     this.resources.add = (name, url) => {
       var image = new Image();
       return new Promise((resolve, reject) => {
-        image.onload = function() {
+        image.onload = () => {
           this.resources[name] = {
             image: image,
             renderable: true
