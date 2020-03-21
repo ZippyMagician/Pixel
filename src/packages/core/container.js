@@ -72,60 +72,6 @@ export default class Container {
     this.keyboard = {};
 
     /**
-      * Gets the current mouse position
-      * 
-      * @private
-      * @function Pixel.Container#mousePos
-      * @param {DocumentEvent} event - The Document Event element
-      * @param {HTMLCanvasElement} canvas - The canvas it gets the mouse position on
-      * @return {object} Returns the x and y in an object
-    */
-
-    this.mousePos = (canvas, event) => {
-      var rect = canvas.getBoundingClientRect(),
-        scaleX = canvas.width / rect.width,
-        scaleY = canvas.height / rect.height;
-
-      return {
-        x: (event.clientX - rect.left) * scaleX,
-        y: (event.clientY - rect.top) * scaleY
-      };
-    };
-
-    /**
-      * Changes the background color
-      * 
-      * @function Pixel.Container#background
-      * @param {string} color - The color, in hexidecimal or rgb
-    */
-
-    this.background = (color) => {
-      this._backColor = color;
-    };
-
-    /**
-      * Auto renders sprite
-      * 
-      * @function Pixel.Container#add
-      * @param {Pixel.Sprite|Pixel.SpriteSheet|Pixel.AnimatedSprite|Pixel.Map|Pixel.Rectangle|Pixel.Circle|Pixel.Text} sprite - Sprite to be rendered
-    */
-
-    this.add = (sprite) => {
-      return sprite.render(this.ctx);
-    };
-
-    /**
-      * Clears the screen
-      * 
-      * @private
-      * @function Pixel.Container#clear
-    */
-
-    this.clear = () => {
-      this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-    };
-
-    /**
       * Define keyboard event triggers
       * 
       * @function Pixel.Container.keyboard#on
@@ -141,21 +87,6 @@ export default class Container {
         document["on" + name] = call;
       }
     };
-
-    /**
-      * Adds clickable region to the stage
-      * 
-      * @function Pixel.Container#addHitRegion
-      * @param {object} opts - Options for hit region
-      * @param {string} opts.name - Name of hit region
-      * @param {Pixel.Point} opts.start - Start point of hit region
-      * @param {Pixel.Point} opts.end - End point of hit region
-      * @param {function} call - Function called when region clicked
-    */
-
-    this.addHitRegion = function(opts, call) {
-      this.regions[opts.name] = new Object(Object.assign({call: call}, opts));
-    };
   }
 
   /**
@@ -170,6 +101,20 @@ export default class Container {
   }
 
   /**
+   * Locates and deletes a sprite saved in the container
+   * 
+   * @param {number} id - The ID of the sprite to be deleted
+   */
+
+  removeChild(id) {
+    for (let index in this.sprites) {
+      if (this.sprites[index].id === id) {
+        delete this.sprites[index];
+      }
+    }
+  }
+
+  /**
       * Event handler
       * 
       * @function Pixel.Container#on
@@ -177,13 +122,82 @@ export default class Container {
       * @param {function} call - Function called whenever event occurs
     */
 
-   on(name, call) {
+  on(name, call) {
     if (name === "mousemove" || name === "mousedown" || name === "click") {
       this["on" + name] = call;
     } else {
       this.view.addEventListener(name, call);
     }
   };
+
+  /**
+    * Gets the current mouse position
+    * 
+    * @private
+    * @function Pixel.Container#mousePos
+    * @param {DocumentEvent} event - The Document Event element
+    * @param {HTMLCanvasElement} canvas - The canvas it gets the mouse position on
+    * @return {object} Returns the x and y in an object
+  */
+
+  mousePos(canvas, event) {
+    var rect = canvas.getBoundingClientRect(),
+      scaleX = canvas.width / rect.width,
+      scaleY = canvas.height / rect.height;
+
+    return {
+      x: (event.clientX - rect.left) * scaleX,
+      y: (event.clientY - rect.top) * scaleY
+    };
+  }
+
+  /**
+    * Changes the background color
+    * 
+    * @function Pixel.Container#background
+    * @param {string} color - The color, in hexidecimal or rgb
+  */
+
+  background(color) {
+    this._backColor = color;
+  }
+
+  /**
+    * Auto renders sprite
+    * 
+    * @function Pixel.Container#add
+    * @param {Pixel.Sprite|Pixel.SpriteSheet|Pixel.AnimatedSprite|Pixel.Map|Pixel.Rectangle|Pixel.Circle|Pixel.Text} sprite - Sprite to be rendered
+  */
+
+  add(sprite) {
+    return sprite.render(this.ctx);
+  }
+
+  /**
+    * Clears the screen
+    * 
+    * @private
+    * @function Pixel.Container#clear
+  */
+
+  clear() {
+    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+  }
+
+  /**
+    * Adds clickable region to the stage
+    * 
+    * @function Pixel.Container#addHitRegion
+    * @param {object} opts - Options for hit region
+    * @param {string} opts.name - Name of hit region
+    * @param {Pixel.Point} opts.start - Start point of hit region
+    * @param {Pixel.Point} opts.end - End point of hit region
+    * @param {function} call - Function called when region clicked
+  */
+
+  addHitRegion(opts, call) {
+    this.regions[opts.name] = new Object(Object.assign({call: call}, opts));
+  }
 
   /**
     * Moves all children into a Pixel.Stage element

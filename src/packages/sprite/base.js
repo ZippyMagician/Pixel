@@ -93,6 +93,16 @@ export default class SpriteBase {
     */
 
     this.flipY = false;
+
+    /**
+     * The id of the sprite, used to find sprites when deleting them
+     * 
+     * @name Pixel.EXPORTS.SpriteBase#id
+     * @type {string}
+     * @default 0
+     */
+
+     this.id = 0;
   }
 
   /**
