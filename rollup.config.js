@@ -1,6 +1,6 @@
-import minifier from "rollup-plugin-babel-minify";
-import babelify from "rollup-plugin-babel";
-import resolver from "rollup-plugin-node-resolve";
+import minifier from "rollup-plugin-terser";
+import babelify from "@rollup/plugin-babel";
+import resolver from "@rollup/plugin-node-resolve";
 
 let banner = `/**
   * Created by Joshua Barnett

@@ -21,8 +21,8 @@ export default class SpriteSheet extends SpriteBase {
      * @param {number} data.margin - Amount of padding around each sprite.
      * @param {number} data.spacing - Amount of space between each sprite.
      * @param {object} data.image - Stores data for each image being split.
-     * @param {number} data.image.width - Width of single tile
-     * @param {number} data.image.height - Height of single tile
+     * @param {number} data.image.width - Width of single tile.
+     * @param {number} data.image.height - Height of single tile.
      */
   
     constructor(texture, data) {
