@@ -1,17 +1,17 @@
 /**
-  * TODO: SOUND ENGINE
-  *
-  * @class
-  * @memberof Pixel
-*/
+ * TODO: SOUND ENGINE.
+ *
+ * @class
+ * @memberof Pixel
+ */
 
 export default class Sound {
 
-  /**
-    * Create new sound element
-    *
-    * @constructor
-  */
+    /**
+     * Create new sound element.
+     *
+     * @class
+     */
 
-  constructor() {}
+    constructor() {}
 }

@@ -46,7 +46,7 @@ rect.setAnchor(0.5, 0.5); // Center rectangle, move to center of screen
 
 app.addChild(rect); // Add rectangle to screen
 
-app.tick = function () {
+app.stage.on('tick', () => {
   rect.deg += 5; // Every tick, rotate 5 degrees
-}
+});
 ```

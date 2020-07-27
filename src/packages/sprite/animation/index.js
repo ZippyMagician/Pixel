@@ -2,163 +2,163 @@ import SpriteBase from "../base";
 import AnimationCore from "./base";
 
 /**
-  * AnimatedSprite Class
-  *
-  * @class
-  * @memberof Pixel
-  * @extends Pixel.EXPORTS.SpriteBase
-*/
+ * AnimatedSprite Class.
+ *
+ * @class
+ * @memberof Pixel
+ * @augments Pixel.EXPORTS.SpriteBase
+ */
 
 export default class AnimatedSprite extends SpriteBase {
 
-  /**
-    * Create new Animated Sprite Object
-    *
-    * @constructor
-    * @param {object|false} config - The configuration object, only passed if it is a json file
-    * @param {Pixel.SpriteSheet#sheet|Pixel.SpriteSheet#generateSheet} sheet - The Sprite Sheet
-    * @param {number} [speed=0.15] - Speed of animation
-  */
+    /**
+     * Create new Animated Sprite Object.
+     *
+     * @class
+     * @param {object|false} config - The configuration object, only passed if it is a json file.
+     * @param {Pixel.SpriteSheet#sheet|Pixel.SpriteSheet#generateSheet} sheet - The Sprite Sheet.
+     * @param {number} [speed=0.15] - Speed of animation.
+     */
 
-  constructor(config, sheet, speed = 0.15) {
-    super();
+    constructor(config, sheet, speed = 0.15) {
+        super();
+
+        /**
+         * Animation Core for playing the animations.
+         *
+         * @name Pixel.AnimatedSprite#animation
+         * @type {Pixel.EXPORTS.AnimationCore}
+         */
+
+        this.animation = new AnimationCore(this);
+
+        /**
+         * Speed of the animation.
+         *
+         * @name Pixel.AnimatedSprite#speed
+         * @type {number}
+         * @default 0.15
+         */
+
+        this.speed = speed;
+
+        /**
+         * SpriteSheet's image.
+         *
+         * @name Pixel.AnimatedSprite#texture
+         * @type {object|Pixel.SpriteSheet#sheet|Pixel.SpriteSheet#generateSheet}
+         */
+
+        this.texture = {image: new Image()};
+
+        if (this.config) {
+
+            /**
+             * JSON Config file.
+             *
+             * @name Pixel.AnimatedSprite#config
+             * @type {object}
+             */
+
+            this.config = config;
+            this.texture = sheet;
+
+            this._splitFrames();
+        } else {
+            this.sheet = sheet;
+
+            this._splitSheetFrames();
+        }
+    }
 
     /**
-      * Animation Core for playing the animations
-      *
-      * @name Pixel.AnimatedSprite#animation
-      * @type {Pixel.EXPORTS.AnimationCore}
-    */
+     * Slices each frame off of the SpriteSheet, used if JSON file exists.
+     *
+     * @member Pixel.AnimatedSprite#_splitFrames
+     * @private
+     */
 
-    this.animation = new AnimationCore(this);
+    _splitFrames() {
+        var conf = this.config;
+        var self = this;
+
+        for (var f in conf.textures[0].frames) {
+            let frame = conf.textures[0].frames[f];
+            this.animation.cache.push({
+                name: frame.name,
+                image: self._slice(frame.position.x,
+                    frame.position.y,
+                    frame.position.w,
+                    frame.position.h)
+            });
+        }
+    }
 
     /**
-      * Speed of the animation
-      *
-      * @name Pixel.AnimatedSprite#speed
-      * @type {number}
-      * @default 0.15
-    */
+     * Slices each frame off of the SpriteSheet, used if no JSON file.
+     *
+     * @member Pixel.AnimatedSprite#_splitSheetFrames
+     * @private
+     */
 
-    this.speed = speed;
+    _splitSheetFrames() {
+        var self = this;
+
+        for (var f in self.sheet) {
+            let img = self.sheet[f];
+            this.animation.cache.push({
+                name: f.toString(),
+                image: img
+            });
+        }
+    }
 
     /**
-      * SpriteSheet's image
-      *
-      * @name Pixel.AnimatedSprite#texture
-      * @type {object|Pixel.SpriteSheet#sheet|Pixel.SpriteSheet#generateSheet}
-    */
+     * Cuts image.
+     *
+     * @member Pixel.AnimatedSprite#_slice
+     * @private
+     * @param {number} x - X position.
+     * @param {number} y - Y position.
+     * @param {number} w - Width.
+     * @param {number} h - Height.
+     * @returns {HTMLCanvasElement}
+     */
 
-    this.texture = {image: new Image()};
+    _slice(x, y, w, h) {
+        var canvas = document.createElement("canvas");
+        var ctx = canvas.getContext("2d");
 
-    if (this.config) {
+        ctx.canvas.width = this.texture.image.width;
+        ctx.canvas.height = this.texture.image.height;
+        ctx.drawImage(this.texture.image, 0, 0);
 
-      /**
-        * JSON Config file
-        *
-        * @name Pixel.AnimatedSprite#config
-        * @type {object}
-      */
+        var data = ctx.getImageData(x, y, w, h);
+        ctx.clearRect(0, 0, this.texture.image.width, this.texture.image.height);
+        canvas.width = w;
+        canvas.height = h;
+        ctx.putImageData(data, 0, 0);
 
-      this.config = config;
-      this.texture = sheet;
-
-      this._splitFrames();
-    } else {
-      this.sheet = sheet;
-
-      this._splitSheetFrames();
+        return canvas;
     }
-  }
 
-  /**
-    * Slices each frame off of the SpriteSheet, used if JSON file exists
-    *
-    * @member Pixel.AnimatedSprite#_splitFrames
-    * @private
-  */
+    /**
+     * Renders current animation frame of sprite.
+     *
+     * @member Pixel.AnimatedSprite#render
+     * @param {CanvasRenderingContext2d} ctx - The Canvas to print to.
+     */
 
-  _splitFrames() {
-    var conf = this.config;
-    var self = this;
+    render(ctx) {
+        if (this.animation.current) {
+            var dummy = this.animation.current[
+                Math.floor(this.animation.frame) % this.animation.current.length
+            ];
+            dummy.copy(this);
+            this.texture = dummy.texture;
+            dummy.render(ctx);
 
-    for (var f in conf.textures[0].frames) {
-      let frame = conf.textures[0].frames[f];
-      this.animation.cache.push({
-        name: frame.name,
-        image: self._slice(frame.position.x,
-          frame.position.y,
-          frame.position.w,
-          frame.position.h)
-      });
+            this.animation.frame += this.speed;
+        }
     }
-  }
-
-  /**
-    * Slices each frame off of the SpriteSheet, used if no JSON file
-    *
-    * @member Pixel.AnimatedSprite#_splitSheetFrames
-    * @private
-  */
-
-  _splitSheetFrames() {
-    var self = this;
-
-    for (var f in self.sheet) {
-      let img = self.sheet[f];
-      this.animation.cache.push({
-        name: f.toString(),
-        image: img
-      });
-    }
-  }
-
-  /**
-    * Cuts image
-    *
-    * @member Pixel.AnimatedSprite#_slice
-    * @private
-    * @param {number} x - X position
-    * @param {number} y - Y position
-    * @param {number} w - Width
-    * @param {number} h - Height
-    * @returns {HTMLCanvasElement}
-  */
-
-  _slice(x, y, w, h) {
-    var canvas = document.createElement("canvas");
-    var ctx = canvas.getContext("2d");
-
-    ctx.canvas.width = this.texture.image.width;
-    ctx.canvas.height = this.texture.image.height;
-    ctx.drawImage(this.texture.image, 0, 0);
-
-    var data = ctx.getImageData(x, y, w, h);
-    ctx.clearRect(0, 0, this.texture.image.width, this.texture.image.height);
-    canvas.width = w;
-    canvas.height = h;
-    ctx.putImageData(data, 0, 0);
-
-    return canvas;
-  }
-
-  /**
-    * Renders current animation frame of sprite
-    *
-    * @member Pixel.AnimatedSprite#render
-    * @param {CanvasRenderingContext2d} ctx - The Canvas to print to
-  */
-
-  render(ctx) {
-    if (this.animation.current) {
-      var dummy = this.animation.current[
-        Math.floor(this.animation.frame) % this.animation.current.length
-      ];
-      dummy.copy(this);
-      this.texture = dummy.texture;
-      dummy.render(ctx);
-
-      this.animation.frame += this.speed;
-    }
-  }
 }

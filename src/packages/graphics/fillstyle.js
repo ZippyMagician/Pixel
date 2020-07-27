@@ -1,78 +1,78 @@
 /**
-  * Color/Transparency element for graphics
-  *
-  * @class
-  * @memberof Pixel.EXPORTS
-*/
+ * Color/Transparency element for graphics.
+ *
+ * @class
+ * @memberof Pixel.EXPORTS
+ */
 
 export default class FillStyle {
 
-  /**
-    * Initiates new FillStyle element
-    *
-    * @constructor
-  */
+    /**
+     * Initiates new FillStyle element.
+     *
+     * @class
+     */
 
-  constructor() {
+    constructor() {
+
+        /**
+         * The color of the fill element.
+         *
+         * @name Pixel.EXPORTS.FillStyle#color
+         * @type {number}
+         */
+
+        this.color;
+
+        /**
+         * Alpha (transparency) of element.
+         *
+         * @name Pixel.EXPORTS.FillStyle#alpha
+         * @type {number}
+         */
+
+        this.alpha;
+
+        this.reset();
+    }
 
     /**
-      * The color of the fill element
-      *
-      * @name Pixel.EXPORTS.FillStyle#color
-      * @type {number}
-    */
+     * Resets color and alpha.
+     * 
+     * @function Pixel.EXPORTS.FillStyle#reset
+     */
 
-    this.color;
+    reset() {
+        this.color = 0xFFFFFF;
+        this.alpha = 1;
+    }
 
     /**
-      * Alpha (transparency) of element
-      *
-      * @name Pixel.EXPORTS.FillStyle#alpha
-      * @type {number}
-    */
+     * Clones this fill iteration into new one.
+     *
+     * @function Pixel.EXPORTS.FillStyle#clone
+     * @returns {Pixel.EXPORTS.FillStyle}
+     */
 
-    this.alpha;
-
-    this.reset();
-  }
-
-  /**
-    * Resets color and alpha
-    * 
-    * @method Pixel.EXPORTS.FillStyle#reset
-  */
-
-  reset() {
-    this.color = 0xFFFFFF;
-    this.alpha = 1;
-  }
-
-  /**
-    * Clones this fill iteration into new one
-    *
-    * @method Pixel.EXPORTS.FillStyle#clone
-    * @return {Pixel.EXPORTS.FillStyle}
-  */
-
-  clone() {
-    var f = new FillStyle();
-    f.color = this.color;
-    f.alpha = this.alpha;
+    clone() {
+        var f = new FillStyle();
+        f.color = this.color;
+        f.alpha = this.alpha;
     
-    return f;
-  }
+        return f;
+    }
 
-  /**
-    * Fills color to new color
-    *
-    * @method Pixel.EXPORTS.FillStyle#fill
-    * @param {number} c - Color to be set, Hex or RGB
-    * @return {number}
-  */
+    /**
+     * Fills color to new color.
+     *
+     * @function Pixel.EXPORTS.FillStyle#fill
+     * @param {number} c - Color to be set, Hex or RGB.
+     * @returns {number}
+     */
 
-  fill(c) {
-    this.color = c;
+    fill(c) {
+        this.color = c;
 
-    return this.color;
-  }
+        return this.color;
+    }
 }
