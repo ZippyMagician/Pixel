@@ -10,6 +10,7 @@ import SpriteBase from "./packages/sprite/base";
 import AnimationCore from "./packages/sprite/animation/base";
 import ImageGraphics from "./packages/graphics/image";
 import FillStyle from "./packages/graphics/fillstyle";
+import Physics from "./packages/physics";
 
 /**
  * The main namespace, contains all of Pixel's functions.
@@ -60,6 +61,7 @@ window.Pixel = {
         }
     },
     Map: Map,
+    Physics: Physics,
 
     /**
      * All of the cores and bases used by various sprites.

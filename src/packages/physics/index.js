@@ -1,5 +1,5 @@
 /**
- * Physics class.
+ * Pixel physics class.
  * 
  * @class
  * @memberof Pixel
